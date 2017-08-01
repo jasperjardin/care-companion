@@ -1,0 +1,23 @@
+.donation-separator {
+    margin: 0 5px;
+}
+.care-companion {
+}
+.donation-box {
+    padding: 20px 30px;
+    .donation-title {
+        color: $light;
+        font-size: 18px;
+    }
+    .action-section {
+        color: $light_700;
+    }
+    .donation-action {
+        .care-companion-icon {
+            margin-right: 2.5px;
+        }
+    }
+    &.style-1 {
+        background: rgba(0, 0, 0, 0.87);
+    }
+}

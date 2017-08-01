@@ -1,0 +1,26 @@
+.donation-separator {
+  margin: 0 5px;
+}
+
+.donation-box {
+  padding: 20px 30px;
+}
+
+.donation-box .donation-title {
+  color: #fff;
+  font-size: 18px;
+}
+
+.donation-box .action-section {
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.donation-box .donation-action .care-companion-icon {
+  margin-right: 2.5px;
+}
+
+.donation-box.style-1 {
+  background: rgba(0, 0, 0, 0.87);
+}
+
+/*# sourceMappingURL=care-companion.css.map */
