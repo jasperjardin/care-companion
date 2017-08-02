@@ -73,7 +73,24 @@ final class PluginShortcodes
         $atts = shortcode_atts(
             array(
                 'form_id' => '',
-                'style' => 'style-1',
+                'layout_style' => 'style-1',
+
+                'progress_symbol' => '%',
+
+                'progress_text_size' => '18px',
+                'progress_color' => '#eb543a',
+                'progress_trail_color' => '#eee',
+                'progress_shape' => 'Circle',
+                'progress_stroke_width' => '4',
+                'progress_trail_width' => '1',
+                'progress_transition_style' => 'easeInOut',
+                'progress_transition_duration' => '1400',
+
+                'progress_advance_animation' => 'false',
+                'progress_start_color' => '#333',
+                'progress_start_width' => '1',
+                'progress_end_color' => '#eb543a',
+                'progress_end_width' => '4',
             ),
             $atts,
             'cc_donation_box'

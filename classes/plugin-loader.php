@@ -214,6 +214,11 @@ final class Loader
             $plugin_public,
             'setEnqueueStyles'
         );
+        $this->loader->addAction(
+            'wp_enqueue_scripts',
+            $plugin_public,
+            'setEnqueueScripts'
+        );
     }
     /**
      * Run the loader to execute all of in the hooks plugin to WordPress.

@@ -119,6 +119,56 @@ final class PublicPages
     }
 
     /**
+     * This method enqueue the JS files for the frontend of the Reference plugin.
+     *
+     * @since  1.0.0
+     * @access public
+     * @return void
+     */
+    public function setEnqueueScripts()
+    {
+        $post = Helper::globalPost();
+
+        if (empty($breadcrumbs_separator_option)) {
+            $breadcrumbs_separator_option = "/";
+        }
+
+        if (!isset($post)) {
+            return;
+        }
+
+        if (self::isPluginComponentActive(
+            'dsc-causes',
+            'dsc-causes',
+            array(
+                'dsc-causes-categories',
+                'dsc-causes-tags'
+            ),
+            'cc_donation_box'
+        )) {
+            wp_register_script(
+                $this->name,
+                plugin_dir_url(dirname(__FILE__)) . 'assets/js/care-companion.js',
+                array('jquery'),
+                $this->version,
+                false
+            );
+            
+            wp_enqueue_script(
+                'care-conpanion-progress',
+                plugin_dir_url(dirname(__FILE__)) . 'assets/js/progressbar.min.js',
+                array('jquery'),
+                $this->version,
+                false
+            );
+
+            wp_enqueue_script($this->name);
+
+        }
+        return;
+    }
+
+    /**
      * This method sets the body_class for knowledgebase post type.
      *
      * @param string|array $classes One or more classes to add to the class
@@ -142,7 +192,7 @@ final class PublicPages
         )) {
             $classes[] = 'dsc-causes';
         }
-        
+
         if (is_singular('dsc-causes')) {
             $classes[] = 'dsc-causes';
         }

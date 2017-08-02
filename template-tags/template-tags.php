@@ -80,3 +80,106 @@ function care_companion_replace_first_text_occurance($search, $replace, $source)
     return $shift.$replace.$implode;
 
 }
+
+
+function care_companion_get_donation_income( $form_id = '' ) {
+    if ( ! empty( $form_id ) ) {
+        $donation = care_companion_get_donation_info( $form_id );
+        return $donation['income'];
+    }
+    return;
+}
+function care_companion_get_formated_donation_income( $form_id = '' ) {
+    if ( ! empty( $form_id ) ) {
+        $donation = care_companion_get_donation_info( $form_id );
+        return $donation['formated-income'];
+    }
+    return;
+}
+function care_companion_get_donation_goal( $form_id = '' ) {
+    if ( ! empty( $form_id ) ) {
+        $donation = care_companion_get_donation_info( $form_id );
+        return $donation['goal'];
+    }
+    return;
+}
+function care_companion_get_formated_donation_goal( $form_id = '' ) {
+    if ( ! empty( $form_id ) ) {
+        $donation = care_companion_get_donation_info( $form_id );
+        return $donation['formated-goal'];
+    }
+    return;
+}
+function care_companion_get_donation_progress( $form_id = '' ) {
+    if ( ! empty( $form_id ) ) {
+        $donation = care_companion_get_donation_info( $form_id );
+        return $donation['progress'];
+    }
+    return;
+}
+
+function care_companion_get_donation_info( $form_id = '' ) {
+
+    $form = new Give_Donate_Form( $form_id );
+    $donation_income = '';
+    $donation_goal = '';
+    $donation_progress = '';
+    $formated_donation_income = '';
+    $formated_donation_goal = '';
+    $donation = array();
+
+    /**
+     * Filter the form income
+     *
+     * @since 1.0.0
+     */
+    $income = apply_filters( 'care_companion_goal_amount_raised_output', $form->get_earnings(), $form_id, $form );
+
+    /**
+     * Filter the form
+     *
+     * @since 1.0.0
+     */
+    $goal = apply_filters( 'care_companion_goal_amount_target_output', $form->goal, $form_id, $form );
+
+    /**
+     * Filter the goal progress output
+     *
+     * @since 1.0.0
+     */
+
+    $progress = 0;
+
+    if ( 0 != $income ) {
+        $progress = apply_filters( 'care_companion_goal_amount_funded_percentage_output', round( ( $income / $goal ) * 100, 2 ), $form_id, $form );
+    }
+
+    // Set progress to 100 percentage if income > goal.
+    if ( $income >= $goal ) {
+    	$progress = 100;
+    }
+
+	if ( ! empty( $form_id ) ) :
+
+        // Get formatted amount.
+        $donation_income = give_human_format_large_amount( give_format_amount( $income ) );
+        $donation_goal   = give_human_format_large_amount( give_format_amount( $goal ) );
+
+        $formated_donation_income = give_currency_filter( $income );
+        $formated_donation_goal = give_currency_filter( $goal );
+        $donation_progress = round( $progress );
+
+        $donation = array(
+            'income' => $donation_income,
+            'goal' => $donation_goal,
+            'formated-income' => $formated_donation_income,
+            'formated-goal' => $formated_donation_goal,
+            'progress' => $donation_progress,
+        );
+
+        return $donation;
+
+    endif;
+
+    return;
+}

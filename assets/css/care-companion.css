@@ -23,4 +23,13 @@
   background: rgba(0, 0, 0, 0.87);
 }
 
+.care-companion-progress-bar {
+  font-size: 100%;
+  position: relative;
+}
+
+.care-companion-progress-bar .progressbar-text {
+  font-size: 1em;
+}
+
 /*# sourceMappingURL=care-companion.css.map */
