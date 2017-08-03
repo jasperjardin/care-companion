@@ -77,10 +77,10 @@ final class PluginShortcodes
 
                 'progress_symbol' => '%',
 
-                'progress_text_size' => '18px',
+                'progress_text_size' => '35px',
                 'progress_color' => '#eb543a',
                 'progress_trail_color' => '#eee',
-                'progress_shape' => 'Circle',
+                'progress_shape' => 'Line',
                 'progress_stroke_width' => '4',
                 'progress_trail_width' => '1',
                 'progress_transition_style' => 'easeInOut',

@@ -3,7 +3,7 @@
 }
 .care-companion {
 }
-.donation-box {
+.care-companion-donation-box {
     padding: 20px 30px;
     .donation-title {
         color: $light;
@@ -25,6 +25,9 @@
 .care-companion-progress-bar {
     font-size: 100%;
     position: relative;
+    svg:not(:root) {
+        overflow: visible;
+    }
     .progressbar-text {
         font-size: 1em;
     }

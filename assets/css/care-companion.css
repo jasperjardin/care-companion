@@ -2,30 +2,34 @@
   margin: 0 5px;
 }
 
-.donation-box {
+.care-companion-donation-box {
   padding: 20px 30px;
 }
 
-.donation-box .donation-title {
+.care-companion-donation-box .donation-title {
   color: #fff;
   font-size: 18px;
 }
 
-.donation-box .action-section {
+.care-companion-donation-box .action-section {
   color: rgba(255, 255, 255, 0.87);
 }
 
-.donation-box .donation-action .care-companion-icon {
+.care-companion-donation-box .donation-action .care-companion-icon {
   margin-right: 2.5px;
 }
 
-.donation-box.style-1 {
+.care-companion-donation-box.style-1 {
   background: rgba(0, 0, 0, 0.87);
 }
 
 .care-companion-progress-bar {
   font-size: 100%;
   position: relative;
+}
+
+.care-companion-progress-bar svg:not(:root) {
+  overflow: visible;
 }
 
 .care-companion-progress-bar .progressbar-text {

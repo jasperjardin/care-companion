@@ -63,7 +63,7 @@ $args = array(
 $form = new WP_Query( $args ); ?>
 
 <?php if ( $form->have_posts() ) : ?>
-    <div class="care-companion donation-box <?php echo esc_attr( $layout_style ); ?>"
+    <div class="care-companion-donation-box <?php echo esc_attr( $layout_style ); ?>"
         data-progress-symbol="<?php echo esc_attr( $progress_symbol ); ?>"
 
         data-progress-text-size="<?php echo esc_attr( $progress_text_size ); ?>"
