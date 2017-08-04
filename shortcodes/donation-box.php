@@ -63,13 +63,15 @@ $args = array(
 $form = new WP_Query( $args ); ?>
 
 <?php if ( $form->have_posts() ) : ?>
-    <div class="care-companion-donation-box <?php echo esc_attr( $layout_style ); ?>"
+    <div class="care-companion-donation-box <?php echo esc_attr( $layout_style ); ?> <?php echo esc_attr( $progress_shape ); ?>"
         data-progress-symbol="<?php echo esc_attr( $progress_symbol ); ?>"
 
+        data-progress-text="<?php echo esc_attr( $progress_text ); ?>"
         data-progress-text-size="<?php echo esc_attr( $progress_text_size ); ?>"
         data-progress-donation="<?php echo esc_attr( $progress_donation ); ?>"
 
         data-progress-color="<?php echo esc_attr( $progress_color ); ?>"
+        data-progress-fill="<?php echo esc_attr( $progress_fill ); ?>"
         data-progress-trail-color="<?php echo esc_attr( $progress_trail_color ); ?>"
         data-progress-shape="<?php echo esc_attr( $progress_shape ); ?>"
         data-progress-stroke-width="<?php echo esc_attr( $progress_stroke_width ); ?>"
@@ -81,6 +83,8 @@ $form = new WP_Query( $args ); ?>
         data-progress-start-width="<?php echo esc_attr( $progress_start_width ); ?>"
         data-progress-end-color="<?php echo esc_attr( $progress_end_color ); ?>"
         data-progress-end-width="<?php echo esc_attr( $progress_end_width ); ?>"
+        
+        style="background-color: <?php echo esc_attr( $container_fill ); ?>"
     >
 
         <?php

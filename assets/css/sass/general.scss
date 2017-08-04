@@ -1,10 +1,11 @@
-.donation-separator {
+.donation-gap {
     margin: 0 5px;
 }
 .care-companion {
 }
 .care-companion-donation-box {
     padding: 20px 30px;
+    color: #fff;
     .donation-title {
         color: $light;
         font-size: 18px;
@@ -17,18 +18,137 @@
             margin-right: 2.5px;
         }
     }
+    .donation-raised,
+    .donation-goal,
+    .donation-separator {
+        display: inline-block;
+        vertical-align: top;
+        min-height: 46px;
+    }
+    .donation-raised,
+    .donation-goal {
+        width: 47%;
+        font-weight: bold;
+    }
+    .donation-raised {
+        padding-right: 15px;
+        text-align: right;
+    }
+    .donation-goal {
+        padding-left: 15px;
+        text-align: left;
+    }
+    .donation-separator {
+        max-width: 1%;
+    }
+
+    .donation-value {
+        font-size: 18px;
+    }
+
+    &.Circle {
+        .progressbar-text {
+            position: absolute;
+            top: 25%;
+        }
+    }
+    &.SemiCircle {
+        .progressbar-text {
+            position: absolute;
+            top: 25%!important;
+            transform: translate(0%, 0px)!important;
+            .percentage-text {
+                font-size: 0.5em;
+            }
+        }
+    }
+    &.Line {
+        .progressbar-text {
+            top: -2.5px;
+        }
+    }
+
     &.style-1 {
         background: rgba(0, 0, 0, 0.87);
+        .donation-information-section {
+            text-align: center;
+            padding: 0;
+        }
+        .donation-information {
+            margin-bottom: 15px;
+        }
+        .donation-content {
+            color: rgba(255, 255, 255, 0.75);
+        }
+        .donation-caption,
+        .donation-value {
+            width: 100%;
+            display: inline-block;
+            line-height: normal;
+        }
+        &.Circle {
+            .donation-information-section {
+                padding-top: 20px;
+            }
+        }
     }
+    &.style-2 {}
+    &.style-3 {}
+}
+.donation-separator {
+    width: 1px;
+    min-height: 50px;
+    background: #777;
+    display: inline-block;
 }
 
 .care-companion-progress-bar {
     font-size: 100%;
     position: relative;
-    svg:not(:root) {
-        overflow: visible;
+    svg {
+        // position: absolute;
+        &:not(:root) {
+            overflow: visible;
+        }
     }
     .progressbar-text {
+        width: 100%;
         font-size: 1em;
+        text-align: center;
+        .percentage-text,
+        .completed-text {
+            display: inline-block;
+            width: 100%;
+            float: left;
+            line-height: normal;
+        }
+        .percentage-text {
+            font-weight: bold;
+        }
+        .completed-text {
+            font-size: 0.35em;
+        }
+    }
+}
+.care-companion-btn {
+    background: #f8b864;
+    color: #fff;
+    min-height: 46px;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: capitalize;
+    padding: 10px 35px;
+    border: 0 none;
+    border-radius: 4px;
+    display: inline-block;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+        text-decoration: none;
+        outline: 0;
+    }
+    &:hover {
+        color: #f6f8f9;
     }
 }

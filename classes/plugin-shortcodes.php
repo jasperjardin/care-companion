@@ -74,15 +74,18 @@ final class PluginShortcodes
             array(
                 'form_id' => '',
                 'layout_style' => 'style-1',
+                'container_fill' => 'rgba(0, 0, 0, 0.87)',
 
                 'progress_symbol' => '%',
 
-                'progress_text_size' => '35px',
+                'progress_text' => 'Completed',
+                'progress_text_size' => '45px',
                 'progress_color' => '#eb543a',
-                'progress_trail_color' => '#eee',
-                'progress_shape' => 'Line',
+                'progress_fill' => 'rgba(0, 0, 0, 0.5)',
+                'progress_trail_color' => '#fff',
+                'progress_shape' => 'SemiCircle',
                 'progress_stroke_width' => '4',
-                'progress_trail_width' => '1',
+                'progress_trail_width' => '4',
                 'progress_transition_style' => 'easeInOut',
                 'progress_transition_duration' => '1400',
 

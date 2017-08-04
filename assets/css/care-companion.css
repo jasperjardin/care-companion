@@ -1,9 +1,10 @@
-.donation-separator {
+.donation-gap {
   margin: 0 5px;
 }
 
 .care-companion-donation-box {
   padding: 20px 30px;
+  color: #fff;
 }
 
 .care-companion-donation-box .donation-title {
@@ -19,8 +20,90 @@
   margin-right: 2.5px;
 }
 
+.care-companion-donation-box .donation-raised,
+.care-companion-donation-box .donation-goal,
+.care-companion-donation-box .donation-separator {
+  display: inline-block;
+  vertical-align: top;
+  min-height: 46px;
+}
+
+.care-companion-donation-box .donation-raised,
+.care-companion-donation-box .donation-goal {
+  width: 47%;
+  font-weight: bold;
+}
+
+.care-companion-donation-box .donation-raised {
+  padding-right: 15px;
+  text-align: right;
+}
+
+.care-companion-donation-box .donation-goal {
+  padding-left: 15px;
+  text-align: left;
+}
+
+.care-companion-donation-box .donation-separator {
+  max-width: 1%;
+}
+
+.care-companion-donation-box .donation-value {
+  font-size: 18px;
+}
+
+.care-companion-donation-box.Circle .progressbar-text {
+  position: absolute;
+  top: 25%;
+}
+
+.care-companion-donation-box.SemiCircle .progressbar-text {
+  position: absolute;
+  top: 25% !important;
+  transform: translate(0%, 0px) !important;
+}
+
+.care-companion-donation-box.SemiCircle .progressbar-text .percentage-text {
+  font-size: 0.5em;
+}
+
+.care-companion-donation-box.Line .progressbar-text {
+  top: -2.5px;
+}
+
 .care-companion-donation-box.style-1 {
   background: rgba(0, 0, 0, 0.87);
+}
+
+.care-companion-donation-box.style-1 .donation-information-section {
+  text-align: center;
+  padding: 0;
+}
+
+.care-companion-donation-box.style-1 .donation-information {
+  margin-bottom: 15px;
+}
+
+.care-companion-donation-box.style-1 .donation-content {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.care-companion-donation-box.style-1 .donation-caption,
+.care-companion-donation-box.style-1 .donation-value {
+  width: 100%;
+  display: inline-block;
+  line-height: normal;
+}
+
+.care-companion-donation-box.style-1.Circle .donation-information-section {
+  padding-top: 20px;
+}
+
+.donation-separator {
+  width: 1px;
+  min-height: 50px;
+  background: #777;
+  display: inline-block;
 }
 
 .care-companion-progress-bar {
@@ -33,7 +116,48 @@
 }
 
 .care-companion-progress-bar .progressbar-text {
+  width: 100%;
   font-size: 1em;
+  text-align: center;
+}
+
+.care-companion-progress-bar .progressbar-text .percentage-text,
+.care-companion-progress-bar .progressbar-text .completed-text {
+  display: inline-block;
+  width: 100%;
+  float: left;
+  line-height: normal;
+}
+
+.care-companion-progress-bar .progressbar-text .percentage-text {
+  font-weight: bold;
+}
+
+.care-companion-progress-bar .progressbar-text .completed-text {
+  font-size: 0.35em;
+}
+
+.care-companion-btn {
+  background: #f8b864;
+  color: #fff;
+  min-height: 46px;
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: capitalize;
+  padding: 10px 35px;
+  border: 0 none;
+  border-radius: 4px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.care-companion-btn:hover, .care-companion-btn:focus {
+  text-decoration: none;
+  outline: 0;
+}
+
+.care-companion-btn:hover {
+  color: #f6f8f9;
 }
 
 /*# sourceMappingURL=care-companion.css.map */

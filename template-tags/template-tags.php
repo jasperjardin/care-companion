@@ -91,8 +91,9 @@ function care_companion_get_donation_income( $form_id = '' ) {
 }
 function care_companion_get_formated_donation_income( $form_id = '' ) {
     if ( ! empty( $form_id ) ) {
+        $currency_symbol = give_currency_symbol();
         $donation = care_companion_get_donation_info( $form_id );
-        return $donation['formated-income'];
+        return $currency_symbol . $donation['income'];
     }
     return;
 }
@@ -115,6 +116,14 @@ function care_companion_get_donation_progress( $form_id = '' ) {
         $donation = care_companion_get_donation_info( $form_id );
         return $donation['progress'];
     }
+    return;
+}
+
+function care_companion_donate_button( $form_id = '' ) {
+    $the_permalink = get_permalink( $form_id );
+
+    echo '<a href="' . esc_url( $the_permalink ) . '#give-form-' . esc_attr( $form_id ) . '" class="care-button care-companion-btn donate">' . esc_html( 'Donate', 'care-companion' ) . '</a>';
+
     return;
 }
 
