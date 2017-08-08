@@ -54,7 +54,7 @@ jQuery(document).ready( function($) {
         }
     }
 
-    var $progress_bar_selector = $( '#care-companion-progress-bar' );
+    var $progress_bar_selector = $( '.care-companion-progress-bar' );
 
     if ( $progress_bar_selector.length >= 1 ) {
         $.each( $progress_bar_selector, function() {
@@ -70,10 +70,12 @@ jQuery(document).ready( function($) {
             var progress_offset = '';
 
 
+            var form_id = care_companion_set_options( __this_parent, 'data-form-id', '' );
             var progress_symbol = care_companion_set_options( __this_parent, 'data-progress-symbol', '' );
             var progress_text = care_companion_set_options( __this_parent, 'data-progress-text', '' );
             var progress_text_size = care_companion_set_options( __this_parent, 'data-progress-text-size', '45px' );
             var progress_donation = care_companion_set_options( __this_parent, 'data-progress-donation', '0' );
+            progress_donation = parseInt( progress_donation );
 
             var progress_color = care_companion_set_options( __this_parent, 'data-progress-color', '#eb543a' );
             var progress_fill = care_companion_set_options( __this_parent, 'data-progress-fill', 'rgba(0, 0, 0, 0.5)' );
@@ -89,27 +91,43 @@ jQuery(document).ready( function($) {
             var progress_start_width = care_companion_set_options( __this_parent, 'data-progress-start-width', '1' );
             var progress_end_color = care_companion_set_options( __this_parent, 'data-progress-end-color', '#333' );
             var progress_end_width = care_companion_set_options( __this_parent, 'data-progress-end-width', '1' );
-progress_donation = 50;
-            var progress_bar_width = care_companion_get_percentage( circle, progress_donation );
+/**
+ * @todo remove progress_donation = 50
+ */
+if ( '2908' === form_id ) {
+    progress_donation = 50;
+}
 
+            var progress_bar_width = care_companion_get_percentage( circle, progress_donation );
 
             if ( 'Circle' === progress_shape ) {
                 progress_offset = circle;
+                if ( 0 === progress_donation ) {
+                    progress_bar_width = progress_offset;
+                }
             }
 
             if ( 'SemiCircle' === progress_shape ) {
                 progress_bar_width = care_companion_get_percentage( semi_circle, progress_donation );
                 progress_offset = semi_circle;
+                if ( 0 === progress_donation ) {
+                    progress_bar_width = progress_offset;
+                }
             }
 
             if ( 'Line' === progress_shape ) {
                 progress_bar_width = 100 - progress_donation;
                 progress_offset = line;
+                if ( 0 === progress_donation ) {
+                    progress_bar_width = progress_offset;
+                }
             }
 
             __this.css( 'font-size', progress_text_size );
+            /**
+             * @todo remove var svg
+             */
             var svg = __this.height();
-            console.log(svg);
 
             var $settings = {
                 color: progress_color,
@@ -166,6 +184,7 @@ progress_donation = 50;
                     );
 
                     var value = Math.round(progress_loader.value() * 100);
+
                     var percentage = '<span class="percentage-text">' + value + progress_symbol + '</span>';
                     var complated_text = '';
 

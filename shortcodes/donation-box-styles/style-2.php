@@ -1,18 +1,13 @@
     <div class="row main-container">
 
-        <div class="col-md-6 donation-left-section">
+        <div class="col-md-7 donation-left-section">
 
-            <?php if ( 'true' === $published_date ) { ?>
-                <span class="published-date primary">
-                    <?php care_companion_published_date( $form_id ); ?>
-                </span>
-            <?php } ?>
+            <div class="background-overlay" style="background-color:<?php echo esc_attr( $container_primary_fill ); ?>"></div>
 
             <h1 class="donation-title">
                 <?php echo get_the_title( $form_id ); ?>
             </h1>
 
-            <?php care_companion_give_the_content( $form_id );  ?>
             <div class="action-section">
                 <span class="donation-action">
                     <i class="fa fa-heart primary care-companion-icon"></i>
@@ -31,14 +26,21 @@
                     <?php echo esc_html( 'Share', 'care-companion' ); ?>
                 </span>
             </div>
+
+            <?php care_companion_give_the_content( $form_id );  ?>
+
+            <?php echo care_companion_donate_button( $form_id, esc_html( 'Donate Now', 'care-companion' ) ); ?>
+
         </div>
-        <div class="col-md-6 donation-right-section">
+        <div class="col-md-5 donation-right-section">
+
+            <div class="background-overlay" style="background-color:<?php echo esc_attr( $container_fill ); ?>"></div>
 
             <div class="row">
-                <div class="col-md-6 progressbar-section">
+                <div class="col-md-12 progressbar-section">
                     <div id="care-companion-progress-bar" class="care-companion-progress-bar"></div>
                 </div>
-                <div class="col-md-6 donation-information-section">
+                <div class="col-md-12 donation-information-section">
 
                     <div class="donation-information">
 
@@ -60,9 +62,9 @@
 
                         </div>
 
-                    </div>
+                        <?php echo care_companion_details_button( $form_id ); ?>
 
-                    <?php echo care_companion_donate_button( $form_id ); ?>
+                    </div>
 
                 </div>
 

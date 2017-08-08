@@ -1,6 +1,8 @@
     <div class="row main-container">
 
-        <div class="col-md-6 donation-left-section">
+        <div class="col-md-12 donation-left-section">
+
+            <div class="background-overlay" style="background-color:<?php echo esc_attr( $container_fill ); ?>"></div>
 
             <?php if ( 'true' === $published_date ) { ?>
                 <span class="published-date primary">
@@ -12,7 +14,6 @@
                 <?php echo get_the_title( $form_id ); ?>
             </h1>
 
-            <?php care_companion_give_the_content( $form_id );  ?>
             <div class="action-section">
                 <span class="donation-action">
                     <i class="fa fa-heart primary care-companion-icon"></i>
@@ -31,38 +32,49 @@
                     <?php echo esc_html( 'Share', 'care-companion' ); ?>
                 </span>
             </div>
+
+            <?php care_companion_give_the_content( $form_id );  ?>
+
+            <?php echo care_companion_donate_button( $form_id, 'Join Now', 'background-secondary' ); ?>
+
         </div>
-        <div class="col-md-6 donation-right-section">
+        <div class="col-md-12 donation-right-section">
+
+            <div class="background-overlay" style="background-color:<?php echo esc_attr( $container_primary_fill ); ?>"></div>
 
             <div class="row">
-                <div class="col-md-6 progressbar-section">
-                    <div id="care-companion-progress-bar" class="care-companion-progress-bar"></div>
+                <div class="col-md-12 progressbar-section">
+
+                    <?php if ( 'LinePercent' !== $progress_shape ) { ?>
+                        <div id="care-companion-progress-bar" class="care-companion-progress-bar"></div>
+                    <?php } else { ?>
+                        <div class="care-companion-percent-line-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="8">
+                            <span style="width: 8%;background-color:#2bc253" aria-valuenow="8%"></span>
+                        </div>
+                    <?php } ?>
+
                 </div>
-                <div class="col-md-6 donation-information-section">
+                <div class="col-md-12 donation-information-section">
 
                     <div class="donation-information">
 
                         <div class="donation-raised">
 
-                            <span class="donation-caption primary"><?php echo esc_html( 'Raised', 'care-companion' ); ?></span>
+                            <span class="donation-caption"><?php echo esc_html( 'Raised:', 'care-companion' ); ?></span>
 
                             <span class="donation-value"><?php echo care_companion_get_formated_donation_income( $form_id ); ?></span>
 
                         </div>
 
-                        <div class="donation-separator"></div>
-
                         <div class="donation-goal">
 
-                            <span class="donation-caption primary"><?php echo esc_html( 'Goal', 'care-companion' ); ?></span>
+                            <span class="donation-caption"><?php echo esc_html( 'Goal:', 'care-companion' ); ?></span>
 
                             <span class="donation-value"><?php echo care_companion_get_formated_donation_goal( $form_id ); ?></span>
 
                         </div>
 
                     </div>
-
-                    <?php echo care_companion_donate_button( $form_id ); ?>
 
                 </div>
 

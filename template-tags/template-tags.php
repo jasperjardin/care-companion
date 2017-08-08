@@ -114,15 +114,110 @@ function care_companion_get_formated_donation_goal( $form_id = '' ) {
 function care_companion_get_donation_progress( $form_id = '' ) {
     if ( ! empty( $form_id ) ) {
         $donation = care_companion_get_donation_info( $form_id );
+
+        if ( 0 === absint($donation['income']) && 0 === absint($donation['goal']) ) {
+            return $donation['progress'] = 0;
+        }
         return $donation['progress'];
     }
     return;
 }
 
-function care_companion_donate_button( $form_id = '' ) {
-    $the_permalink = get_permalink( $form_id );
+function care_companion_donate_button( $form_id = '', $text = '', $class_name = '' ) {
 
-    echo '<a href="' . esc_url( $the_permalink ) . '#give-form-' . esc_attr( $form_id ) . '" class="care-button care-companion-btn donate">' . esc_html( 'Donate', 'care-companion' ) . '</a>';
+    if ( empty( $text ) ) {
+        $text = esc_html( 'Donate', 'care-companion' );
+    }
+
+    if ( empty( $class_name ) ) {
+        $class_name = 'donate';
+    }
+
+    if ( ! empty( $form_id ) ) {
+        $the_permalink = get_permalink( $form_id );
+
+        echo '<a href="' . esc_url( $the_permalink ) . '#give-form-' . esc_attr( $form_id ) . '" class="care-companion-btn ' . $class_name . '">' . $text . '</a>';
+    }
+
+    return;
+}
+function care_companion_details_button( $form_id = '', $text = '', $class_name = '' ) {
+
+    if ( empty( $text ) ) {
+        $text = esc_html( 'Details', 'care-companion' );
+    }
+
+    if ( empty( $class_name ) ) {
+        $class_name = 'details';
+    }
+
+    if ( ! empty( $form_id ) ) {
+        $the_permalink = get_permalink( $form_id );
+
+        echo '<a href="' . esc_url( $the_permalink ) . '" class="care-companion-btn ' . $class_name . '">' . $text . '</a>';
+    }
+
+    return;
+}
+
+function care_companion_published_date( $form_id = '', $prefix_text = '', $suffix_text = '' ) {
+    $time = '';
+    $human_time = '';
+
+    if ( empty( $prefix_text ) ) {
+        $prefix_text = __( 'Published ', 'care-companion' );
+    }
+
+    if ( empty( $suffix_text ) ) {
+        $suffix_text = __( ' ago', 'care-companion' );
+    }
+
+    if ( ! empty( $form_id ) ) {
+
+        $time = get_post_time('U', true, $form_id );
+        $human_time = human_time_diff( $time, current_time('timestamp') );
+
+        echo sprintf( '%s %s %s', $prefix_text, $human_time, $suffix_text );
+    }
+
+    return;
+}
+
+function care_companion_get_featured_image_url( $form_id = '', $size = '' ) {
+
+    $src = '';
+
+    if ( empty( $size ) ) {
+        $size = 'large';
+    }
+
+    if ( ! empty( $form_id ) ) {
+        $src = wp_get_attachment_image_src( get_post_thumbnail_id( $form_id ), $size );
+        return $src[0];
+    }
+
+    return;
+}
+
+function care_companion_get_featured_image( $form_id = '', $size = '', $class_name = '' ) {
+
+    $attr = '';
+
+    if ( empty( $size ) ) {
+        $size = 'large';
+    }
+
+    if ( empty( $class_name ) ) {
+        $class_name = 'care-companion-featured-image';
+    }
+
+    $attr = array(
+        'class' => $class_name
+    );
+
+    if ( ! empty( $form_id ) ) {
+        return get_the_post_thumbnail( $form_id, $size, $attr );
+    }
 
     return;
 }
@@ -159,7 +254,7 @@ function care_companion_get_donation_info( $form_id = '' ) {
 
     $progress = 0;
 
-    if ( 0 != $income ) {
+    if ( 0 != $income && 0 != $goal ) {
         $progress = apply_filters( 'care_companion_goal_amount_funded_percentage_output', round( ( $income / $goal ) * 100, 2 ), $form_id, $form );
     }
 

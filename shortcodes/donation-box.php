@@ -29,14 +29,22 @@ extract( $atts );
  * Donation Box Style Filter
  */
 $allowed_styles = array( 'style-1', 'style-2', 'style-3' );
+$background_image = '';
 
 if (! in_array( $layout_style, $allowed_styles, true ) ) {
     $layout_style = 'style-1';
 }
+
+if ( 'style-2' === $layout_style ) {
+    /**
+     * @todo Add default background image
+     */
+    $background_image = care_companion_get_featured_image_url( $form_id );
+}
 /**
  * Progress Bar Shape Filter
  */
-$allowed_progress_shape = array( 'Line', 'Circle', 'SemiCircle', 'Square', 'Triangle', 'Heart' );
+$allowed_progress_shape = array( 'Line', 'Circle', 'SemiCircle', 'Square', 'Triangle', 'Heart', 'LinePercent' );
 
 if (! in_array( $progress_shape, $allowed_progress_shape, true ) ) {
     $progress_shape = 'Circle';
@@ -59,11 +67,20 @@ $args = array(
     'p' => $form_id,
     'post_type' => 'give_forms'
 );
+/**
+ * @todo Remove this $form_id_x
+ */
+$form_id_x = '2908'; // 3 weeks | Yolanda Campaign
+$form_id_x = '2972'; // 2 weeks | Rescue Me from Me
+$form_id_x = '2970'; // 2 weeks | Rescue The Sherif
+$form_id_x = '2960'; // 2 weeks | The Big One Campaign
+$form_id_x = '2987'; // 2 mins | The Nuclear War
 
 $form = new WP_Query( $args ); ?>
 
 <?php if ( $form->have_posts() ) : ?>
     <div class="care-companion-donation-box <?php echo esc_attr( $layout_style ); ?> <?php echo esc_attr( $progress_shape ); ?>"
+        data-form-id="<?php echo esc_attr( $form_id ); ?>"
         data-progress-symbol="<?php echo esc_attr( $progress_symbol ); ?>"
 
         data-progress-text="<?php echo esc_attr( $progress_text ); ?>"
@@ -83,19 +100,26 @@ $form = new WP_Query( $args ); ?>
         data-progress-start-width="<?php echo esc_attr( $progress_start_width ); ?>"
         data-progress-end-color="<?php echo esc_attr( $progress_end_color ); ?>"
         data-progress-end-width="<?php echo esc_attr( $progress_end_width ); ?>"
-        
-        style="background-color: <?php echo esc_attr( $container_fill ); ?>"
-    >
 
+        <?php if ( 'style-1' === $layout_style ) { ?>
+            style="background-color: <?php echo esc_attr( $container_fill ); ?>;"
+        <?php } ?>
+        <?php if ( 'style-2' === $layout_style ) { ?>
+            style="background-image: url('<?php echo esc_attr( $background_image ); ?>');"
+        <?php } ?>
+        <?php if ( 'style-3' === $layout_style ) { ?>
+
+        <?php } ?>
+    >
         <?php
             if ( 'style-1' === $layout_style ) {
-                require_once( dirname( __FILE__ ) . '/donation-box-styles/style-1.php' );
+                require( dirname( __FILE__ ) . '/donation-box-styles/style-1.php' );
             }
             if ( 'style-2' === $layout_style ) {
-                require_once( dirname( __FILE__ ) . '/donation-box-styles/style-2.php' );
+                require( dirname( __FILE__ ) . '/donation-box-styles/style-2.php' );
             }
             if ( 'style-3' === $layout_style ) {
-                require_once( dirname( __FILE__ ) . '/donation-box-styles/style-3.php' );
+                require( dirname( __FILE__ ) . '/donation-box-styles/style-3.php' );
             }
         ?>
 
