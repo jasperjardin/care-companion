@@ -73,7 +73,7 @@ final class PluginShortcodes
         $atts = shortcode_atts(
             array(
                 'form_id' => '',
-                'layout_style' => 'style-3',
+                'layout_style' => 'style-2',
                 'container_fill' => 'rgba(0, 0, 0, 0.75)',
                 'container_primary_fill' => '#f8b864',
                 'published_date' => 'true',
@@ -85,11 +85,11 @@ final class PluginShortcodes
                 'progress_color' => '#eb543a',
                 'progress_fill' => 'rgba(0, 0, 0, 0.5)',
                 'progress_trail_color' => '#fff',
-                'progress_shape' => 'LinePercent',
-                'progress_stroke_width' => '4',
-                'progress_trail_width' => '4',
+                'progress_shape' => 'Heart',
+                'progress_stroke_width' => '10',
+                'progress_trail_width' => '10',
                 'progress_transition_style' => 'easeInOut',
-                'progress_transition_duration' => '1400',
+                'progress_transition_duration' => '5000',
 
                 'progress_advance_animation' => 'false',
                 'progress_start_color' => '#333',

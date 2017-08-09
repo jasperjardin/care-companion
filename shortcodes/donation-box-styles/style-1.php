@@ -36,7 +36,7 @@
 
             <div class="row">
                 <div class="col-md-6 progressbar-section">
-                    <div id="care-companion-progress-bar" class="care-companion-progress-bar"></div>
+                    <?php require( dirname( __FILE__ ) . '/loader.php' ); ?>
                 </div>
                 <div class="col-md-6 donation-information-section">
 

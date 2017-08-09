@@ -38,7 +38,7 @@
 
             <div class="row">
                 <div class="col-md-12 progressbar-section">
-                    <div id="care-companion-progress-bar" class="care-companion-progress-bar"></div>
+                    <?php require( dirname( __FILE__ ) . '/loader.php' ); ?>
                 </div>
                 <div class="col-md-12 donation-information-section">
 

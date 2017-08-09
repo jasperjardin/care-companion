@@ -1,3 +1,36 @@
+.linear,
+.easeIn,
+.easeOut,
+.easeInOut {
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  transition-property: all;
+}
+
+.linear {
+  -webkit-transition-timing-function: linear;
+  -moz-transition-timing-function: linear;
+  transition-timing-function: linear;
+}
+
+.easeIn {
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+}
+
+.easeOut {
+  -webkit-transition-timing-function: ease-out;
+  -moz-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+.easeInOut {
+  -webkit-transition-timing-function: ease-in-out;
+  -moz-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+}
+
 .donation-gap {
   margin: 0 5px;
 }
@@ -268,16 +301,17 @@
 }
 
 .care-companion-percent-line-bar {
-  height: 10px;
-  overflow: visible;
   background-color: #f6f8f9;
+  height: 10px;
   margin: 20px 0;
+  border-radius: 6px;
+  overflow: visible;
 }
 
 .care-companion-percent-line-bar span {
   display: block;
   height: 100%;
-  background-color: #2bc253;
+  width: 0;
   position: relative;
   border-radius: 20px 8px 8px 20px;
 }
@@ -288,6 +322,7 @@
   min-height: 40px;
   line-height: 34px;
   padding: 0 2.5px;
+  margin-right: -20px;
   color: #fff;
   font-size: 12px;
   font-weight: bold;

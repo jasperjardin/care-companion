@@ -44,15 +44,7 @@
 
             <div class="row">
                 <div class="col-md-12 progressbar-section">
-
-                    <?php if ( 'LinePercent' !== $progress_shape ) { ?>
-                        <div id="care-companion-progress-bar" class="care-companion-progress-bar"></div>
-                    <?php } else { ?>
-                        <div class="care-companion-percent-line-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="8">
-                            <span style="width: 8%;background-color:#2bc253" aria-valuenow="8%"></span>
-                        </div>
-                    <?php } ?>
-
+                    <?php require( dirname( __FILE__ ) . '/loader.php' ); ?>
                 </div>
                 <div class="col-md-12 donation-information-section">
 

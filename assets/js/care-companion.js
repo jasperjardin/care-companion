@@ -1,25 +1,6 @@
 jQuery(document).ready( function($) {
     "use strict";
 
-    // SemiCircle
-    // Circle
-    // Line
-
-    // var circle = new ProgressBar.SemiCircle('#care-companion-progress-bar', {
-    //     color: '#FCB03C',
-    //     duration: 3000,
-    //     easing: 'easeInOut',
-    //     strokeWidth: 6,
-    //     easing: 'easeInOut',
-    //     duration: 1400,
-    //     color: '#FFEA82',
-    //     trailColor: '#eee',
-    //     trailWidth: 1,
-    //     svgStyle: null
-    // });
-    //
-    // circle.animate(1);
-
     function care_companion_set_options( $selector = '', $attr_selector = '', $default_value = '' ) {
         return ( $selector.attr( $attr_selector ) !== undefined && $selector.attr( $attr_selector ).length >= 1 ) ? $selector.attr( $attr_selector ) : $default_value;
     }
@@ -68,7 +49,6 @@ jQuery(document).ready( function($) {
             var line = 100;
 
             var progress_offset = '';
-
 
             var form_id = care_companion_set_options( __this_parent, 'data-form-id', '' );
             var progress_symbol = care_companion_set_options( __this_parent, 'data-progress-symbol', '' );
@@ -123,18 +103,30 @@ if ( '2908' === form_id ) {
                 }
             }
 
-            __this.css( 'font-size', progress_text_size );
-            /**
-             * @todo remove var svg
-             */
-            var svg = __this.height();
+            if ( 'LinePercent' === progress_shape ) {
+                var loader = __this.find( '.percentage-circle' );
+
+                loader.animate({
+                    width: progress_donation + '%',
+                }, {
+                    duration: parseInt( progress_transition_duration ),
+                    step: function(now) {
+                        loader.css({
+                            'overflow' : 'visible',
+                        });
+
+                        var percentage = now.toFixed(0);
+
+                        loader.attr( 'aria-valuenow', percentage + '%');
+                    }
+                });
+            }
 
             var $settings = {
                 color: progress_color,
                 trailColor: progress_trail_color,
                 strokeWidth: parseInt( progress_stroke_width ),
                 trailWidth: parseInt( progress_trail_width ),
-                easing: progress_transition_style,
                 easing: progress_transition_style,
                 duration: parseInt( progress_transition_duration ),
                 svgStyle: null,
@@ -269,22 +261,40 @@ if ( '2908' === form_id ) {
             }
 
             if ( 'Heart' === progress_shape ) {
-                path = '#care-companion-heart-shape-loader';
-            }
-            if ( 'Triangle' === progress_shape ) {
-                path = '#care-companion-triangle-shape-loader';
+                path = '.care-companion-heart';
             }
             if ( 'Square' === progress_shape ) {
-                path = '#care-companion-square-shape-loader';
+                path = '#care-companion-square';
             }
+            if ( 'Triangle' === progress_shape ) {
+                path = '#care-companion-triangle';
+            }
+var path_element = this.getAttribute('id');
+var path_element_child = '#' + path_element + ' .care-companion-heart';
+console.log( path_element + ' .care-companion-heart' );
 
             if ( 'Square' === progress_shape || 'Triangle' === progress_shape || 'Heart' === progress_shape ) {
-                progress_bar = new ProgressBar.Path( path, $settings );
+                $settings = {
+                    easing: 'easeInOut',
+                    duration: 5000
+                };
+                progress_bar = new ProgressBar.Path( path_element_child, $settings );
             }
 
-            progress_bar.animate(1.0);  // Number from 0.0 to 1.0
+            __this.css( 'font-size', progress_text_size );
+
+            if ( 'LinePercent' !== progress_shape ) {
+                progress_bar.animate(1.0);  // Number from 0.0 to 1.0
+            }
 
         });
     }
 
+    // var bar = new ProgressBar.Path('#heart-path', {
+    //   easing: 'easeInOut',
+    //   duration: 5000
+    // });
+
+    // bar.set(0);
+    // bar.animate(1.0);  // Number from 0.0 to 1.0
 });
