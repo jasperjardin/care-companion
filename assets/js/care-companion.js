@@ -42,20 +42,34 @@ jQuery(document).ready( function($) {
 
             var __this = $(this);
             var __this_parent = __this.parents(".care-companion-donation-box");
+            var __this_recent_campaigns = __this.parents(".care-companion-recent-campaigns");
             var progress_bar = '';
+
             var path = '';
+            var path_element = '';
+            var path_element_child = '';
+
             var circle = 301.635;
             var semi_circle = 150.818;
             var line = 100;
+            var heart = 269.663;
 
             var progress_offset = '';
 
+            var cc_donation_box = care_companion_set_options( __this_parent, 'data-shortcode', '' );
+            var cc_recent_campaigns = care_companion_set_options( __this_recent_campaigns, 'data-shortcode', '' );
+
+            var style = care_companion_set_options( __this_parent, 'data-style', 'style-1' );
             var form_id = care_companion_set_options( __this_parent, 'data-form-id', '' );
             var progress_symbol = care_companion_set_options( __this_parent, 'data-progress-symbol', '' );
             var progress_text = care_companion_set_options( __this_parent, 'data-progress-text', '' );
             var progress_text_size = care_companion_set_options( __this_parent, 'data-progress-text-size', '45px' );
+
             var progress_donation = care_companion_set_options( __this_parent, 'data-progress-donation', '0' );
             progress_donation = parseInt( progress_donation );
+
+            var recent_campaigns_progress_donation = care_companion_set_options( __this_recent_campaigns, 'data-progress-donation', '0' );
+            recent_campaigns_progress_donation = parseInt( recent_campaigns_progress_donation );
 
             var progress_color = care_companion_set_options( __this_parent, 'data-progress-color', '#eb543a' );
             var progress_fill = care_companion_set_options( __this_parent, 'data-progress-fill', 'rgba(0, 0, 0, 0.5)' );
@@ -102,9 +116,18 @@ if ( '2908' === form_id ) {
                     progress_bar_width = progress_offset;
                 }
             }
+            if ( 'Heart' === progress_shape ) {
+                progress_bar_width = care_companion_get_percentage( heart, progress_donation );
+                progress_offset = heart;
+            }
 
-            if ( 'LinePercent' === progress_shape ) {
+
+            if ( $( '.percentage-circle' ).length >= 1 ) {
                 var loader = __this.find( '.percentage-circle' );
+
+                if ( 'cc_recent_campaigns' === cc_recent_campaigns ) {
+                    progress_donation = recent_campaigns_progress_donation;
+                }
 
                 loader.animate({
                     width: progress_donation + '%',
@@ -250,41 +273,116 @@ if ( '2908' === form_id ) {
                 }
             }
 
-            if ( 'Line' === progress_shape ) {
-                progress_bar = new ProgressBar.Line( this, $settings );
-            }
-            if ( 'Circle' === progress_shape ) {
-                progress_bar = new ProgressBar.Circle( this, $settings );
-            }
-            if ( 'SemiCircle' === progress_shape ) {
-                progress_bar = new ProgressBar.SemiCircle( this, $settings );
-            }
+            if ( 'cc_donation_box' === cc_donation_box ) {
+                if ( 'Line' === progress_shape ) {
+                    progress_bar = new ProgressBar.Line( this, $settings );
+                }
+                if ( 'Circle' === progress_shape ) {
+                    progress_bar = new ProgressBar.Circle( this, $settings );
+                }
+                if ( 'SemiCircle' === progress_shape ) {
+                    progress_bar = new ProgressBar.SemiCircle( this, $settings );
+                }
 
-            if ( 'Heart' === progress_shape ) {
-                path = '.care-companion-heart';
-            }
-            if ( 'Square' === progress_shape ) {
-                path = '#care-companion-square';
-            }
-            if ( 'Triangle' === progress_shape ) {
-                path = '#care-companion-triangle';
-            }
-var path_element = this.getAttribute('id');
-var path_element_child = '#' + path_element + ' .care-companion-heart';
-console.log( path_element + ' .care-companion-heart' );
+                if ( 'Heart' === progress_shape ) {
+                    path = '.care-companion-heart';
+                }
+                if ( 'Square' === progress_shape ) {
+                    path = '#care-companion-square';
+                }
+                if ( 'Triangle' === progress_shape ) {
+                    path = '#care-companion-triangle';
+                }
 
-            if ( 'Square' === progress_shape || 'Triangle' === progress_shape || 'Heart' === progress_shape ) {
-                $settings = {
-                    easing: 'easeInOut',
-                    duration: 5000
-                };
-                progress_bar = new ProgressBar.Path( path_element_child, $settings );
-            }
+                path_element = this.getAttribute('id');
 
-            __this.css( 'font-size', progress_text_size );
+                path_element_child = '#' + path_element + ' .care-companion-heart';
 
-            if ( 'LinePercent' !== progress_shape ) {
-                progress_bar.animate(1.0);  // Number from 0.0 to 1.0
+
+                if ( 'Square' === progress_shape || 'Triangle' === progress_shape || 'Heart' === progress_shape ) {
+                    $settings = {
+                        easing: 'easeInOut',
+                        duration: 5000
+                    };
+                    $settings = {
+                        color: progress_color,
+                        trailColor: progress_trail_color,
+                        strokeWidth: parseInt( progress_stroke_width ),
+                        trailWidth: parseInt( progress_trail_width ),
+                        easing: progress_transition_style,
+                        duration: parseInt( progress_transition_duration ),
+                        svgStyle: null,
+                        text: {
+                            autoStyleContainer: true,
+                            style: {
+                                // Text color.
+                                // Default: same as stroke color (options.color)
+                                color: progress_trail_color,
+                                position: ' ',
+                                left: ' ',
+                                top: ' ',
+                                padding: 0,
+                                margin: 0,
+                                // You can specify styles which will be browser prefixed
+                                transform: {
+                                    prefix: true,
+                                    value: ' '
+                                }
+                            }
+                        },
+                        fill: progress_fill,
+
+                        from: {
+                            color: progress_color,
+                            width: parseInt( progress_stroke_width ),
+                            offset: progress_offset
+                        },
+                        to: {
+                            color: progress_color,
+                            width: parseInt( progress_stroke_width ),
+                            offset: progress_bar_width
+                        },
+                        step: function( state, progress_loader ) {
+
+                            progress_loader.path.setAttribute(
+                                'stroke',
+                                state.color
+                            );
+                            progress_loader.path.setAttribute(
+                                'stroke-width',
+                                state.width
+                            );
+                            progress_loader.path.setAttribute(
+                                'stroke-dashoffset',
+                                state.offset
+                            );
+
+                            // var value = Math.round(progress_loader.value() * 100);
+                            //
+                            // var percentage = '<span class="percentage-text">' + value + progress_symbol + '</span>';
+                            // var complated_text = '';
+                            //
+                            // if ( '' !== progress_text ) {
+                            //     complated_text = '<span class="completed-text">' + progress_text + '</span>';
+                            // }
+                            //
+                            // if ( 0 === value ) {
+                            //     percentage = '<span class="percentage-text">0' + progress_symbol + '</span>';
+                            //     progress_loader.setText( percentage + complated_text);
+                            // } else {
+                            //     progress_loader.setText( percentage + complated_text);
+                            // }
+                        }
+                    };
+
+                    progress_bar = new ProgressBar.Path( path_element_child, $settings );
+                }
+
+                __this.css( 'font-size', progress_text_size );
+
+                if ( 'LinePercent' !== progress_shape ) {
+                    progress_bar.animate(1.0);  // Number from 0.0 to 1.0
+                }
             }
 
         });

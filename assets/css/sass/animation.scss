@@ -2,27 +2,20 @@
 .easeIn,
 .easeOut,
 .easeInOut {
-    -webkit-transition-property: all;
-       -moz-transition-property: all;
-            transition-property: all;
+    @include transition_property(all);
 }
 .linear {
-    -webkit-transition-timing-function: linear;
-       -moz-transition-timing-function: linear;
-            transition-timing-function: linear;
+    @include transition_timing(linear);
 }
 .easeIn {
-    -webkit-transition-timing-function: ease-in;
-       -moz-transition-timing-function: ease-in;
-            transition-timing-function: ease-in;
+    @include transition_timing(ease-in);
 }
 .easeOut {
-    -webkit-transition-timing-function: ease-out;
-       -moz-transition-timing-function: ease-out;
-            transition-timing-function: ease-out;
+    @include transition_timing(ease-out);
 }
 .easeInOut {
-    -webkit-transition-timing-function: ease-in-out;
-       -moz-transition-timing-function: ease-in-out;
-            transition-timing-function: ease-in-out;
+    @include transition_timing(ease-in-out);
+}
+.care-companion-transition-500 {
+    @include transition(all, 0.5s, ease-in-out);
 }

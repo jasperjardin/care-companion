@@ -3,6 +3,9 @@
 }
 .care-companion {
 }
+.light {
+    color: #fff;
+}
 .primary {
     color: #f8b864;
 }
@@ -170,7 +173,7 @@
         }
     }
     &.style-3 {
-        max-width: 350px;
+        max-width: 450px;
         padding: 0;
         vertical-align: top;
         display: inline-block;
@@ -231,6 +234,13 @@
                 float: none;
             }
         }
+    }
+
+    &.style-4 {
+        @extend .care-companion-recent-campaigns;
+    }
+    &.style-5 {
+        @extend .care-companion-recent-campaigns;
     }
 }
 .care-companion-percent-line-bar {

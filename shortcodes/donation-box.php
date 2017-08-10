@@ -28,19 +28,18 @@ extract( $atts );
 /**
  * Donation Box Style Filter
  */
-$allowed_styles = array( 'style-1', 'style-2', 'style-3' );
+$allowed_styles = array( 'style-1', 'style-2', 'style-3', 'style-4', 'style-5', 'style-6' );
 $background_image = '';
 
 if (! in_array( $layout_style, $allowed_styles, true ) ) {
     $layout_style = 'style-1';
 }
 
-if ( 'style-2' === $layout_style ) {
-    /**
-     * @todo Add default background image
-     */
-    $background_image = care_companion_get_featured_image_url( $form_id );
-}
+/**
+ * @todo Add default background image
+ */
+$background_image = care_companion_get_featured_image_url( $form_id );
+
 /**
  * Progress Bar Shape Filter
  */
@@ -80,6 +79,7 @@ $form = new WP_Query( $args ); ?>
 
 <?php if ( $form->have_posts() ) : ?>
     <div class="care-companion-donation-box <?php echo esc_attr( $layout_style ); ?> <?php echo esc_attr( $progress_shape ); ?>"
+        data-style="<?php echo esc_attr( $layout_style ); ?>"
         data-form-id="<?php echo esc_attr( $form_id ); ?>"
         data-progress-symbol="<?php echo esc_attr( $progress_symbol ); ?>"
 
@@ -100,6 +100,7 @@ $form = new WP_Query( $args ); ?>
         data-progress-start-width="<?php echo esc_attr( $progress_start_width ); ?>"
         data-progress-end-color="<?php echo esc_attr( $progress_end_color ); ?>"
         data-progress-end-width="<?php echo esc_attr( $progress_end_width ); ?>"
+        data-shortcode="cc_donation_box"
 
         <?php if ( 'style-1' === $layout_style ) { ?>
             style="background-color: <?php echo esc_attr( $container_fill ); ?>;"
@@ -120,6 +121,12 @@ $form = new WP_Query( $args ); ?>
             }
             if ( 'style-3' === $layout_style ) {
                 require( dirname( __FILE__ ) . '/donation-box-styles/style-3.php' );
+            }
+            if ( 'style-4' === $layout_style ) {
+                require( dirname( __FILE__ ) . '/donation-box-styles/style-4.php' );
+            }
+            if ( 'style-5' === $layout_style ) {
+                require( dirname( __FILE__ ) . '/donation-box-styles/style-5.php' );
             }
         ?>
 

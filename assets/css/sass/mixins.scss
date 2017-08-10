@@ -1,0 +1,32 @@
+@mixin column( $property, $default_value, $expression, $margin ) {
+    @include calc( $property, $default_value, $expression );
+    margin-right: $margin;
+}
+
+@mixin calc( $property, $default_value, $expression ) {
+    #{$property}: $default_value;
+    #{$property}: -webkit-calc( #{$expression} );
+    #{$property}: -moz-calc( #{$expression} );
+    #{$property}: calc( #{$expression} );
+}
+
+@mixin transition_property( $value ) {
+    -webkit-transition-property: $value;
+       -moz-transition-property: $value;
+            transition-property: $value;
+}
+@mixin transition_timing( $value ) {
+    -webkit-transition-timing-function: $value;
+       -moz-transition-timing-function: $value;
+            transition-timing-function: $value;
+}
+@mixin transition_duration( $value ) {
+    -webkit-transition-duration: $value;
+       -moz-transition-duration: $value;
+            transition-duration: $value;
+}
+@mixin transition( $selector, $duration, $transition ) {
+    -webkit-transition: $selector $duration $transition;
+       -moz-transition: $selector $duration $transition;
+            transition: $selector $duration $transition;
+}

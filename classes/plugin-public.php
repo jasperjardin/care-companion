@@ -97,22 +97,26 @@ final class PublicPages
      */
     public function setEnqueueStyles()
     {
-        if (self::isPluginComponentActive(
-            'dsc-causes',
-            'dsc-causes',
-            array(
-                'dsc-causes-categories',
-                'dsc-causes-tags'
-            ),
-            'cc_donation_box'
-        )) {
-            wp_enqueue_style(
-                $this->name,
-                plugin_dir_url(dirname(__FILE__)) . 'assets/css/care-companion.css',
-                array(),
-                $this->version,
-                'all'
-            );
+        $shortcodes = array( 'cc_donation_box', 'cc_recent_campaigns' );
+
+        foreach ( $shortcodes as $shortcode ) {
+            if (self::isPluginComponentActive(
+                'dsc-causes',
+                'dsc-causes',
+                array(
+                    'dsc-causes-categories',
+                    'dsc-causes-tags'
+                ),
+                $shortcode
+            )) {
+                wp_enqueue_style(
+                    $this->name,
+                    plugin_dir_url(dirname(__FILE__)) . 'assets/css/care-companion.css',
+                    array(),
+                    $this->version,
+                    'all'
+                );
+            }
         }
 
         return;
@@ -128,6 +132,7 @@ final class PublicPages
     public function setEnqueueScripts()
     {
         $post = Helper::globalPost();
+        $shortcodes = array( 'cc_donation_box', 'cc_recent_campaigns' );
 
         if (empty($breadcrumbs_separator_option)) {
             $breadcrumbs_separator_option = "/";
@@ -137,33 +142,35 @@ final class PublicPages
             return;
         }
 
-        if (self::isPluginComponentActive(
-            'dsc-causes',
-            'dsc-causes',
-            array(
-                'dsc-causes-categories',
-                'dsc-causes-tags'
-            ),
-            'cc_donation_box'
-        )) {
-            wp_register_script(
-                $this->name,
-                plugin_dir_url(dirname(__FILE__)) . 'assets/js/care-companion.js',
-                array('jquery'),
-                $this->version,
-                false
-            );
+        foreach ( $shortcodes as $shortcode ) {
+            if (self::isPluginComponentActive(
+                'dsc-causes',
+                'dsc-causes',
+                array(
+                    'dsc-causes-categories',
+                    'dsc-causes-tags'
+                ),
+                $shortcode
+            )) {
+                wp_register_script(
+                    $this->name,
+                    plugin_dir_url(dirname(__FILE__)) . 'assets/js/care-companion.js',
+                    array('jquery'),
+                    $this->version,
+                    false
+                );
+                wp_enqueue_script($this->name);
+            }
             
-            wp_enqueue_script(
-                'care-conpanion-progress',
-                plugin_dir_url(dirname(__FILE__)) . 'assets/js/progressbar.min.js',
-                array('jquery'),
-                $this->version,
-                false
-            );
-
-            wp_enqueue_script($this->name);
-
+            if ( has_shortcode( $post->post_content, 'cc_donation_box' ) ) {
+                wp_enqueue_script(
+                    'care-conpanion-progress',
+                    plugin_dir_url(dirname(__FILE__)) . 'assets/js/progressbar.min.js',
+                    array('jquery'),
+                    $this->version,
+                    false
+                );
+            }
         }
         return;
     }

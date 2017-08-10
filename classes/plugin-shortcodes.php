@@ -55,11 +55,18 @@ final class PluginShortcodes
                 'registerCCDonationBox'
             )
         );
+        add_shortcode(
+            'cc_recent_campaigns',
+            array(
+                $this,
+                'registerCCRecentCampaigns'
+            )
+        );
         return $this;
     }
 
     /**
-     * This method registers the reference_loop shortcode.
+     * This method registers the cc_donation_box shortcode.
      *
      * @param array $atts The attributes for the shortcode.
      *
@@ -73,7 +80,7 @@ final class PluginShortcodes
         $atts = shortcode_atts(
             array(
                 'form_id' => '',
-                'layout_style' => 'style-2',
+                'layout_style' => 'style-5',
                 'container_fill' => 'rgba(0, 0, 0, 0.75)',
                 'container_primary_fill' => '#f8b864',
                 'published_date' => 'true',
@@ -85,7 +92,7 @@ final class PluginShortcodes
                 'progress_color' => '#eb543a',
                 'progress_fill' => 'rgba(0, 0, 0, 0.5)',
                 'progress_trail_color' => '#fff',
-                'progress_shape' => 'Heart',
+                'progress_shape' => 'LinePercent',
                 'progress_stroke_width' => '10',
                 'progress_trail_width' => '10',
                 'progress_transition_style' => 'easeInOut',
@@ -102,6 +109,39 @@ final class PluginShortcodes
         );
 
         $file = 'donation-box.php';
+
+        return $this->display($atts, $file);
+    }
+
+    /**
+     * This method registers the cc_recent_campaigns shortcode.
+     *
+     * @param array $atts The attributes for the shortcode.
+     *
+     * @since  1.0.0
+     * @access public
+     * @return array $atts Returns the set attributes for the shortcode.
+     */
+    public function registerCCRecentCampaigns($atts)
+    {
+
+        $atts = shortcode_atts(
+            array(
+                'number_of_posts' => 10,
+                'columns' => '3',
+                'published_date' => 'true',
+                'progress_symbol' => '%',
+                'container_fill' => 'rgba(0, 0, 0, 0.75)',
+                'container_primary_fill' => '#f8b864',
+                'progress_color' => '#eb543a',
+                'progress_transition_style' => 'easeInOut',
+                'progress_transition_duration' => '5000',
+            ),
+            $atts,
+            'cc_recent_campaigns'
+        );
+
+        $file = 'recent-campaigns.php';
 
         return $this->display($atts, $file);
     }
