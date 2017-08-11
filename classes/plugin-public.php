@@ -97,7 +97,7 @@ final class PublicPages
      */
     public function setEnqueueStyles()
     {
-        $shortcodes = array( 'cc_donation_box', 'cc_recent_campaigns' );
+        $shortcodes = array( 'cc_donation_box', 'cc_recent_campaigns', 'cc_successful_campaigns' );
 
         foreach ( $shortcodes as $shortcode ) {
             if (self::isPluginComponentActive(
@@ -132,11 +132,7 @@ final class PublicPages
     public function setEnqueueScripts()
     {
         $post = Helper::globalPost();
-        $shortcodes = array( 'cc_donation_box', 'cc_recent_campaigns' );
-
-        if (empty($breadcrumbs_separator_option)) {
-            $breadcrumbs_separator_option = "/";
-        }
+        $shortcodes = array( 'cc_donation_box', 'cc_recent_campaigns', 'cc_successful_campaigns' );
 
         if (!isset($post)) {
             return;
@@ -161,7 +157,7 @@ final class PublicPages
                 );
                 wp_enqueue_script($this->name);
             }
-            
+
             if ( has_shortcode( $post->post_content, 'cc_donation_box' ) ) {
                 wp_enqueue_script(
                     'care-conpanion-progress',
@@ -188,16 +184,20 @@ final class PublicPages
      */
     public function setBodyClass($classes)
     {
-        if (self::isPluginComponentActive(
-            'dsc-causes',
-            'dsc-causes',
-            array(
-                'dsc-causes-categories',
-                'dsc-causes-tags'
-            ),
-            'cc_donation_box'
-        )) {
-            $classes[] = 'dsc-causes';
+        $shortcodes = array( 'cc_donation_box', 'cc_recent_campaigns', 'cc_successful_campaigns' );
+
+        foreach ( $shortcodes as $shortcode ) {
+            if (self::isPluginComponentActive(
+                'dsc-causes',
+                'dsc-causes',
+                array(
+                    'dsc-causes-categories',
+                    'dsc-causes-tags'
+                ),
+                $shortcode
+            )) {
+                $classes[] = 'dsc-causes';
+            }
         }
 
         if (is_singular('dsc-causes')) {

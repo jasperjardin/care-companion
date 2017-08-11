@@ -4,244 +4,28 @@
 .care-companion {
 }
 .light {
-    color: #fff;
+    color: $light;
+}
+.dark {
+    color: $dark;
 }
 .primary {
-    color: #f8b864;
+    color: $primary;
 }
 .background-primary {
-    background-color: #f8b864;
+    background-color: $primary;
+}
+.border-primary {
+    border-color: $primary;
 }
 .secondary {
-    color: #eb543a;
+    color: $secondary;
 }
 .background-secondary {
-    background-color: #eb543a;
+    background-color: $secondary;
 }
 .published-date {
     font-weight: bold;
-}
-.care-companion-donation-box {
-    color: #fff;
-    padding: 20px 30px;
-    margin-bottom: 25px;
-    .donation-title {
-        color: $light;
-        font-size: 18px;
-    }
-    .action-section {
-        color: $light_700;
-    }
-    .donation-action {
-        .care-companion-icon {
-            margin-right: 2.5px;
-        }
-    }
-    .donation-raised,
-    .donation-goal,
-    .donation-separator {
-        display: inline-block;
-        vertical-align: top;
-        min-height: 46px;
-    }
-    .donation-raised,
-    .donation-goal {
-        width: 47%;
-        font-weight: bold;
-    }
-    .donation-raised {
-        padding-right: 15px;
-        text-align: right;
-    }
-    .donation-goal {
-        padding-left: 15px;
-        text-align: left;
-    }
-    .donation-separator {
-        max-width: 1%;
-    }
-
-    .donation-value {
-        font-size: 18px;
-    }
-
-    &.Circle {
-        .progressbar-text {
-            position: absolute;
-            top: 25%;
-        }
-    }
-    &.SemiCircle {
-        .progressbar-text {
-            position: absolute;
-            top: 25%!important;
-            transform: translate(0%, 0px)!important;
-            .percentage-text {
-                font-size: 0.5em;
-            }
-        }
-    }
-    &.Line {
-        .progressbar-text {
-            top: -2.5px;
-        }
-    }
-
-    &.style-1 {
-        background: rgba(0, 0, 0, 0.87);
-        .donation-information-section {
-            text-align: center;
-            padding: 0;
-        }
-        .donation-information {
-            margin-bottom: 15px;
-        }
-        .donation-content {
-            color: rgba(255, 255, 255, 0.75);
-            margin-bottom: 15px;
-        }
-        .donation-caption,
-        .donation-value {
-            width: 100%;
-            display: inline-block;
-            line-height: normal;
-        }
-        &.Circle {
-            .donation-information-section {
-                padding-top: 20px;
-            }
-        }
-    }
-    &.style-2 {
-        background-size: cover;
-        padding: 0;
-        .main-container {
-            margin-right: 0;
-            margin-left: 0px;
-        }
-        .action-section {
-            margin-bottom: 15px;
-        }
-        .donation-content {
-            margin-bottom: 25px;
-        }
-        .donation-left-section,
-        .donation-right-section {
-            padding: 60px 45px;
-            float: none;
-            display: table-cell;
-            vertical-align: top;
-            position: relative;
-            .background-overlay {
-                width: 100%;
-                height: 100%;
-                opacity: 0.85;
-                display: inline-block;
-                position: absolute;
-                top: 0;
-                ~ * {
-                    position: relative;
-                }
-            }
-        }
-        .donation-left-section {
-            .background-overlay {
-                left: 0;
-            }
-        }
-        .donation-right-section {
-            .background-overlay {
-                right: 0;
-            }
-        }
-        .progressbar-section {
-            max-width: 180px;
-            margin: 0 auto;
-            float: none;
-        }
-        .donation-information {
-            text-align: center;
-            .care-companion-btn {
-                margin-top: 25px;
-            }
-        }
-        .donation-caption,
-        .donation-value {
-            width: 100%;
-            display: inline-block;
-            line-height: normal;
-        }
-    }
-    &.style-3 {
-        max-width: 450px;
-        padding: 0;
-        vertical-align: top;
-        display: inline-block;
-        .action-section {
-            margin-bottom: 20px;
-        }
-        .main-container {
-            margin-right: 0;
-            margin-left: 0px;
-        }
-        .donation-content {
-            margin-bottom: 25px;
-        }
-        .donation-left-section,
-        .donation-right-section {
-            padding: 30px 45px;
-            position: relative;
-            .background-overlay {
-                width: 100%;
-                height: 100%;
-                opacity: 0.85;
-                display: inline-block;
-                position: absolute;
-                top: 0;
-                ~ * {
-                    position: relative;
-                }
-            }
-        }
-        .donation-left-section {
-            padding-top: 35px;
-            padding-bottom: 45px;
-            .background-overlay {
-                left: 0;
-            }
-        }
-        .donation-right-section {
-            .background-overlay {
-                right: 0;
-            }
-        }
-        .donation-raised,
-        .donation-goal {
-            color: #fff;
-            font-size: 18px;
-            font-size: bold;
-        }
-        .donation-raised {
-            text-align: left;
-        }
-        .donation-goal {
-            text-align: right;
-        }
-        &.Circle {
-            .progressbar-section {
-                max-width: 180px;
-                margin: 0 auto;
-                float: none;
-            }
-        }
-    }
-
-    &.style-4 {
-        @extend .care-companion-recent-campaigns;
-    }
-    &.style-5 {
-        @extend .care-companion-recent-campaigns;
-    }
 }
 .care-companion-percent-line-bar {
     background-color: #f6f8f9;

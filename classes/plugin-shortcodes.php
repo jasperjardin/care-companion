@@ -62,6 +62,13 @@ final class PluginShortcodes
                 'registerCCRecentCampaigns'
             )
         );
+        add_shortcode(
+            'cc_successful_campaigns',
+            array(
+                $this,
+                'registerCCSuccessfulCampaigns'
+            )
+        );
         return $this;
     }
 
@@ -74,7 +81,7 @@ final class PluginShortcodes
      * @access public
      * @return array $atts Returns the set attributes for the shortcode.
      */
-    public function registerCCDonationBox($atts)
+    public function registerCCDonationBox( $atts )
     {
 
         $atts = shortcode_atts(
@@ -110,7 +117,7 @@ final class PluginShortcodes
 
         $file = 'donation-box.php';
 
-        return $this->display($atts, $file);
+        return $this->display( $atts, $file );
     }
 
     /**
@@ -122,7 +129,7 @@ final class PluginShortcodes
      * @access public
      * @return array $atts Returns the set attributes for the shortcode.
      */
-    public function registerCCRecentCampaigns($atts)
+    public function registerCCRecentCampaigns( $atts )
     {
 
         $atts = shortcode_atts(
@@ -143,7 +150,40 @@ final class PluginShortcodes
 
         $file = 'recent-campaigns.php';
 
-        return $this->display($atts, $file);
+        return $this->display( $atts, $file );
+    }
+
+    /**
+     * This method registers the cc_successful_campaigns shortcode.
+     *
+     * @param array $atts The attributes for the shortcode.
+     *
+     * @since  1.0.0
+     * @access public
+     * @return array $atts Returns the set attributes for the shortcode.
+     */
+    public function registerCCSuccessfulCampaigns( $atts )
+    {
+
+        $atts = shortcode_atts(
+            array(
+                'number_of_posts' => 10,
+                'columns' => '2',
+                'published_date' => 'true',
+                'progress_symbol' => '%',
+                'container_fill' => 'rgba(0, 0, 0, 0.75)',
+                'container_primary_fill' => '#f8b864',
+                'progress_color' => '#eb543a',
+                'progress_transition_style' => 'easeInOut',
+                'progress_transition_duration' => '5000',
+            ),
+            $atts,
+            'cc_successful_campaigns'
+        );
+
+        $file = 'successful-campaigns.php';
+
+        return $this->display( $atts, $file );
     }
     /**
      * This method sets the template for the reference_loop shortcode.

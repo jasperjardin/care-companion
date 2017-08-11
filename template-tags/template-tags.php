@@ -19,6 +19,8 @@
  * @since    1.0
  */
 
+
+
 if (! defined('ABSPATH')) {
     return;
 }
@@ -81,6 +83,22 @@ function care_companion_replace_first_text_occurance($search, $replace, $source)
 
 }
 
+function change_order_for_events( $query ) {
+    //only show future events and events in the last 24hours
+
+    if ( $query->is_main_query()  ) {
+        if ( is_post_type_archive('give_forms') ) {
+            $query->set( 'meta_key', '_give_form_earnings' );
+            $query->set( 'orderby', '_give_form_earnings' );
+            $query->set( 'order', 'ASC' );
+            $query->set( 'meta_value', '0' );
+            $query->set( 'meta_compare', '>' );
+        }
+    }
+
+}
+
+add_action( 'pre_get_posts', 'change_order_for_events' );
 
 function care_companion_get_donation_income( $form_id = '' ) {
     if ( ! empty( $form_id ) ) {
@@ -97,6 +115,7 @@ function care_companion_get_formated_donation_income( $form_id = '' ) {
     }
     return;
 }
+
 function care_companion_get_donation_goal( $form_id = '' ) {
     if ( ! empty( $form_id ) ) {
         $donation = care_companion_get_donation_info( $form_id );
@@ -111,6 +130,7 @@ function care_companion_get_formated_donation_goal( $form_id = '' ) {
     }
     return;
 }
+
 function care_companion_get_donation_progress( $form_id = '' ) {
     if ( ! empty( $form_id ) ) {
         $donation = care_companion_get_donation_info( $form_id );
@@ -141,6 +161,7 @@ function care_companion_donate_button( $form_id = '', $text = '', $class_name = 
 
     return;
 }
+
 function care_companion_details_button( $form_id = '', $text = '', $class_name = '' ) {
 
     if ( empty( $text ) ) {
@@ -182,7 +203,19 @@ function care_companion_published_date( $form_id = '', $prefix_text = '', $suffi
 
     return;
 }
+function care_companion_published_date_box( $form_id = '' ) { ?>
+    <?php
+        $day = get_the_date( 'l', $form_id );
+        $month = get_the_date( 'M', $form_id );
+        $date = get_the_date( 'j', $form_id );
+        $year = get_the_date( 'Y', $form_id );
+        if ( ! empty( $form_id ) ) {
+    ?>
+        <div class="published-date-box primary">
+        </div>
+    <?php } ?>
 
+<?php }
 function care_companion_get_featured_image_url( $form_id = '', $size = '' ) {
 
     $src = '';

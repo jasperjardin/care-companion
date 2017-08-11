@@ -1,3 +1,10 @@
+.care-companion-ellipsis, .care-companion-donation-box.style-5 .information-inner-wrap-left h1.donation-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+}
+
 .linear,
 .easeIn,
 .easeOut,
@@ -31,7 +38,7 @@
   transition-timing-function: ease-in-out;
 }
 
-.care-companion-transition-500, .care-companion-recent-campaigns, .care-companion-donation-box.style-4, .care-companion-donation-box.style-5 {
+.care-companion-transition-500, .care-companion-recent-campaigns, .care-companion-successful-campaigns, .care-companion-donation-box.style-4, .care-companion-donation-box.style-5 {
   -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
@@ -45,12 +52,20 @@
   color: #fff;
 }
 
+.dark {
+  color: #444;
+}
+
 .primary {
   color: #f8b864;
 }
 
 .background-primary {
   background-color: #f8b864;
+}
+
+.border-primary {
+  border-color: #f8b864;
 }
 
 .secondary {
@@ -63,6 +78,273 @@
 
 .published-date {
   font-weight: bold;
+}
+
+.care-companion-percent-line-bar {
+  background-color: #f6f8f9;
+  height: 10px;
+  margin: 20px 0;
+  border-radius: 6px;
+  overflow: visible;
+}
+
+.care-companion-percent-line-bar span {
+  display: block;
+  height: 100%;
+  width: 0;
+  position: relative;
+  border-radius: 20px 8px 8px 20px;
+}
+
+.care-companion-percent-line-bar span:before {
+  content: attr(aria-valuenow);
+  min-width: 40px;
+  min-height: 40px;
+  line-height: 34px;
+  padding: 0 2.5px;
+  margin-right: -20px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  background: inherit;
+  border: 3px solid #f6f8f9;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  top: -15px;
+  right: -2px;
+  z-index: 10;
+}
+
+.donation-separator {
+  width: 1px;
+  min-height: 50px;
+  background: #777;
+  display: inline-block;
+}
+
+.care-companion-progress-bar {
+  font-size: 100%;
+  position: relative;
+}
+
+.care-companion-progress-bar svg:not(:root) {
+  overflow: visible;
+}
+
+.care-companion-progress-bar .progressbar-text {
+  width: 100%;
+  font-size: 1em;
+  text-align: center;
+}
+
+.care-companion-progress-bar .progressbar-text .percentage-text,
+.care-companion-progress-bar .progressbar-text .completed-text {
+  display: inline-block;
+  width: 100%;
+  float: left;
+  line-height: normal;
+}
+
+.care-companion-progress-bar .progressbar-text .percentage-text {
+  font-weight: bold;
+}
+
+.care-companion-progress-bar .progressbar-text .completed-text {
+  font-size: 0.35em;
+}
+
+.care-companion-btn {
+  background: #f8b864;
+  color: #fff;
+  min-height: 46px;
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: capitalize;
+  padding: 10px 35px;
+  border: 0 none;
+  border-radius: 4px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.care-companion-btn:hover, .care-companion-btn:focus {
+  color: #fff;
+  text-decoration: none;
+  outline: 0;
+}
+
+.care-companion-btn:hover {
+  color: #f6f8f9;
+}
+
+.care-companion-recent-campaigns, .care-companion-successful-campaigns, .care-companion-donation-box.style-4, .care-companion-donation-box.style-5 {
+  width: 250px;
+  max-width: 250px;
+  padding: 0 0 20px;
+  vertical-align: top;
+  display: inline-block;
+  border: 1px solid #f5f5f5;
+  margin-bottom: 25px;
+}
+
+.care-companion-recent-campaigns:hover, .care-companion-successful-campaigns:hover, .care-companion-donation-box.style-4:hover, .care-companion-donation-box.style-5:hover {
+  box-shadow: 0px 7px 10px 10px #f5f5f5;
+}
+
+.care-companion-recent-campaigns .main-container, .care-companion-successful-campaigns .main-container, .care-companion-donation-box.style-4 .main-container, .care-companion-donation-box.style-5 .main-container {
+  position: relative;
+}
+
+.care-companion-recent-campaigns .progressbar-section, .care-companion-successful-campaigns .progressbar-section, .care-companion-donation-box.style-4 .progressbar-section, .care-companion-donation-box.style-5 .progressbar-section {
+  position: absolute;
+  top: 0;
+  left: 30px;
+}
+
+.care-companion-recent-campaigns .donation-featured-image, .care-companion-successful-campaigns .donation-featured-image, .care-companion-donation-box.style-4 .donation-featured-image, .care-companion-donation-box.style-5 .donation-featured-image {
+  background-size: cover;
+  min-height: 250px;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.care-companion-recent-campaigns .donation-featured-image .donation-icon, .care-companion-successful-campaigns .donation-featured-image .donation-icon, .care-companion-donation-box.style-4 .donation-featured-image .donation-icon, .care-companion-donation-box.style-5 .donation-featured-image .donation-icon {
+  font-size: 5em;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  text-align: center;
+  line-height: 250px;
+}
+
+.care-companion-recent-campaigns .progressbar-section, .care-companion-successful-campaigns .progressbar-section, .care-companion-donation-box.style-4 .progressbar-section, .care-companion-donation-box.style-5 .progressbar-section {
+  max-width: 90px;
+  text-align: center;
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+  z-index: 1;
+}
+
+.care-companion-recent-campaigns .progressbar-section .donation-raised, .care-companion-successful-campaigns .progressbar-section .donation-raised, .care-companion-donation-box.style-4 .progressbar-section .donation-raised, .care-companion-donation-box.style-5 .progressbar-section .donation-raised {
+  width: auto;
+  padding: 5px 0 0;
+}
+
+.care-companion-recent-campaigns .progressbar-section .donation-value, .care-companion-successful-campaigns .progressbar-section .donation-value, .care-companion-donation-box.style-4 .progressbar-section .donation-value, .care-companion-donation-box.style-5 .progressbar-section .donation-value,
+.care-companion-recent-campaigns .progressbar-section .donation-caption, .care-companion-successful-campaigns .progressbar-section .donation-caption, .care-companion-donation-box.style-4 .progressbar-section .donation-caption, .care-companion-donation-box.style-5 .progressbar-section .donation-caption {
+  width: 100%;
+  font-size: 15px;
+  text-align: center;
+  display: inline-block;
+}
+
+.care-companion-recent-campaigns .progressbar-section .percentage-circle, .care-companion-successful-campaigns .progressbar-section .percentage-circle, .care-companion-donation-box.style-4 .progressbar-section .percentage-circle, .care-companion-donation-box.style-5 .progressbar-section .percentage-circle {
+  border-radius: 50%;
+  position: static;
+}
+
+.care-companion-recent-campaigns .progressbar-section .care-companion-progress-bar, .care-companion-successful-campaigns .progressbar-section .care-companion-progress-bar, .care-companion-donation-box.style-4 .progressbar-section .care-companion-progress-bar, .care-companion-donation-box.style-5 .progressbar-section .care-companion-progress-bar {
+  background: transparent;
+  width: 55px;
+  height: 55px;
+  margin: 10px 0 0;
+  display: inline-block;
+  position: relative;
+  top: -7px;
+}
+
+.care-companion-recent-campaigns .progressbar-section .care-companion-progress-bar span:before, .care-companion-successful-campaigns .progressbar-section .care-companion-progress-bar span:before, .care-companion-donation-box.style-4 .progressbar-section .care-companion-progress-bar span:before, .care-companion-donation-box.style-5 .progressbar-section .care-companion-progress-bar span:before {
+  color: #444;
+  background-color: #f6f8f9;
+  width: 78%;
+  height: 78%;
+  min-width: inherit;
+  min-height: inherit;
+  font-size: 15px;
+  line-height: 40px;
+  border: none;
+  margin-right: 0;
+  float: left;
+  top: 12%;
+  left: 11%;
+}
+
+.care-companion-recent-campaigns .progressbar-section .care-companion-progress-bar span:after, .care-companion-successful-campaigns .progressbar-section .care-companion-progress-bar span:after, .care-companion-donation-box.style-4 .progressbar-section .care-companion-progress-bar span:after, .care-companion-donation-box.style-5 .progressbar-section .care-companion-progress-bar span:after {
+  content: '';
+  background-color: rgba(246, 248, 249, 0.56);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.care-companion-recent-campaigns .donation-title, .care-companion-successful-campaigns .donation-title, .care-companion-donation-box.style-4 .donation-title, .care-companion-donation-box.style-5 .donation-title,
+.care-companion-recent-campaigns .action-section, .care-companion-successful-campaigns .action-section, .care-companion-donation-box.style-4 .action-section, .care-companion-donation-box.style-5 .action-section {
+  color: #444;
+}
+
+.care-companion-recent-campaigns .information-wrapper, .care-companion-successful-campaigns .information-wrapper, .care-companion-donation-box.style-4 .information-wrapper, .care-companion-donation-box.style-5 .information-wrapper {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.care-companion-recent-campaigns .information-wrapper > h1.donation-title, .care-companion-successful-campaigns .information-wrapper > h1.donation-title, .care-companion-donation-box.style-4 .information-wrapper > h1.donation-title, .care-companion-donation-box.style-5 .information-wrapper > h1.donation-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.care-companion-recent-campaigns-grid.column-1, .care-companion-recent-campaigns-grid.column-2, .care-companion-recent-campaigns-grid.column-3, .care-companion-recent-campaigns-grid.column-4, .care-companion-recent-campaigns-grid.column-5, .care-companion-recent-campaigns-grid.column-6 {
+  max-width: none;
+}
+
+.care-companion-recent-campaigns-grid.column-1 {
+  width: 100%;
+  width: -webkit-calc( 100% - 0px);
+  width: -moz-calc( 100% - 0px);
+  width: calc( 100% - 0px);
+  margin-right: 0px;
+}
+
+.care-companion-recent-campaigns-grid.column-2 {
+  width: 47.75%;
+  width: -webkit-calc( 50% - 18px);
+  width: -moz-calc( 50% - 18px);
+  width: calc( 50% - 18px);
+  margin-right: 18px;
+}
+
+.care-companion-recent-campaigns-grid.column-2:nth-child(2n) {
+  margin-right: 0;
+}
+
+.care-companion-recent-campaigns-grid.column-3 {
+  width: 31.08%;
+  width: -webkit-calc( 33.33% - 18px);
+  width: -moz-calc( 33.33% - 18px);
+  width: calc( 33.33% - 18px);
+  margin-right: 18px;
+}
+
+.care-companion-recent-campaigns-grid.column-3:nth-child(3n) {
+  margin-right: 0;
+}
+
+.care-companion-recent-campaigns-grid.column-4 {
+  width: 22.75%;
+  width: -webkit-calc( 25% - 18px);
+  width: -moz-calc( 25% - 18px);
+  width: calc( 25% - 18px);
+  margin-right: 18px;
+}
+
+.care-companion-recent-campaigns-grid.column-4:nth-child(4n) {
+  margin-right: 0;
 }
 
 .care-companion-donation-box {
@@ -310,271 +592,96 @@
   float: none;
 }
 
-.care-companion-percent-line-bar {
-  background-color: #f6f8f9;
-  height: 10px;
-  margin: 20px 0;
-  border-radius: 6px;
-  overflow: visible;
-}
-
-.care-companion-percent-line-bar span {
-  display: block;
-  height: 100%;
-  width: 0;
-  position: relative;
-  border-radius: 20px 8px 8px 20px;
-}
-
-.care-companion-percent-line-bar span:before {
-  content: attr(aria-valuenow);
-  min-width: 40px;
-  min-height: 40px;
-  line-height: 34px;
-  padding: 0 2.5px;
-  margin-right: -20px;
-  color: #fff;
-  font-size: 12px;
-  font-weight: bold;
-  text-align: center;
-  background: inherit;
-  border: 3px solid #f6f8f9;
-  border-radius: 50%;
+.care-companion-donation-box.style-5 {
+  width: 49.80%;
+  max-width: 420px;
   display: inline-block;
-  position: absolute;
-  top: -15px;
-  right: -2px;
-  z-index: 10;
-}
-
-.donation-separator {
-  width: 1px;
-  min-height: 50px;
-  background: #777;
-  display: inline-block;
-}
-
-.care-companion-progress-bar {
-  font-size: 100%;
-  position: relative;
-}
-
-.care-companion-progress-bar svg:not(:root) {
-  overflow: visible;
-}
-
-.care-companion-progress-bar .progressbar-text {
-  width: 100%;
-  font-size: 1em;
-  text-align: center;
-}
-
-.care-companion-progress-bar .progressbar-text .percentage-text,
-.care-companion-progress-bar .progressbar-text .completed-text {
-  display: inline-block;
-  width: 100%;
-  float: left;
-  line-height: normal;
-}
-
-.care-companion-progress-bar .progressbar-text .percentage-text {
-  font-weight: bold;
-}
-
-.care-companion-progress-bar .progressbar-text .completed-text {
-  font-size: 0.35em;
-}
-
-.care-companion-btn {
-  background: #f8b864;
-  color: #fff;
-  min-height: 46px;
-  font-size: 15px;
-  font-weight: bold;
-  text-transform: capitalize;
-  padding: 10px 35px;
-  border: 0 none;
-  border-radius: 4px;
-  display: inline-block;
-  cursor: pointer;
-}
-
-.care-companion-btn:hover, .care-companion-btn:focus {
-  color: #fff;
-  text-decoration: none;
-  outline: 0;
-}
-
-.care-companion-btn:hover {
-  color: #f6f8f9;
-}
-
-.care-companion-recent-campaigns, .care-companion-donation-box.style-4, .care-companion-donation-box.style-5 {
-  width: 250px;
-  max-width: 250px;
-  padding: 0 0 20px;
   vertical-align: top;
+}
+
+.care-companion-donation-box.style-5 .donation-left-section .progressbar-section {
+  padding: 5px 10px 0;
+  left: 42.5%;
+}
+
+.care-companion-donation-box.style-5 .information-wrapper {
+  margin: 35px 0 15px;
+  padding: 0 25px;
+}
+
+.care-companion-donation-box.style-5 .information-inner-wrap {
   display: inline-block;
-  border: 1px solid #f5f5f5;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.care-companion-donation-box.style-5 .content-wrapper,
+.care-companion-donation-box.style-5 .footer-wrapper {
+  padding: 0;
+}
+
+.care-companion-donation-box.style-5 .content-wrapper {
   margin-bottom: 25px;
 }
 
-.care-companion-recent-campaigns:hover, .care-companion-donation-box.style-4:hover, .care-companion-donation-box.style-5:hover {
-  box-shadow: 0px 7px 10px 10px #f5f5f5;
+.care-companion-donation-box.style-5 .footer-wrapper .donate-section {
+  padding-left: 0;
 }
 
-.care-companion-recent-campaigns .main-container, .care-companion-donation-box.style-4 .main-container, .care-companion-donation-box.style-5 .main-container {
-  position: relative;
+.care-companion-donation-box.style-5 .footer-wrapper .action-section {
+  padding-left: 15px;
+  margin: 10px 0;
+  text-align: right;
 }
 
-.care-companion-recent-campaigns .progressbar-section, .care-companion-donation-box.style-4 .progressbar-section, .care-companion-donation-box.style-5 .progressbar-section {
-  position: absolute;
-  top: 0;
-  left: 30px;
+.care-companion-donation-box.style-5 .information-inner-wrap-left {
+  padding-left: 0;
 }
 
-.care-companion-recent-campaigns .donation-featured-image, .care-companion-donation-box.style-4 .donation-featured-image, .care-companion-donation-box.style-5 .donation-featured-image {
-  background-size: cover;
-  min-height: 250px;
-  background-position: 50%;
-  background-repeat: no-repeat;
-  position: relative;
+.care-companion-donation-box.style-5 .information-inner-wrap-left h1.donation-title {
+  max-width: 150px;
+  line-height: 18px;
+  margin-top: 2.5px;
+  margin-bottom: 0;
 }
 
-.care-companion-recent-campaigns .donation-featured-image .donation-icon, .care-companion-donation-box.style-4 .donation-featured-image .donation-icon, .care-companion-donation-box.style-5 .donation-featured-image .donation-icon {
-  font-size: 5em;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  text-align: center;
-  line-height: 250px;
+.care-companion-donation-box.style-5 .information-inner-wrap-right {
+  padding-right: 0;
 }
 
-.care-companion-recent-campaigns .progressbar-section, .care-companion-donation-box.style-4 .progressbar-section, .care-companion-donation-box.style-5 .progressbar-section {
-  max-width: 90px;
-  text-align: center;
-  border-bottom-left-radius: 100px;
-  border-bottom-right-radius: 100px;
-  z-index: 1;
+.care-companion-donation-box.style-5 .information-inner-wrap-right .donation-information {
+  text-align: right;
 }
 
-.care-companion-recent-campaigns .progressbar-section .donation-raised, .care-companion-donation-box.style-4 .progressbar-section .donation-raised, .care-companion-donation-box.style-5 .progressbar-section .donation-raised {
+.care-companion-donation-box.style-5 .information-inner-wrap-right .donation-separator {
+  min-height: 15px;
+  margin-top: 5px;
+}
+
+.care-companion-donation-box.style-5 .information-inner-wrap-right .donation-raised,
+.care-companion-donation-box.style-5 .information-inner-wrap-right .donation-goal {
   width: auto;
-  padding: 5px 0 0;
-}
-
-.care-companion-recent-campaigns .progressbar-section .donation-value, .care-companion-donation-box.style-4 .progressbar-section .donation-value, .care-companion-donation-box.style-5 .progressbar-section .donation-value,
-.care-companion-recent-campaigns .progressbar-section .donation-caption, .care-companion-donation-box.style-4 .progressbar-section .donation-caption, .care-companion-donation-box.style-5 .progressbar-section .donation-caption {
-  width: 100%;
-  font-size: 15px;
-  text-align: center;
-  display: inline-block;
-}
-
-.care-companion-recent-campaigns .progressbar-section .percentage-circle, .care-companion-donation-box.style-4 .progressbar-section .percentage-circle, .care-companion-donation-box.style-5 .progressbar-section .percentage-circle {
-  border-radius: 50%;
-  position: static;
-}
-
-.care-companion-recent-campaigns .progressbar-section .care-companion-progress-bar, .care-companion-donation-box.style-4 .progressbar-section .care-companion-progress-bar, .care-companion-donation-box.style-5 .progressbar-section .care-companion-progress-bar {
-  background: transparent;
-  width: 55px;
-  height: 55px;
-  margin: 10px 0 0;
-  display: inline-block;
-  position: relative;
-  top: -7px;
-}
-
-.care-companion-recent-campaigns .progressbar-section .care-companion-progress-bar span:before, .care-companion-donation-box.style-4 .progressbar-section .care-companion-progress-bar span:before, .care-companion-donation-box.style-5 .progressbar-section .care-companion-progress-bar span:before {
-  color: #444;
-  background-color: #f6f8f9;
-  width: 78%;
-  height: 78%;
-  min-width: inherit;
   min-height: inherit;
-  font-size: 15px;
-  line-height: 40px;
-  border: none;
-  margin-right: 0;
-  float: left;
-  top: 12%;
-  left: 11%;
-}
-
-.care-companion-recent-campaigns .progressbar-section .care-companion-progress-bar span:after, .care-companion-donation-box.style-4 .progressbar-section .care-companion-progress-bar span:after, .care-companion-donation-box.style-5 .progressbar-section .care-companion-progress-bar span:after {
-  content: '';
-  background-color: rgba(246, 248, 249, 0.56);
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
   display: inline-block;
-  position: absolute;
-  top: 0;
-  left: 0;
 }
 
-.care-companion-recent-campaigns .donation-title, .care-companion-donation-box.style-4 .donation-title, .care-companion-donation-box.style-5 .donation-title,
-.care-companion-recent-campaigns .action-section, .care-companion-donation-box.style-4 .action-section, .care-companion-donation-box.style-5 .action-section {
-  color: #444;
+.care-companion-donation-box.style-5 .information-inner-wrap-right .donation-raised .donation-caption,
+.care-companion-donation-box.style-5 .information-inner-wrap-right .donation-raised .donation-value,
+.care-companion-donation-box.style-5 .information-inner-wrap-right .donation-goal .donation-caption,
+.care-companion-donation-box.style-5 .information-inner-wrap-right .donation-goal .donation-value {
+  font-size: 15px;
 }
 
-.care-companion-recent-campaigns .information-wrapper, .care-companion-donation-box.style-4 .information-wrapper, .care-companion-donation-box.style-5 .information-wrapper {
-  padding-top: 10px;
-  padding-bottom: 10px;
+.care-companion-donation-box.style-5 .information-inner-wrap-right .donation-raised {
+  padding-right: 5px;
 }
 
-.care-companion-recent-campaigns .information-wrapper > h1.donation-title, .care-companion-donation-box.style-4 .information-wrapper > h1.donation-title, .care-companion-donation-box.style-5 .information-wrapper > h1.donation-title {
-  font-size: 18px;
-  margin-bottom: 10px;
+.care-companion-donation-box.style-5 .information-inner-wrap-right .donation-goal {
+  padding-left: 5px;
 }
 
-.care-companion-recent-campaigns-grid.column-1, .care-companion-recent-campaigns-grid.column-2, .care-companion-recent-campaigns-grid.column-3, .care-companion-recent-campaigns-grid.column-4, .care-companion-recent-campaigns-grid.column-5, .care-companion-recent-campaigns-grid.column-6 {
-  max-width: none;
-}
-
-.care-companion-recent-campaigns-grid.column-1 {
-  width: 100%;
-  width: -webkit-calc( 100% - 0px);
-  width: -moz-calc( 100% - 0px);
-  width: calc( 100% - 0px);
-  margin-right: 0px;
-}
-
-.care-companion-recent-campaigns-grid.column-2 {
-  width: 47.75%;
-  width: -webkit-calc( 50% - 18px);
-  width: -moz-calc( 50% - 18px);
-  width: calc( 50% - 18px);
-  margin-right: 18px;
-}
-
-.care-companion-recent-campaigns-grid.column-2:nth-child(2n) {
-  margin-right: 0;
-}
-
-.care-companion-recent-campaigns-grid.column-3 {
-  width: 31.08%;
-  width: -webkit-calc( 33.33% - 18px);
-  width: -moz-calc( 33.33% - 18px);
-  width: calc( 33.33% - 18px);
-  margin-right: 18px;
-}
-
-.care-companion-recent-campaigns-grid.column-3:nth-child(3n) {
-  margin-right: 0;
-}
-
-.care-companion-recent-campaigns-grid.column-4 {
-  width: 22.75%;
-  width: -webkit-calc( 25% - 18px);
-  width: -moz-calc( 25% - 18px);
-  width: calc( 25% - 18px);
-  margin-right: 18px;
-}
-
-.care-companion-recent-campaigns-grid.column-4:nth-child(4n) {
-  margin-right: 0;
+.care-companion-donation-box.style-5 .action-section {
+  padding: 0;
 }
 
 /*# sourceMappingURL=care-companion.css.map */

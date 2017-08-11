@@ -1,6 +1,6 @@
 <?php
 /**
-  * Donation Box Shortcode Template [cc_recent_campaigns]
+  * Donation Box Shortcode Template [cc_successful_campaigns]
   *
   * (c) Dunhakdis <dunhakdis@useissuestabinstead.com>
   *
@@ -46,10 +46,6 @@ if (! in_array( $progress_transition_style, $allowed_progress_transition_style, 
  * Query the Form
  */
 $args = array(
-    'post_type' => 'give_forms'
-);
-
-$args = array(
 	'numberposts' => $number_of_posts,
 	'orderby' => 'post_date',
 	'order' => 'DESC',
@@ -58,17 +54,19 @@ $args = array(
 	'suppress_filters' => true
 );
 
-$recent_posts = wp_get_recent_posts( $args ); ?>
+$form = new WP_Query( $args );
+?>
 
-<?php if ( ! empty ( $recent_posts ) ) : ?>
-    <?php
-    foreach( $recent_posts as $recent ) {
-        $form_id = $recent['ID'];
-        $background_image = care_companion_get_featured_image_url( $form_id );
-        $progress_donation = care_companion_get_donation_progress( $form_id );
-    ?>
 
-        <div class="care-companion-recent-campaigns care-companion-recent-campaigns-grid column-<?php echo esc_attr( absint( $columns ) ); ?>"
+<?php if ( $form->have_posts() ) : ?>
+
+    <?php while ( $form->have_posts() ) : $form->the_post(); ?>
+        <?php
+            $form_id = get_the_ID();
+            $background_image = care_companion_get_featured_image_url( $form_id );
+            $progress_donation = care_companion_get_donation_progress( $form_id );
+        ?>
+        <div class="care-companion-successful-campaigns care-companion-recent-campaigns-grid column-<?php echo esc_attr( absint( $columns ) ); ?>"
             data-form-id="<?php echo esc_attr( $form_id ); ?>"
             data-progress-symbol="<?php echo esc_attr( $progress_symbol ); ?>"
 
@@ -85,21 +83,6 @@ $recent_posts = wp_get_recent_posts( $args ); ?>
 
                     <div class="background-overlay" style="background-color:<?php echo esc_attr( $container_primary_fill ); ?>"></div>
 
-                    <div class="progressbar-section" style="background-color: <?php echo esc_attr( $container_primary_fill ); ?>;">
-                        <div class="donation-raised">
-
-                            <span class="donation-value light"><?php echo care_companion_get_formated_donation_income( $form_id ); ?></span>
-                            <span class="donation-caption light"><?php echo esc_html( 'Pledge', 'care-companion' ); ?></span>
-
-
-                        </div>
-
-                        <div class="care-companion-progress-bar care-companion-percent-line-bar" role="progressbar">
-                            <span class="percentage-circle <?php echo esc_attr( $progress_transition_style ); ?>" aria-valuenow="0<?php echo esc_attr( $progress_symbol ); ?>">
-                            </span>
-                        </div>
-
-                    </div>
 
                     <?php if ( ! empty( $background_image ) ) { ?>
                         <div class="donation-featured-image" style="background-image: url('<?php echo esc_attr( $background_image ); ?>');"></div>
@@ -133,6 +116,19 @@ $recent_posts = wp_get_recent_posts( $args ); ?>
                             </span>
 
                         </div>
+                        <?php
+
+                            $date = get_the_date( 'l, F j, Y', $form_id );
+                            echo $date;
+
+                        ?>
+
+                        <?php if ( 'true' === $published_date ) { ?>
+                            <span class="published-date primary">
+                                <?php care_companion_published_date( $form_id ); ?>
+                            </span>
+                        <?php } ?>
+
                     </div>
 
                 </div>
@@ -140,19 +136,19 @@ $recent_posts = wp_get_recent_posts( $args ); ?>
 
         </div>
 
-        <?php wp_reset_postdata(); ?>
+    <?php endwhile; ?>
 
-    <?php } ?>
+    <?php wp_reset_postdata(); ?>
+
 <?php else : ?>
+    <div class="alert alert-info">
+        <p>
+            <?php esc_html_e(
+                'There are no items found in your donation form found.',
+                'care-companion'
+            ); ?>
+        </p>
+    </div>
 
-<div class="alert alert-info">
-    <p>
-        <?php esc_html_e(
-            'There are no items found in your donation form found.',
-            'care-companion'
-        ); ?>
-    </p>
-</div>
-
-<div class="clearfix"></div>
+    <div class="clearfix"></div>
 <?php endif; ?>

@@ -5,13 +5,6 @@
             <div class="background-overlay" style="background-color:<?php echo esc_attr( $container_primary_fill ); ?>"></div>
 
             <div class="progressbar-section" style="background-color: <?php echo esc_attr( $container_primary_fill ); ?>;">
-                <div class="donation-raised">
-
-                    <span class="donation-value"><?php echo care_companion_get_formated_donation_income( $form_id ); ?></span>
-                    <span class="donation-caption light"><?php echo esc_html( 'Pledge', 'care-companion' ); ?></span>
-
-
-                </div>
                 <?php require( dirname( __FILE__ ) . '/loader.php' ); ?>
             </div>
 
@@ -24,27 +17,65 @@
             <?php }?>
 
             <div class="col-md-12 information-wrapper">
-                <h1 class="donation-title">
-                    <?php echo get_the_title( $form_id ); ?>
-                </h1>
+                <div class="information-inner-wrap">
+                    <div class="col-md-5 information-inner-wrap-left">
+                        <h1 class="donation-title">
+                            <?php echo get_the_title( $form_id ); ?>
+                        </h1>
+                    </div>
+                    <div class="col-md-7 information-inner-wrap-right">
+                        <div class="donation-information">
 
-                <div class="action-section">
-                    <span class="donation-action">
-                        <i class="fa fa-heart primary care-companion-icon"></i>
-                        <?php
-                            $donation_count = care_companion_get_donations_count( $form_id );
-                            echo sprintf( _n( '%d Donation', '%d Donations', $donation_count, 'care-companion' ), $donation_count );
-                        ?>
-                    </span>
+                            <div class="donation-raised">
 
-                    <span class="donation-gap">
-                        <?php echo esc_html( '|', 'care-companion' ); ?>
-                    </span>
+                                <span class="donation-caption dark"><?php echo esc_html( 'Raised:', 'care-companion' ); ?></span>
 
-                    <span class="donation-action">
-                        <i class="fa fa-share-alt primary care-companion-icon"></i>
-                        <?php echo esc_html( 'Share', 'care-companion' ); ?>
-                    </span>
+                                <span class="donation-value secondary"><?php echo care_companion_get_formated_donation_income( $form_id ); ?></span>
+
+                            </div>
+
+                            <div class="donation-separator"></div>
+
+                            <div class="donation-goal">
+
+                                <span class="donation-caption dark"><?php echo esc_html( 'Goal:', 'care-companion' ); ?></span>
+
+                                <span class="donation-value secondary"><?php echo care_companion_get_formated_donation_goal( $form_id ); ?></span>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-wrapper col-md-12 dark">
+                    <?php care_companion_give_the_content( $form_id );  ?>
+                </div>
+                <div class="footer-wrapper col-md-12 dark">
+
+                    <div class="donate-section col-md-6">
+                        <?php echo care_companion_donate_button( $form_id, esc_attr( 'Donate Now', 'care-companion') ); ?>
+                    </div>
+
+                    <div class="action-section col-md-6">
+                        <span class="donation-action">
+                            <i class="fa fa-heart primary care-companion-icon"></i>
+                            <?php
+                                $donation_count = care_companion_get_donations_count( $form_id );
+                                echo sprintf( _n( '%d Donation', '%d Donations', $donation_count, 'care-companion' ), $donation_count );
+                            ?>
+                        </span>
+
+                        <span class="donation-gap">
+                            <?php echo esc_html( '|', 'care-companion' ); ?>
+                        </span>
+
+                        <span class="donation-action">
+                            <i class="fa fa-share-alt primary care-companion-icon"></i>
+                            <?php echo esc_html( 'Share', 'care-companion' ); ?>
+                        </span>
+                    </div>
+
                 </div>
             </div>
 

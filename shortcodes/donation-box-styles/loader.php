@@ -16,7 +16,7 @@
         $filtered_progress_trail_width = esc_attr( absint( $progress_trail_width ) . 'px' );
         $filtered_progress_stroke_width = esc_attr( absint( $progress_stroke_width ) . 'px' );
 
-        if ( 'style-4' === $layout_style && 'style-5' === $layout_style) {
+        if ( 'style-4' === $layout_style || 'style-5' === $layout_style) {
             $filtered_progress_color = '';
             $filtered_progress_trail_color = '';
             $filtered_progress_trail_width = '';
