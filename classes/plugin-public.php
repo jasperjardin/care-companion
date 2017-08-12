@@ -97,7 +97,7 @@ final class PublicPages
      */
     public function setEnqueueStyles()
     {
-        $shortcodes = array( 'cc_donation_box', 'cc_recent_campaigns', 'cc_successful_campaigns' );
+        $shortcodes = self::getShortcodes();
 
         foreach ( $shortcodes as $shortcode ) {
             if (self::isPluginComponentActive(
@@ -132,7 +132,7 @@ final class PublicPages
     public function setEnqueueScripts()
     {
         $post = Helper::globalPost();
-        $shortcodes = array( 'cc_donation_box', 'cc_recent_campaigns', 'cc_successful_campaigns' );
+        $shortcodes = self::getShortcodes();
 
         if (!isset($post)) {
             return;
@@ -184,7 +184,7 @@ final class PublicPages
      */
     public function setBodyClass($classes)
     {
-        $shortcodes = array( 'cc_donation_box', 'cc_recent_campaigns', 'cc_successful_campaigns' );
+        $shortcodes = self::getShortcodes();
 
         foreach ( $shortcodes as $shortcode ) {
             if (self::isPluginComponentActive(
@@ -205,6 +205,25 @@ final class PublicPages
         }
 
         return $classes;
+    }
+
+    /**
+     * This method returns an array of the plugin shortcodes.
+     *
+     * @since  1.0.0
+     * @access public
+     * @return string $shortcodes Returns an array of the plugin shortcodes.
+     */
+    public function getShortcodes()
+    {
+        $shortcodes = array(
+            'cc_donation_box',
+            'cc_recent_campaigns',
+            'cc_successful_campaigns',
+            'cc_serch_form'
+        );
+
+        return $shortcodes;
     }
 
     /**

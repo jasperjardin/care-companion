@@ -20,7 +20,9 @@
                 <div class="information-inner-wrap">
                     <div class="col-md-5 information-inner-wrap-left">
                         <h1 class="donation-title">
-                            <?php echo get_the_title( $form_id ); ?>
+                            <a class="dark" href="<?php echo esc_url( get_permalink( $form_id ) ); ?>" title="<?php echo esc_attr( get_the_title( $form_id ) ); ?>">
+                                <?php echo esc_html( get_the_title( $form_id ) ); ?>
+                            </a>
                         </h1>
                     </div>
                     <div class="col-md-7 information-inner-wrap-right">

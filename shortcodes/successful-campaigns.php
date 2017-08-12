@@ -65,76 +65,84 @@ $form = new WP_Query( $args );
             $form_id = get_the_ID();
             $background_image = care_companion_get_featured_image_url( $form_id );
             $progress_donation = care_companion_get_donation_progress( $form_id );
+
+            $income = care_companion_get_number_format_income( $form_id );
+            $goal = care_companion_get_number_format_goal( $form_id );
         ?>
-        <div class="care-companion-successful-campaigns care-companion-recent-campaigns-grid column-<?php echo esc_attr( absint( $columns ) ); ?>"
-            data-form-id="<?php echo esc_attr( $form_id ); ?>"
-            data-progress-symbol="<?php echo esc_attr( $progress_symbol ); ?>"
 
-            data-progress-donation="<?php echo esc_attr( $progress_donation ); ?>"
+        <?php if ( $income >= $goal && 0 !== $income  ) : ?>
 
-            data-progress-color="<?php echo esc_attr( $progress_color ); ?>"
+            <div class="care-companion-successful-campaigns care-companion-recent-campaigns-grid column-<?php echo esc_attr( absint( $columns ) ); ?>"
+                data-form-id="<?php echo esc_attr( $form_id ); ?>"
+                data-progress-symbol="<?php echo esc_attr( $progress_symbol ); ?>"
 
-            data-progress-transition-duration="<?php echo esc_attr( $progress_transition_duration ); ?>"
-            data-shortcode="cc_recent_campaigns"
-        >
-            <div class="row main-container">
+                data-progress-donation="<?php echo esc_attr( $progress_donation ); ?>"
 
-                <div class="col-md-12 donation-left-section">
+                data-progress-color="<?php echo esc_attr( $progress_color ); ?>"
 
-                    <div class="background-overlay" style="background-color:<?php echo esc_attr( $container_primary_fill ); ?>"></div>
+                data-progress-transition-duration="<?php echo esc_attr( $progress_transition_duration ); ?>"
+                data-shortcode="cc_recent_campaigns"
+            >
+                <div class="row main-container">
+
+                    <div class="col-md-12 donation-left-section">
+
+                        <div class="background-overlay" style="background-color:<?php echo esc_attr( $container_primary_fill ); ?>"></div>
 
 
-                    <?php if ( ! empty( $background_image ) ) { ?>
-                        <div class="donation-featured-image" style="background-image: url('<?php echo esc_attr( $background_image ); ?>');"></div>
-                    <?php } else { ?>
-                        <div class="donation-featured-image" style="background-color: <?php echo esc_attr( $container_fill ); ?>;">
-                            <i class="donation-icon fa fa-heart" style="color: <?php echo esc_attr( $progress_color ); ?>;"></i>
+                        <?php if ( ! empty( $background_image ) ) { ?>
+                            <div class="donation-featured-image" style="background-image: url('<?php echo esc_attr( $background_image ); ?>');"></div>
+                        <?php } else { ?>
+                            <div class="donation-featured-image" style="background-color: <?php echo esc_attr( $container_fill ); ?>;">
+                                <i class="donation-icon fa fa-heart" style="color: <?php echo esc_attr( $progress_color ); ?>;"></i>
+                            </div>
+                        <?php }?>
+
+                        <div class="col-md-12 information-wrapper">
+                            <div class="col-md-12 information-inner-wrap">
+                                <div class="col-md-7 information-inner-left">
+
+                                    <h1 class="donation-title">
+                                        <a class="dark" href="<?php echo esc_url( get_permalink( $form_id ) ); ?>" title="<?php echo esc_attr( get_the_title( $form_id ) ); ?>">
+                                            <?php echo esc_html( get_the_title( $form_id ) ); ?>
+                                        </a>
+                                    </h1>
+
+                                    <div class="action-section">
+                                        <span class="donation-action">
+                                            <i class="fa fa-heart primary care-companion-icon"></i>
+                                            <?php
+                                                $donation_count = care_companion_get_donations_count( $form_id );
+                                                echo sprintf( _n( '%d Donation', '%d Donations', $donation_count, 'care-companion' ), $donation_count );
+                                            ?>
+                                        </span>
+
+                                        <span class="donation-gap">
+                                            <?php echo esc_html( '|', 'care-companion' ); ?>
+                                        </span>
+
+                                        <span class="donation-action">
+                                            <i class="fa fa-share-alt primary care-companion-icon"></i>
+                                            <?php echo esc_html( 'Share', 'care-companion' ); ?>
+                                        </span>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-5 information-inner-right">
+                                    <?php if ( 'true' === $published_date ) { ?>
+                                        <?php care_companion_published_date_box( $form_id ); ?>
+                                    <?php } ?>
+                                </div>
+                            </div>
+
                         </div>
-                    <?php }?>
-
-                    <div class="col-md-12 information-wrapper">
-                        <h1 class="donation-title">
-                            <?php echo get_the_title( $form_id ); ?>
-                        </h1>
-
-                        <div class="action-section">
-                            <span class="donation-action">
-                                <i class="fa fa-heart primary care-companion-icon"></i>
-                                <?php
-                                    $donation_count = care_companion_get_donations_count( $form_id );
-                                    echo sprintf( _n( '%d Donation', '%d Donations', $donation_count, 'care-companion' ), $donation_count );
-                                ?>
-                            </span>
-
-                            <span class="donation-gap">
-                                <?php echo esc_html( '|', 'care-companion' ); ?>
-                            </span>
-
-                            <span class="donation-action">
-                                <i class="fa fa-share-alt primary care-companion-icon"></i>
-                                <?php echo esc_html( 'Share', 'care-companion' ); ?>
-                            </span>
-
-                        </div>
-                        <?php
-
-                            $date = get_the_date( 'l, F j, Y', $form_id );
-                            echo $date;
-
-                        ?>
-
-                        <?php if ( 'true' === $published_date ) { ?>
-                            <span class="published-date primary">
-                                <?php care_companion_published_date( $form_id ); ?>
-                            </span>
-                        <?php } ?>
 
                     </div>
-
                 </div>
+
             </div>
 
-        </div>
+        <?php endif; ?>
 
     <?php endwhile; ?>
 

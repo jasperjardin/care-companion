@@ -83,23 +83,30 @@ function care_companion_replace_first_text_occurance($search, $replace, $source)
 
 }
 
-function change_order_for_events( $query ) {
-    //only show future events and events in the last 24hours
+// function change_order_for_events( $query ) {
+//     //only show future events and events in the last 24hours
+//
+//     if ( $query->is_main_query()  ) {
+//         if ( is_post_type_archive('give_forms') ) {
+//             $query->set( 'meta_key', '_give_form_earnings' );
+//             $query->set( 'orderby', '_give_form_earnings' );
+//             $query->set( 'order', 'ASC' );
+//             $query->set( 'meta_value', '0' );
+//             $query->set( 'meta_compare', '>' );
+//         }
+//     }
+//
+// }
+//
+// add_action( 'pre_get_posts', 'change_order_for_events' );
 
-    if ( $query->is_main_query()  ) {
-        if ( is_post_type_archive('give_forms') ) {
-            $query->set( 'meta_key', '_give_form_earnings' );
-            $query->set( 'orderby', '_give_form_earnings' );
-            $query->set( 'order', 'ASC' );
-            $query->set( 'meta_value', '0' );
-            $query->set( 'meta_compare', '>' );
-        }
+function care_companion_get_number_format_income( $form_id = '' ) {
+    if ( ! empty( $form_id ) ) {
+        $donation = care_companion_get_donation_info( $form_id );
+        return absint( $donation[ 'number-format-income' ] );
     }
-
+    return;
 }
-
-add_action( 'pre_get_posts', 'change_order_for_events' );
-
 function care_companion_get_donation_income( $form_id = '' ) {
     if ( ! empty( $form_id ) ) {
         $donation = care_companion_get_donation_info( $form_id );
@@ -116,6 +123,13 @@ function care_companion_get_formated_donation_income( $form_id = '' ) {
     return;
 }
 
+function care_companion_get_number_format_goal( $form_id = '' ) {
+    if ( ! empty( $form_id ) ) {
+        $donation = care_companion_get_donation_info( $form_id );
+        return absint( $donation[ 'number-format-goal' ] );
+    }
+    return;
+}
 function care_companion_get_donation_goal( $form_id = '' ) {
     if ( ! empty( $form_id ) ) {
         $donation = care_companion_get_donation_info( $form_id );
@@ -143,7 +157,9 @@ function care_companion_get_donation_progress( $form_id = '' ) {
     return;
 }
 
-function care_companion_donate_button( $form_id = '', $text = '', $class_name = '' ) {
+function care_companion_donate_button( $form_id = '', $text = '', $class_name = '', $title = '', $background = '' ) {
+
+    $style = '';
 
     if ( empty( $text ) ) {
         $text = esc_html( 'Donate', 'care-companion' );
@@ -153,16 +169,26 @@ function care_companion_donate_button( $form_id = '', $text = '', $class_name = 
         $class_name = 'donate';
     }
 
+    if ( empty( $title ) ) {
+        $title = esc_attr( 'Donate', 'care-companion' );
+    }
+
+    if ( ! empty( $background ) ) {
+        $style = esc_attr( 'style=background-color:' . $background );
+    }
+
     if ( ! empty( $form_id ) ) {
         $the_permalink = get_permalink( $form_id );
 
-        echo '<a href="' . esc_url( $the_permalink ) . '#give-form-' . esc_attr( $form_id ) . '" class="care-companion-btn ' . $class_name . '">' . $text . '</a>';
+        echo '<a href="' . esc_url( $the_permalink ) . '#give-form-' . esc_attr( $form_id ) . '" class="care-companion-btn ' . esc_attr( $class_name ) . '"' . $style . ' title="' . esc_attr( $title ) . '" >' . esc_html( $text ) . '</a>';
     }
 
     return;
 }
 
-function care_companion_details_button( $form_id = '', $text = '', $class_name = '' ) {
+function care_companion_details_button( $form_id = '', $text = '', $class_name = '', $title = '', $background = '' ) {
+
+    $style = '';
 
     if ( empty( $text ) ) {
         $text = esc_html( 'Details', 'care-companion' );
@@ -172,10 +198,19 @@ function care_companion_details_button( $form_id = '', $text = '', $class_name =
         $class_name = 'details';
     }
 
+    if ( empty( $title ) ) {
+        $title = esc_attr( 'Details', 'care-companion' );
+    }
+
+    if ( ! empty( $background ) ) {
+        $style = esc_attr( 'style=background-color:' . $background );
+    }
+
+
     if ( ! empty( $form_id ) ) {
         $the_permalink = get_permalink( $form_id );
 
-        echo '<a href="' . esc_url( $the_permalink ) . '" class="care-companion-btn ' . $class_name . '">' . $text . '</a>';
+        echo '<a href="' . esc_url( $the_permalink ) . '" class="care-companion-btn ' . esc_attr( $class_name ) . '"' . $style . ' title="' . esc_attr( $title ) . '" >' . esc_html( $text ) . '</a>';
     }
 
     return;
@@ -203,19 +238,37 @@ function care_companion_published_date( $form_id = '', $prefix_text = '', $suffi
 
     return;
 }
-function care_companion_published_date_box( $form_id = '' ) { ?>
+function care_companion_published_date_box( $form_id = '', $column_left = '', $column_right = '', $separator = '' ) { ?>
     <?php
+    if ( empty( $column_left ) ) {
+        $column_left = 5;
+    }
+    if ( empty( $column_right ) ) {
+        $column_right = 7;
+    }
+    if ( empty( $separator ) ) {
+        $separator = esc_html( ', ', 'care-companion' );
+    }
         $day = get_the_date( 'l', $form_id );
         $month = get_the_date( 'M', $form_id );
-        $date = get_the_date( 'j', $form_id );
+        $date = get_the_date( 'd', $form_id );
         $year = get_the_date( 'Y', $form_id );
         if ( ! empty( $form_id ) ) {
     ?>
-        <div class="published-date-box primary">
+        <div class="published-date-box border-primary dark">
+            <div class="col-md-<?php echo esc_attr( absint( $column_left ) ); ?> left-section">
+                <span class="date"><?php echo esc_html( $date ); ?></span>
+            </div>
+            <div class="col-md-<?php echo esc_attr( absint( $column_right ) ); ?> right-section">
+                <span class="month"><?php echo esc_html( $month ) . $separator; ?></span>
+                <span class="year"><?php echo esc_html( $year ); ?></span>
+                <span class="day"><?php echo esc_html( $day ); ?></span>
+            </div>
         </div>
     <?php } ?>
 
 <?php }
+
 function care_companion_get_featured_image_url( $form_id = '', $size = '' ) {
 
     $src = '';
@@ -263,6 +316,8 @@ function care_companion_get_donation_info( $form_id = '' ) {
     $donation_progress = '';
     $formated_donation_income = '';
     $formated_donation_goal = '';
+    $number_format_income = '';
+    $number_format_goal = '';
     $donation = array();
 
     /**
@@ -298,6 +353,8 @@ function care_companion_get_donation_info( $form_id = '' ) {
 
 	if ( ! empty( $form_id ) ) :
 
+        $number_format_income = $form->get_earnings();
+        $number_format_goal = $form->get_goal();
         // Get formatted amount.
         $donation_income = give_human_format_large_amount( give_format_amount( $income ) );
         $donation_goal   = give_human_format_large_amount( give_format_amount( $goal ) );
@@ -307,6 +364,8 @@ function care_companion_get_donation_info( $form_id = '' ) {
         $donation_progress = round( $progress );
 
         $donation = array(
+            'number-format-income' => $number_format_income,
+            'number-format-goal' => $number_format_goal,
             'income' => $donation_income,
             'goal' => $donation_goal,
             'formated-income' => $formated_donation_income,

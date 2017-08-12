@@ -25,7 +25,9 @@
 
             <div class="col-md-12 information-wrapper">
                 <h1 class="donation-title">
-                    <?php echo get_the_title( $form_id ); ?>
+                    <a class="dark" href="<?php echo esc_url( get_permalink( $form_id ) ); ?>" title="<?php echo esc_attr( get_the_title( $form_id ) ); ?>">
+                        <?php echo esc_html( get_the_title( $form_id ) ); ?>
+                    </a>
                 </h1>
 
                 <div class="action-section">

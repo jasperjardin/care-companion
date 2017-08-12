@@ -1,4 +1,35 @@
 .care-companion-successful-campaigns {
     @extend .care-companion-recent-campaigns;
-
+    .information-wrapper {
+        padding: 35px 25px 10px;
+    }
+    .information-inner-wrap {
+        padding: 0;
+    }
+    .information-inner-left,
+    .information-inner-right {
+        padding: 0;
+    }
+    .information-inner-left {
+        padding-top: 5px;
+    }
+    .left-section {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .right-section {
+        padding-top: 7.5px;
+        padding-left: 12.5px;
+        padding-right: 0;
+    }
+    .information-inner-left {
+        h1.donation-title {
+            @extend .care-companion-ellipsis;
+            max-width: 190px;
+            font-size: 18px;
+            line-height: 18px;
+            margin-top: 2.5px;
+            margin-bottom: 0;
+        }
+    }
 }

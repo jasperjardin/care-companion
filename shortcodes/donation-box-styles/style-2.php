@@ -5,7 +5,7 @@
             <div class="background-overlay" style="background-color:<?php echo esc_attr( $container_primary_fill ); ?>"></div>
 
             <h1 class="donation-title">
-                <?php echo get_the_title( $form_id ); ?>
+                <?php echo esc_html( get_the_title( $form_id ) ); ?>
             </h1>
 
             <div class="action-section">
@@ -29,7 +29,7 @@
 
             <?php care_companion_give_the_content( $form_id );  ?>
 
-            <?php echo care_companion_donate_button( $form_id, esc_html( 'Donate Now', 'care-companion' ) ); ?>
+            <?php echo care_companion_donate_button( $form_id, esc_html( 'Donate Now', 'care-companion' ), '', esc_attr( 'Donate Now', 'care-companion' ) ); ?>
 
         </div>
         <div class="col-md-5 donation-right-section">

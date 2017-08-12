@@ -8,6 +8,9 @@
 }
 .dark {
     color: $dark;
+    &:hover {
+        color: $dark;
+    }
 }
 .primary {
     color: $primary;
@@ -122,5 +125,31 @@
     }
     &:hover {
         color: #f6f8f9;
+    }
+}
+
+.published-date-box {
+    border-width: 2px;
+    border-style: solid;
+    padding: 0 10px;
+    display: inline-block;
+    font-weight: bold;
+    .date {
+        font-size: 48px;
+        line-height: normal;
+    }
+    .left-section,
+    .right-section {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .left-section {
+        text-align: center;
+    }
+    .right-section {
+        min-height: 56px;
+        padding-top: 7.5px;
+        padding-left: 15px;
+        margin-left: -2px;
     }
 }

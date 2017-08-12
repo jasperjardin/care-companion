@@ -69,6 +69,20 @@ final class PluginShortcodes
                 'registerCCSuccessfulCampaigns'
             )
         );
+        add_shortcode(
+            'cc_serch_form',
+            array(
+                $this,
+                'registerCCSearchForm'
+            )
+        );
+        add_shortcode(
+            'cc_donate_button',
+            array(
+                $this,
+                'registerCCDonateButton'
+            )
+        );
         return $this;
     }
 
@@ -185,6 +199,67 @@ final class PluginShortcodes
 
         return $this->display( $atts, $file );
     }
+
+    /**
+     * This method registers the cc_serch_form shortcode.
+     *
+     * @param array $atts The attributes for the shortcode.
+     *
+     * @since  1.0.0
+     * @access public
+     * @return array $atts Returns the set attributes for the shortcode.
+     */
+    public function registerCCSearchForm( $atts )
+    {
+
+        $atts = shortcode_atts(
+            array(
+                'title' => __( 'Search for Causes', 'care-companion' ),
+                'sub_title' => 'These days are all share them with me oh baby said ins knew it was much more than a hunch.',
+                'color' => '',
+                'background_image_url' => '',
+                'search_text' => __( 'Keywords', 'care-companion' ),
+                'search_button_text' => __( 'Search Here', 'care-companion' ),
+            ),
+            $atts,
+            'cc_serch_form'
+        );
+
+        $file = 'donation-search.php';
+
+        return $this->display( $atts, $file );
+    }
+
+    /**
+     * This method registers the cc_donate_button shortcode.
+     *
+     * @param array $atts The attributes for the shortcode.
+     *
+     * @since  1.0.0
+     * @access public
+     * @return array $atts Returns the set attributes for the shortcode.
+     */
+    public function registerCCDonateButton( $atts )
+    {
+
+        $atts = shortcode_atts(
+            array(
+                'form_id' => '',
+                'text' => __( 'Donate', 'care-companion' ),
+                'title' => __( 'Donate', 'care-companion' ),
+                'background_color' => '',
+                'class_name' => '',
+
+            ),
+            $atts,
+            'cc_donate_button'
+        );
+
+        $file = 'donate-button.php';
+
+        return $this->display( $atts, $file );
+    }
+
     /**
      * This method sets the template for the reference_loop shortcode.
      *

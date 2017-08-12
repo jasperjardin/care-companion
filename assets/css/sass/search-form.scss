@@ -1,0 +1,36 @@
+.care-companion-search-field {
+    background-image: url('images/search-form-background.png');
+    background-size: cover;
+    padding: 50px;
+
+    .search-title {
+        font-size: 24px;
+    }
+    .search-subtitle {
+        color: #b8b8b8;
+    }
+    .search-field {
+        background-color: #f3f3f3;
+        border-radius: 6px;
+        color: #7b7b7b;
+        &::-webkit-input-placeholder {
+           font-style: italic;
+        }
+        &:-moz-placeholder {
+           font-style: italic;
+        }
+        &::-moz-placeholder {
+           font-style: italic;
+        }
+        &:-ms-input-placeholder {
+           font-style: italic;
+        }
+    }
+
+    .search-button {
+        width: 100%;
+        .search-icon {
+            margin-right: 10px;
+        }
+    }
+}

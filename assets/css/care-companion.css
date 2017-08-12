@@ -1,4 +1,4 @@
-.care-companion-ellipsis, .care-companion-donation-box.style-5 .information-inner-wrap-left h1.donation-title {
+.care-companion-ellipsis, .care-companion-successful-campaigns .information-inner-left h1.donation-title, .care-companion-donation-box.style-5 .information-inner-wrap-left h1.donation-title {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -53,6 +53,10 @@
 }
 
 .dark {
+  color: #444;
+}
+
+.dark:hover {
   color: #444;
 }
 
@@ -177,6 +181,36 @@
 
 .care-companion-btn:hover {
   color: #f6f8f9;
+}
+
+.published-date-box {
+  border-width: 2px;
+  border-style: solid;
+  padding: 0 10px;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.published-date-box .date {
+  font-size: 48px;
+  line-height: normal;
+}
+
+.published-date-box .left-section,
+.published-date-box .right-section {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.published-date-box .left-section {
+  text-align: center;
+}
+
+.published-date-box .right-section {
+  min-height: 56px;
+  padding-top: 7.5px;
+  padding-left: 15px;
+  margin-left: -2px;
 }
 
 .care-companion-recent-campaigns, .care-companion-successful-campaigns, .care-companion-donation-box.style-4, .care-companion-donation-box.style-5 {
@@ -345,6 +379,42 @@
 
 .care-companion-recent-campaigns-grid.column-4:nth-child(4n) {
   margin-right: 0;
+}
+
+.care-companion-successful-campaigns .information-wrapper {
+  padding: 35px 25px 10px;
+}
+
+.care-companion-successful-campaigns .information-inner-wrap {
+  padding: 0;
+}
+
+.care-companion-successful-campaigns .information-inner-left,
+.care-companion-successful-campaigns .information-inner-right {
+  padding: 0;
+}
+
+.care-companion-successful-campaigns .information-inner-left {
+  padding-top: 5px;
+}
+
+.care-companion-successful-campaigns .left-section {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.care-companion-successful-campaigns .right-section {
+  padding-top: 7.5px;
+  padding-left: 12.5px;
+  padding-right: 0;
+}
+
+.care-companion-successful-campaigns .information-inner-left h1.donation-title {
+  max-width: 190px;
+  font-size: 18px;
+  line-height: 18px;
+  margin-top: 2.5px;
+  margin-bottom: 0;
 }
 
 .care-companion-donation-box {
@@ -682,6 +752,50 @@
 
 .care-companion-donation-box.style-5 .action-section {
   padding: 0;
+}
+
+.care-companion-search-field {
+  background-image: url("images/search-form-background.png");
+  background-size: cover;
+  padding: 50px;
+}
+
+.care-companion-search-field .search-title {
+  font-size: 24px;
+}
+
+.care-companion-search-field .search-subtitle {
+  color: #b8b8b8;
+}
+
+.care-companion-search-field .search-field {
+  background-color: #f3f3f3;
+  border-radius: 6px;
+  color: #7b7b7b;
+}
+
+.care-companion-search-field .search-field::-webkit-input-placeholder {
+  font-style: italic;
+}
+
+.care-companion-search-field .search-field:-moz-placeholder {
+  font-style: italic;
+}
+
+.care-companion-search-field .search-field::-moz-placeholder {
+  font-style: italic;
+}
+
+.care-companion-search-field .search-field:-ms-input-placeholder {
+  font-style: italic;
+}
+
+.care-companion-search-field .search-button {
+  width: 100%;
+}
+
+.care-companion-search-field .search-button .search-icon {
+  margin-right: 10px;
 }
 
 /*# sourceMappingURL=care-companion.css.map */

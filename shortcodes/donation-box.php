@@ -28,7 +28,7 @@ extract( $atts );
 /**
  * Donation Box Style Filter
  */
-$allowed_styles = array( 'style-1', 'style-2', 'style-3', 'style-4', 'style-5', 'style-6' );
+$allowed_styles = array( 'style-1', 'style-2', 'style-3', 'style-4', 'style-5');
 $background_image = '';
 
 if (! in_array( $layout_style, $allowed_styles, true ) ) {
@@ -66,14 +66,6 @@ $args = array(
     'p' => $form_id,
     'post_type' => 'give_forms'
 );
-/**
- * @todo Remove this $form_id_x
- */
-$form_id_x = '2908'; // 3 weeks | Yolanda Campaign
-$form_id_x = '2972'; // 2 weeks | Rescue Me from Me
-$form_id_x = '2970'; // 2 weeks | Rescue The Sherif
-$form_id_x = '2960'; // 2 weeks | The Big One Campaign
-$form_id_x = '2987'; // 2 mins | The Nuclear War
 
 $form = new WP_Query( $args ); ?>
 
