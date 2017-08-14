@@ -130,7 +130,7 @@ final class Loader
         /**
          * This class handles the registration of the plugins metaboxes.
          */
-        // include_once plugin_dir_path(dirname(__FILE__)) . 'classes/care-companion-metabox.php';
+        include_once plugin_dir_path(dirname(__FILE__)) . 'classes/plugin-metabox.php';
 
         /**
          * This class handles the structure of the Reference Breadcrumbs.
@@ -147,15 +147,15 @@ final class Loader
          */
         // include_once plugin_dir_path(dirname(__FILE__)) . 'classes/care-companion-action-hooks.php';
 
-        $this->loader = new AddFiltersActions();
+        $this->loader = new \DSC\CareCompanion\AddFiltersActions();
 
-        new PluginShortcodes();
+        new \DSC\CareCompanion\PluginShortcodes();
 
         // new ActionHooks();
 
         // new Options();
 
-        // new Metabox();
+        new \DSC\CareCompanion\Metabox();
 
     }
     /**

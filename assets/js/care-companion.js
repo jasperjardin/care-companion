@@ -85,14 +85,14 @@ jQuery(document).ready( function($) {
             var progress_start_width = care_companion_set_options( __this_parent, 'data-progress-start-width', '1' );
             var progress_end_color = care_companion_set_options( __this_parent, 'data-progress-end-color', '#333' );
             var progress_end_width = care_companion_set_options( __this_parent, 'data-progress-end-width', '1' );
-/**
- * @todo remove progress_donation = 50
- */
-if ( '2908' === form_id ) {
-    progress_donation = 50;
-}
 
             var progress_bar_width = care_companion_get_percentage( circle, progress_donation );
+
+            var progress_text_color = '';
+
+            if ( __this_parent.hasClass('causes-single') ) {
+                progress_text_color = care_companion_set_options( __this_parent, 'progress-text-color', '#f8b864' );
+            }
 
             if ( 'Circle' === progress_shape ) {
                 progress_offset = circle;
@@ -376,6 +376,11 @@ if ( '2908' === form_id ) {
                     };
 
                     progress_bar = new ProgressBar.Path( path_element_child, $settings );
+                }
+
+
+                if ( __this_parent.hasClass( 'causes-single' ) ) {
+                    __this_parent.find( '.progressbar-text' ).css( 'color', progress_text_color );
                 }
 
                 __this.css( 'font-size', progress_text_size );

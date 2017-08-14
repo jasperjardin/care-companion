@@ -87,6 +87,11 @@ final class PublicPages
         $this->version = $version;
 
         add_filter('body_class', array($this, 'setBodyClass'));
+
+        /**
+         * Templates
+         */
+         add_filter( 'template_include', array( $this, 'template_loader' ) );
     }
     /**
      * This method enqueue the CSS filess for the frontend of the Reference plugin.
@@ -158,7 +163,7 @@ final class PublicPages
                 wp_enqueue_script($this->name);
             }
 
-            if ( has_shortcode( $post->post_content, 'cc_donation_box' ) ) {
+            if ( is_singular( 'dsc-causes' ) || has_shortcode( $post->post_content, 'cc_donation_box' ) ) {
                 wp_enqueue_script(
                     'care-conpanion-progress',
                     plugin_dir_url(dirname(__FILE__)) . 'assets/js/progressbar.min.js',
@@ -224,6 +229,40 @@ final class PublicPages
         );
 
         return $shortcodes;
+    }
+
+    /**
+     * Load a template.
+     *
+     * Handles rendering of the plugin template usage so that the plugin can use its own template instead of the theme.
+     *
+     * Templates are in the 'templates' folder. looks for theme
+     * overrides in /theme/dsc-causes/ by default.
+     *
+     * @access public
+     *
+     * @param  mixed  $template
+     *
+     * @return string $template
+     */
+    public static function template_loader( $template ) {
+        $find = array( 'care-companion.php' );
+        $file = '';
+
+        if ( is_single() && get_post_type() == 'dsc-causes' ) {
+            $file   = 'single-dsc-causes.php';
+            $find[] = $file;
+            $find[] = apply_filters( 'care_companion_template_path', 'dsc-causes/' ) . $file;
+        }
+
+        if ( $file ) {
+            $template = locate_template( array_unique( $find ) );
+            if ( ! $template ) {
+                $template = CARE_COMPANION_PATH . '/templates/' . $file;
+            }
+        }
+
+        return $template;
     }
 
     /**

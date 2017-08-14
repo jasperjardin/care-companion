@@ -798,4 +798,47 @@
   margin-right: 10px;
 }
 
+.entry-description-title,
+.entry-content-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+body.single-dsc-causes #content.site-content #primary.content-area article.hentry .entry-thumbnail img {
+  margin-bottom: 0;
+}
+
+body.single-dsc-causes .information-section {
+  background-color: #fbfbfb;
+  border: 1px solid #f5f5f5;
+  padding: 50px 40px;
+  margin-bottom: 30px;
+}
+
+body.single-dsc-causes .information-section .donation-raised {
+  color: #333;
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+body.single-dsc-causes .information-section .care-companion-donation-box {
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+
+body.single-dsc-causes .information-section .progressbar-text {
+  display: inline-block;
+  font-size: inherit;
+  position: absolute;
+  top: 20%;
+  left: 0;
+}
+
+body.single-dsc-causes .action-section {
+  margin-bottom: 15px;
+}
+
 /*# sourceMappingURL=care-companion.css.map */

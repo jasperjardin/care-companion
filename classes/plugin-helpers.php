@@ -78,4 +78,48 @@ final class Helper
 
         return $wp_query;
     }
+
+    /**
+     * This method is used to fetch the Donation Forms.
+     *
+     * @since  1.0.0
+     * @access public
+     * @return array $published_forms Returns the $published_forms.
+     */
+    public static function getDonationForms( $orderby = '', $order = '' )
+    {
+        $args = '';
+        $forms = '';
+        $posts = '';
+
+        if ( empty ( $orderby ) ) {
+            $orderby = 'name';
+        }
+        if ( empty ( $order ) ) {
+            $order = 'ASC';
+        }
+
+        $args = array(
+            'post_type' => 'give_forms',
+            'post_status' => 'publish',
+        	'orderby' => $orderby,
+        	'order' => $order,
+        );
+
+        $forms = new WP_Query( $args );
+
+        $published_forms = $forms->posts;
+
+        $filtered_forms = array();
+        if ( ! empty( $published_forms ) ) {
+            foreach ( $published_forms as $key ) {
+                $filtered_forms[ $key->ID ] = array(
+                    'id' => $key->ID,
+                    'post_title' => $key->post_title
+                );
+            }
+            return $filtered_forms;
+        }
+        return;
+    }
 }
