@@ -63,7 +63,7 @@
 
                     </div>
 
-                    <?php echo care_companion_donate_button( $form_id ); ?>
+                    <?php echo care_companion_donate_button( $form_id, $button_text, $button_class, $button_title, $button_color ); ?>
 
                 </div>
 

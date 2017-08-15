@@ -106,6 +106,11 @@ final class PluginShortcodes
                 'container_primary_fill' => '#f8b864',
                 'published_date' => 'true',
 
+                'button_color' => '#eb5439',
+                'button_text' => '',
+                'button_title' => '',
+                'button_class' => '',
+
                 'progress_symbol' => '%',
 
                 'progress_text' => 'Completed',

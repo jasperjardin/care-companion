@@ -35,7 +35,7 @@
 
             <?php care_companion_give_the_content( $form_id );  ?>
 
-            <?php echo care_companion_donate_button( $form_id, esc_html( 'Join Now', 'care-companion' ), 'background-secondary', esc_attr( 'Join Now', 'care-companion' ) ); ?>
+            <?php echo care_companion_donate_button( $form_id, $button_text, $button_class, $button_title, $button_color ); ?>
 
         </div>
         <div class="col-md-12 donation-right-section">

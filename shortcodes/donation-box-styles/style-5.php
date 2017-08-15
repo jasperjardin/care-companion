@@ -56,7 +56,7 @@
                 <div class="footer-wrapper col-md-12 dark">
 
                     <div class="donate-section col-md-6">
-                        <?php echo care_companion_donate_button( $form_id, esc_attr( 'Donate Now', 'care-companion') ); ?>
+                        <?php echo care_companion_donate_button( $form_id, $button_text, $button_class, $button_title, $button_color ); ?>
                     </div>
 
                     <div class="action-section col-md-6">
