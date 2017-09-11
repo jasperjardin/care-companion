@@ -516,6 +516,14 @@
   padding-top: 20px;
 }
 
+.care-companion-donation-box.style-1.Circle .care-companion-progress-bar {
+  line-height: 0;
+}
+
+.care-companion-donation-box.style-1.Circle .progressbar-section {
+  padding: 0 10%;
+}
+
 .care-companion-donation-box.style-2 {
   background-size: cover;
   padding: 0;

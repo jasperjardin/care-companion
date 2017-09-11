@@ -244,8 +244,9 @@ function care_companion_get_formated_donation_goal( $form_id = '' ) {
     }
 
     if ( ! empty( $form_id ) ) {
+        $currency_symbol = give_currency_symbol();
         $donation = care_companion_get_donation_info( $form_id );
-        return $donation['formated-goal'];
+        return $currency_symbol . $donation['goal'];
     }
     return;
 }
