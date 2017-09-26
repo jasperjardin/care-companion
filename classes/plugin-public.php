@@ -128,7 +128,7 @@ final class PublicPages
     }
 
     /**
-     * This method enqueue the JS files for the frontend of the Reference plugin.
+     * This method enqueue the JS files for the frontend of the plugin.
      *
      * @since  1.0.0
      * @access public
@@ -161,6 +161,16 @@ final class PublicPages
                     false
                 );
                 wp_enqueue_script($this->name);
+
+                wp_register_script(
+                    'care-companion-share-count',
+                    plugin_dir_url(dirname(__FILE__)) . 'assets/js/share-count.js',
+                    array('jquery'),
+                    $this->version,
+                    false
+                );
+                wp_enqueue_script( 'care-companion-share-count' );
+
             }
 
             if ( is_singular( 'dsc-causes' ) || has_shortcode( $post->post_content, 'cc_donation_box' ) ) {
@@ -173,6 +183,94 @@ final class PublicPages
                 );
             }
         }
+        return;
+    }
+
+    /**
+     * This method enqueue theLocalization Scripts for the frontend of the plugin.
+     *
+     * @since  1.0.0
+     * @access public
+     * @return void
+     */
+    public function setLocalizeScripts( $id = '' )
+    {
+        $post = Helper::globalPost();
+        $shortcodes = self::getShortcodes();
+
+        if (!isset($post)) {
+            return;
+        }
+
+        foreach ( $shortcodes as $shortcode ) {
+            if (self::isPluginComponentActive(
+                'dsc-causes',
+                'dsc-causes',
+                array(
+                    'dsc-causes-categories',
+                    'dsc-causes-tags'
+                ),
+                $shortcode
+            )) {
+                $title = get_the_title('2908');
+
+                $permalink = get_the_permalink('2908');
+// @not_finished
+                // $str = '[video="123456" align="left"/][video="123457" align="right"/]';
+                // $str = $post->post_content;
+                //
+                // preg_match_all('~\[form_id="(\d+?)" align="(.+?)"/\]~', $str, $matches);
+                //
+                // $arr = array_combine($matches[1], $matches[2]);
+                // print_r( $arr );
+                // echo '<br>';
+
+
+                // $str = '[video="123456" align="left"/][video="123457" align="right"/]';
+                //
+                // $matches = array();
+                // preg_match_all('/\[video="(?P<video>\d+?)"\salign="(?P<align>\w+?)"\/\]/', $str, $matches);
+                //
+                // for ($i = 0; $i < count($matches[0]); ++ $i) {
+                //     print "Video: ".$matches['video'][$i]." Align: ".$matches['align'][$i]."\n";
+                // }
+                // print_r(array_combine($matches['video'], $matches['align']));
+                // echo '<br>';
+
+                $x = Helper::getShortcodeParameter( $post->post_content, 'cc_donation_box' );
+                var_dump( $x );
+                var_dump( $post->post_content );
+
+
+
+
+                $fb_sharer_url = sprintf("https://www.facebook.com/sharer/sharer.php?u=%s", $permalink );
+
+                $tw_sharer_url = sprintf("http://twitter.com/share?text=%s&url=%s", esc_attr( $title ), $permalink );
+
+                $li_sharer_url = sprintf("https://www.linkedin.com/shareArticle?mini=true&url=%s&title=%s", $permalink, esc_attr( $title ) );
+
+                $gp_sharer_url = sprintf("https://plus.google.com/share?url=%s", $permalink );
+
+                $rd_sharer_url = sprintf("http://www.reddit.com/submit?url=%s&title=%s", $permalink, esc_attr( $title ) );
+
+                // Localize the script with new data.
+                $translation_array = array(
+                    'fb_sharer_url' => $fb_sharer_url,
+                    'tw_sharer_url' => $tw_sharer_url,
+                    'li_sharer_url' => $li_sharer_url,
+                    'gp_sharer_url' => $gp_sharer_url,
+                    'rd_sharer_url' => $rd_sharer_url,
+                );
+
+                // Attach localisation to our main script.
+                wp_localize_script( $this->name, 'care_companion_sharer_js_vars', $translation_array );
+
+                // Enqueued script with localized data.
+                wp_enqueue_script( 'care_companion_sharer_js_vars' );
+            }
+        }
+
         return;
     }
 

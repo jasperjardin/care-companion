@@ -491,6 +491,11 @@
   background: rgba(0, 0, 0, 0.87);
 }
 
+.care-companion-donation-box.style-1 .care-companion-entry-share {
+  position: relative;
+  top: -2.5px;
+}
+
 .care-companion-donation-box.style-1 .donation-information-section {
   text-align: center;
   padding: 0;
@@ -596,7 +601,7 @@
 }
 
 .care-companion-donation-box.style-3 {
-  max-width: 450px;
+  width: 450px;
   padding: 0;
   vertical-align: top;
   display: inline-block;
@@ -670,9 +675,13 @@
   float: none;
 }
 
+.care-companion-donation-box.style-4 {
+  max-width: none;
+}
+
 .care-companion-donation-box.style-5 {
   width: 49.80%;
-  max-width: 420px;
+  max-width: none;
   display: inline-block;
   vertical-align: top;
 }
@@ -760,6 +769,98 @@
 
 .care-companion-donation-box.style-5 .action-section {
   padding: 0;
+}
+
+/**
+ * Care Companion Entry Share
+ */
+.care-companion-entry-share {
+  margin-bottom: 15px;
+  display: inline-block;
+}
+
+.care-companion-entry-share .entry-share-left,
+.care-companion-entry-share .entry-share-right {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.care-companion-entry-share .entry-share-left {
+  margin-right: 15px;
+}
+
+.care-companion-entry-share > span {
+  float: left;
+  line-height: 32.5px;
+  margin-right: 10px;
+}
+
+.care-companion-entry-share ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  float: left;
+}
+
+.care-companion-entry-share ul li {
+  margin-right: 5px;
+  float: left;
+}
+
+.care-companion-entry-share ul li:hover a {
+  background-position-y: -42px;
+}
+
+.care-companion-entry-share ul li.twitter-share a {
+  background-position-x: -39px;
+}
+
+.care-companion-entry-share ul li.linkedin-share a {
+  background-position-x: -76px;
+}
+
+.care-companion-entry-share ul li.google-plus-share a {
+  background-position-x: -112px;
+}
+
+.care-companion-entry-share ul li.reddit-share a {
+  background-position-x: -148px;
+}
+
+.care-companion-entry-share ul li.email-share a {
+  background-position-x: -183px;
+}
+
+.care-companion-entry-share ul li:last-of-type {
+  margin-right: 0;
+}
+
+.care-companion-entry-share ul li a {
+  width: 32.5px;
+  height: 32.5px;
+  background-image: url("images/social_sprites.png");
+  background-position: -3px -3px;
+  float: left;
+  display: inline-block;
+  zoom: 0.70;
+}
+
+.care-companion-entry-share .entry-website-link {
+  background-color: #f6f8f9;
+  line-height: 32.5px;
+  padding: 0 20px;
+  float: right;
+  display: inline-block;
+}
+
+.care-companion-entry-share .entry-website-link span {
+  line-height: 32.5px;
+  font-size: 12px;
+  margin-right: 5px;
+}
+
+.care-companion-entry-share .entry-website-link a {
+  color: inherit;
 }
 
 .care-companion-search-field {

@@ -501,3 +501,62 @@ function care_companion_get_donation_info( $form_id = '' ) {
 
     return;
 }
+
+/**
+ * Social link
+ */
+function care_companion_social_link() {
+
+    global $post;
+    ?>
+        <div class="care-companion-entry-share">
+            <div class="entry-share-left">
+                <i class="fa fa-share-alt primary care-companion-icon"></i>
+                <span><?php echo esc_html('Share', 'care-companion' ); ?></span>
+            </div>
+
+            <div class="entry-share-right">
+                <ul>
+                    <li class="facebook-share">
+                        <a id="care-companion-facebook-share" href="#" title="<?php esc_attr_e('Share on Facebook', 'care-companion');?>"></a>
+                    </li>
+                    <li class="twitter-share">
+                        <a id="care-companion-twitter-share" href="#" title="<?php esc_attr_e('Share on Twitter', 'care-companion');?>"></a>
+                    </li>
+                    <li class="linkedin-share">
+                        <a id="care-companion-linkedin-share" href="#" title="<?php esc_attr_e('Share on LinkedIn', 'care-companion');?>"></a>
+                    </li>
+                    <li class="google-plus-share">
+                        <a id="care-companion-gplus-share" href="#" title="<?php esc_attr_e('Share on Google+', 'care-companion');?>"></a>
+                    </li>
+                    <li class="reddit-share">
+                        <a id="care-companion-reddit-share" href="#" title="<?php esc_attr_e('Share on Reddit', 'care-companion');?>"></a>
+                    </li>
+                    <?php $mail_link = sprintf( "mailto:?&subject=%s&body=%s", esc_attr( get_the_title() ), get_the_permalink() ); ?>
+                    <li class="email-share">
+                        <a id="care-companion-email-share" href="<?php echo esc_url( $mail_link ); ?>" title="<?php esc_attr_e('E-mail to friend', 'care-companion');?>"></a>
+                    </li>
+                </ul>
+
+                <?php if ( get_the_author_meta( 'user_url', $post->author_id ) ) {?>
+                    <div class="entry-website-link">
+                        <span class="fa fa-external-link"></span>
+                        <a id="care-companion-website-share" href="<?php echo nl2br( get_the_author_meta( 'user_url', $post->author_id ) ); ?>">
+                            <?php echo nl2br( get_the_author_meta( 'user_url', $post->author_id ) ); ?>
+                        </a>
+                    </div>
+                <?php } ?>
+            </div>
+
+        </div>
+    <?php
+    return;
+}
+function care_companion_share_count() { ?>
+    <div class="care-companion-share-count">
+        <span class="fa fa-share-alt primary"></span>
+        <span data-url="<?php echo esc_url( the_permalink() ); ?>" id="care-companion-share-count" class="care-companion-share-count-number">
+            -
+        </span>
+    </div>
+<?php }

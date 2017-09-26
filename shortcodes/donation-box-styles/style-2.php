@@ -62,7 +62,7 @@
 
                         </div>
 
-                        <?php echo care_companion_details_button( $form_id ); ?>
+                        <?php echo care_companion_details_button( $form_id, '', '', '', $button_color ); ?>
 
                     </div>
 

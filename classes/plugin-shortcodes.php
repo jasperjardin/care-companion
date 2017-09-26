@@ -102,11 +102,13 @@ final class PluginShortcodes
             array(
                 'form_id' => '',
                 'layout_style' => 'style-1',
+                'width' => '',
+                'spacing' => '0',
                 'container_fill' => 'rgba(0, 0, 0, 0.75)',
                 'container_primary_fill' => '#f8b864',
                 'published_date' => 'true',
 
-                'button_color' => '#eb5439',
+                'button_color' => '#eb543a',
                 'button_text' => '',
                 'button_title' => '',
                 'button_class' => '',

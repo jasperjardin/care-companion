@@ -122,4 +122,36 @@ final class Helper
         }
         return;
     }
+
+
+
+    /**
+     * This method extracts the parameter of a shortcode into an array.
+     *
+     * @since  1.0.0
+     * @access public
+     * @return array $params Returns the shortcode parameters.
+     */
+    public static function getShortcodeParameter( $post_content = '', $shortcode = '' )
+    {
+        // @not_finished
+        // $post_content = 'Irrelevant tekst... [sublimevideo class="sublime" poster="http://video.host.com/_previews/600x450/sbx-60025-00-da-ANA.png" src1="http://video.host.com/_video/H.264/LO/sbx-60025-00-da-ANA.m4v" src2="(hd)http://video.host.com/_video/H.264/HI/sbx-60025-00-da-ANA.m4v" width="560" height="315"] ..more irrelevant text.';
+
+        $temporary_holder = array();
+        // preg_match("/\[sublimevideo (.+?)\]/", $post_content, $temporary_holder );
+        preg_match("/\[" . $shortcode . " (.+?)\]/", $post_content, $temporary_holder );
+
+        $temporary_holder = array_pop( $temporary_holder );
+        $temporary_holder = explode( " ", $temporary_holder );
+
+        $params = array();
+
+        foreach ( $temporary_holder as $holder ){
+            list( $opt, $val ) = explode( "=", $holder );
+            $params[$opt] = trim($val, '"');
+
+        }
+
+        return $params;
+    }
 }

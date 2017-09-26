@@ -66,6 +66,10 @@
 
     &.style-1 {
         background: rgba(0, 0, 0, 0.87);
+        .care-companion-entry-share {
+            position: relative;
+            top: -2.5px;
+        }
         .donation-information-section {
             text-align: center;
             padding: 0;
@@ -156,7 +160,7 @@
         }
     }
     &.style-3 {
-        max-width: 450px;
+        width: 450px;
         padding: 0;
         vertical-align: top;
         display: inline-block;
@@ -221,11 +225,12 @@
 
     &.style-4 {
         @extend .care-companion-recent-campaigns;
+        max-width: none;
     }
     &.style-5 {
         @extend .care-companion-recent-campaigns;
         width: 49.80%;
-        max-width: 420px;
+        max-width: none;
         display: inline-block;
         vertical-align: top;
         .donation-left-section {
@@ -301,6 +306,86 @@
         }
         .action-section {
             padding: 0;
+        }
+    }
+}
+/**
+ * Care Companion Entry Share
+ */
+.care-companion-entry-share {
+    margin-bottom: 15px;
+    display: inline-block;
+    .entry-share-left,
+    .entry-share-right {
+        display: inline-block;
+            vertical-align: middle;
+    }
+    .entry-share-left {
+        margin-right: 15px;
+    }
+    > span {
+        float: left;
+        line-height: 32.5px;
+        margin-right: 10px;
+    }
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        float: left;
+        li {
+            margin-right: 5px;
+            float: left;
+            &:hover a {
+                background-position-y: -42px;
+            }
+            &.twitter-share a {
+                background-position-x: -39px;
+            }
+
+            &.linkedin-share a {
+                background-position-x: -76px;
+            }
+
+            &.google-plus-share a {
+                background-position-x: -112px;
+            }
+
+            &.reddit-share a {
+                background-position-x: -148px;
+            }
+
+            &.email-share a {
+                background-position-x: -183px;
+            }
+
+            &:last-of-type {
+                margin-right: 0;
+            }
+            a {
+                width: 32.5px;
+                height: 32.5px;
+                background-image: url("images/social_sprites.png");
+                background-position: -3px -3px;
+                float: left;
+                display: inline-block;
+                zoom: 0.70;
+            }
+        }
+    }
+    .entry-website-link {
+        background-color: #f6f8f9;
+        line-height: 32.5px;
+        padding: 0 20px;
+        float: right;
+        display: inline-block;
+        span {
+            line-height: 32.5px;
+            font-size: 12px;
+            margin-right: 5px;
+        }
+        a {
+            color: inherit;
         }
     }
 }

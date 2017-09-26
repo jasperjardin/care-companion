@@ -100,8 +100,13 @@ $form = new WP_Query( $args ); ?>
         <?php if ( 'style-2' === $layout_style ) { ?>
             style="background-image: url('<?php echo esc_attr( $background_image ); ?>');"
         <?php } ?>
-        <?php if ( 'style-3' === $layout_style ) { ?>
-
+        <?php if ( !empty( $width ) ) { ?>
+            <?php if ( 'style-3' === $layout_style || 'style-4' === $layout_style || 'style-5' === $layout_style ) { ?>
+                style="
+                    width: <?php echo esc_attr( $width ); ?>;
+                    margin-right: <?php echo esc_attr( $spacing ); ?>;
+                "
+            <?php } ?>
         <?php } ?>
     >
         <?php

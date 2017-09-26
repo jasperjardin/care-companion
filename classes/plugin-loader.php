@@ -219,6 +219,11 @@ final class Loader
             $plugin_public,
             'setEnqueueScripts'
         );
+        $this->loader->addAction(
+            'wp_enqueue_scripts',
+            $plugin_public,
+            'setLocalizeScripts'
+        );
     }
     /**
      * Run the loader to execute all of in the hooks plugin to WordPress.

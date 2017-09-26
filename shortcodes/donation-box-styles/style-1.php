@@ -28,8 +28,7 @@
                 </span>
 
                 <span class="donation-action">
-                    <i class="fa fa-share-alt primary care-companion-icon"></i>
-                    <?php echo esc_html( 'Share', 'care-companion' ); ?>
+                    <?php care_companion_social_link(); ?>
                 </span>
             </div>
         </div>
