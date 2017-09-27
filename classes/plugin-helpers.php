@@ -124,34 +124,37 @@ final class Helper
     }
 
 
-
     /**
      * This method extracts the parameter of a shortcode into an array.
      *
      * @since  1.0.0
      * @access public
-     * @return array $params Returns the shortcode parameters.
+     * @return array $form_ids Returns the shortcode parameters.
      */
-    public static function getShortcodeParameter( $post_content = '', $shortcode = '' )
+    public static function getShortcodeFormID( $post_content = '', $shortcode = '' )
     {
-        // @not_finished
-        // $post_content = 'Irrelevant tekst... [sublimevideo class="sublime" poster="http://video.host.com/_previews/600x450/sbx-60025-00-da-ANA.png" src1="http://video.host.com/_video/H.264/LO/sbx-60025-00-da-ANA.m4v" src2="(hd)http://video.host.com/_video/H.264/HI/sbx-60025-00-da-ANA.m4v" width="560" height="315"] ..more irrelevant text.';
-
         $temporary_holder = array();
-        // preg_match("/\[sublimevideo (.+?)\]/", $post_content, $temporary_holder );
-        preg_match("/\[" . $shortcode . " (.+?)\]/", $post_content, $temporary_holder );
+        $parameters = array();
+        $form_ids = array();
 
-        $temporary_holder = array_pop( $temporary_holder );
-        $temporary_holder = explode( " ", $temporary_holder );
+        preg_match_all("/\[" . $shortcode . " (.+?)\]/", $post_content, $temporary_holder );
 
-        $params = array();
-
-        foreach ( $temporary_holder as $holder ){
-            list( $opt, $val ) = explode( "=", $holder );
-            $params[$opt] = trim($val, '"');
-
+        foreach ( $temporary_holder[1] as $holder ){
+            $parameters[] = explode( ' ', $holder );
         }
 
-        return $params;
+        foreach ( $parameters as $param ) {
+            foreach ( $param as $value ) {
+
+                // Allow $value that contains 'form_id'
+                if( strpos( $value, 'form_id' ) !== false ) {
+
+                    // Stripping out all characters from a variable, leaving only numbers
+                    $form_ids[] = preg_replace( '/[^0-9.]+/', '', $value );
+                }
+            }
+        }
+
+        return $form_ids;
     }
 }

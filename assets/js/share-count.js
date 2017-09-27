@@ -22,39 +22,62 @@ function( $ ) {
 		}
 	} );
 
-	// Sharer
-	$('.facebook-share a').click(function(e){
+    var form_ids = care_companion_sharer_js_vars.form_ids;
+    var id, form_id = '';
+
+    // Sharer
+    $('.facebook-share a').click(function(e){
         e.preventDefault();
-        CareCompanionSharerPopup( care_companion_sharer_js_vars.fb_sharer_url );
+
+        form_id = $( this ).parents( '.care-companion-donation-box' ).attr( 'data-form-id' );
+        id = 'form_' + form_id;
+
+        CareCompanionSharerPopup( care_companion_sharer_js_vars[id].fb_sharer_url );
     });
     // TWitter
     $('.twitter-share a').click(function(e){
         e.preventDefault();
-        CareCompanionSharerPopup( care_companion_sharer_js_vars.tw_sharer_url );
+
+        form_id = $( this ).parents( '.care-companion-donation-box' ).attr( 'data-form-id' );
+        id = 'form_' + form_id;
+
+        CareCompanionSharerPopup( care_companion_sharer_js_vars[id].tw_sharer_url );
     });
 
-     // LinkedIn
+    // LinkedIn
     $('.linkedin-share a').click(function(e){
         e.preventDefault();
-        CareCompanionSharerPopup( care_companion_sharer_js_vars.li_sharer_url );
+
+        form_id = $( this ).parents( '.care-companion-donation-box' ).attr( 'data-form-id' );
+        id = 'form_' + form_id;
+
+        CareCompanionSharerPopup( care_companion_sharer_js_vars[id].li_sharer_url );
     });
 
     //Google+
     $('.google-plus-share a').click(function(e){
         e.preventDefault();
-        CareCompanionSharerPopup( care_companion_sharer_js_vars.gp_sharer_url );
+
+        form_id = $( this ).parents( '.care-companion-donation-box' ).attr( 'data-form-id' );
+        id = 'form_' + form_id;
+
+        CareCompanionSharerPopup( care_companion_sharer_js_vars[id].gp_sharer_url );
     });
 
     // Redit
     $('.reddit-share a').click(function(e){
         e.preventDefault();
-        CareCompanionSharerPopup( care_companion_sharer_js_vars.rd_sharer_url );
+
+        form_id = $( this ).parents( '.care-companion-donation-box' ).attr( 'data-form-id' );
+        id = 'form_' + form_id;
+
+        CareCompanionSharerPopup( care_companion_sharer_js_vars[id].rd_sharer_url );
     });
 
-     function CareCompanionSharerPopup( url ) {
+    function CareCompanionSharerPopup( url ) {
 
-        var winTop = (screen.height / 2) - (520 / 2);
-        var winLeft = (screen.width / 2) - (350 / 2);
+        var winTop = ( screen.height / 2 ) - ( 520 / 2 );
+        var winLeft = ( screen.width / 2 ) - ( 350 / 2 );
 
         window.open( url, 'sharer', 'top='+winTop + ',left=' + winLeft
             + ',toolbar=0,status=0,width=520,height=350'

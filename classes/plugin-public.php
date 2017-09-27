@@ -197,6 +197,9 @@ final class PublicPages
     {
         $post = Helper::globalPost();
         $shortcodes = self::getShortcodes();
+        $form_ids = Helper::getShortcodeFormID( $post->post_content, 'cc_donation_box' );
+        $sharer_url = array();
+        $translation_array = array();
 
         if (!isset($post)) {
             return;
@@ -212,56 +215,35 @@ final class PublicPages
                 ),
                 $shortcode
             )) {
-                $title = get_the_title('2908');
 
-                $permalink = get_the_permalink('2908');
-// @not_finished
-                // $str = '[video="123456" align="left"/][video="123457" align="right"/]';
-                // $str = $post->post_content;
-                //
-                // preg_match_all('~\[form_id="(\d+?)" align="(.+?)"/\]~', $str, $matches);
-                //
-                // $arr = array_combine($matches[1], $matches[2]);
-                // print_r( $arr );
-                // echo '<br>';
+                foreach ( $form_ids as $form_id ) {
 
+                    $title = get_the_title( $form_id );
 
-                // $str = '[video="123456" align="left"/][video="123457" align="right"/]';
-                //
-                // $matches = array();
-                // preg_match_all('/\[video="(?P<video>\d+?)"\salign="(?P<align>\w+?)"\/\]/', $str, $matches);
-                //
-                // for ($i = 0; $i < count($matches[0]); ++ $i) {
-                //     print "Video: ".$matches['video'][$i]." Align: ".$matches['align'][$i]."\n";
-                // }
-                // print_r(array_combine($matches['video'], $matches['align']));
-                // echo '<br>';
+                    $permalink = get_the_permalink( $form_id );
 
-                $x = Helper::getShortcodeParameter( $post->post_content, 'cc_donation_box' );
-                var_dump( $x );
-                var_dump( $post->post_content );
+                    $fb_sharer_url = sprintf("https://www.facebook.com/sharer/sharer.php?u=%s", $permalink );
 
+                    $tw_sharer_url = sprintf("http://twitter.com/share?text=%s&url=%s", esc_attr( $title ), $permalink );
 
+                    $li_sharer_url = sprintf("https://www.linkedin.com/shareArticle?mini=true&url=%s&title=%s", $permalink, esc_attr( $title ) );
 
+                    $gp_sharer_url = sprintf("https://plus.google.com/share?url=%s", $permalink );
 
-                $fb_sharer_url = sprintf("https://www.facebook.com/sharer/sharer.php?u=%s", $permalink );
+                    $rd_sharer_url = sprintf("http://www.reddit.com/submit?url=%s&title=%s", $permalink, esc_attr( $title ) );
 
-                $tw_sharer_url = sprintf("http://twitter.com/share?text=%s&url=%s", esc_attr( $title ), $permalink );
+                    // Localize the script with new data.
+                    $sharer_url = array(
+                        'fb_sharer_url' => $fb_sharer_url,
+                        'tw_sharer_url' => $tw_sharer_url,
+                        'li_sharer_url' => $li_sharer_url,
+                        'gp_sharer_url' => $gp_sharer_url,
+                        'rd_sharer_url' => $rd_sharer_url,
+                    );
 
-                $li_sharer_url = sprintf("https://www.linkedin.com/shareArticle?mini=true&url=%s&title=%s", $permalink, esc_attr( $title ) );
+                    $translation_array['form_'.$form_id] = $sharer_url;
+                }
 
-                $gp_sharer_url = sprintf("https://plus.google.com/share?url=%s", $permalink );
-
-                $rd_sharer_url = sprintf("http://www.reddit.com/submit?url=%s&title=%s", $permalink, esc_attr( $title ) );
-
-                // Localize the script with new data.
-                $translation_array = array(
-                    'fb_sharer_url' => $fb_sharer_url,
-                    'tw_sharer_url' => $tw_sharer_url,
-                    'li_sharer_url' => $li_sharer_url,
-                    'gp_sharer_url' => $gp_sharer_url,
-                    'rd_sharer_url' => $rd_sharer_url,
-                );
 
                 // Attach localisation to our main script.
                 wp_localize_script( $this->name, 'care_companion_sharer_js_vars', $translation_array );
