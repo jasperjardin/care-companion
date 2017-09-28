@@ -26,7 +26,9 @@
                 </span>
             </div>
 
-            <?php care_companion_give_the_content( $form_id );  ?>
+            <?php if ( 'true' === $content ) { ?>
+                <?php care_companion_give_the_content( $form_id ); ?>
+            <?php } ?>
 
             <?php echo care_companion_donate_button( $form_id, $button_text, $button_class, $button_title, $button_color ); ?>
 

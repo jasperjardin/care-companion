@@ -333,6 +333,60 @@
   margin-bottom: 10px;
 }
 
+.care-companion-recent-campaigns-style.style-1 .donation-content {
+  padding: 0 15px;
+}
+
+.care-companion-recent-campaigns-style.style-2 .donation-information {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.care-companion-recent-campaigns-style.style-2 .donation-information .donation-raised,
+.care-companion-recent-campaigns-style.style-2 .donation-information .donation-goal {
+  display: inline-block;
+}
+
+.care-companion-recent-campaigns-style.style-2 .donation-content {
+  margin-bottom: 15px;
+}
+
+.care-companion-recent-campaigns-style.style-2 .progressbar-section {
+  max-width: none;
+  width: 100%;
+  left: 0;
+}
+
+.care-companion-recent-campaigns-style.style-2 .progressbar-section .care-companion-progress-bar {
+  background-color: #f6f8f9;
+  height: 10px;
+  max-width: none;
+  width: 100%;
+  margin: 5px 0 18px;
+  border-radius: 0;
+}
+
+.care-companion-recent-campaigns-style.style-2 .progressbar-section .care-companion-progress-bar .percentage-circle {
+  border-radius: 0;
+  position: relative;
+}
+
+.care-companion-recent-campaigns-style.style-2 .progressbar-section .care-companion-progress-bar .percentage-circle:before {
+  width: 50px;
+  height: 50px;
+  line-height: 40px;
+  color: #fff;
+  background-color: #eb543a;
+  border: 3.5px solid #f6f8f9;
+  top: -22px;
+  left: auto;
+  right: -27px;
+}
+
+.care-companion-recent-campaigns-style.style-2 .progressbar-section .care-companion-progress-bar .percentage-circle:after {
+  background-color: transparent;
+}
+
 .care-companion-recent-campaigns-grid.column-1, .care-companion-recent-campaigns-grid.column-2, .care-companion-recent-campaigns-grid.column-3, .care-companion-recent-campaigns-grid.column-4, .care-companion-recent-campaigns-grid.column-5, .care-companion-recent-campaigns-grid.column-6 {
   max-width: none;
 }

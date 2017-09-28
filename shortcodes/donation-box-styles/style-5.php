@@ -51,7 +51,9 @@
                 </div>
 
                 <div class="content-wrapper col-md-12 dark">
-                    <?php care_companion_give_the_content( $form_id );  ?>
+                    <?php if ( 'true' === $content ) { ?>
+                        <?php care_companion_give_the_content( $form_id ); ?>
+                    <?php } ?>
                 </div>
                 <div class="footer-wrapper col-md-12 dark">
 

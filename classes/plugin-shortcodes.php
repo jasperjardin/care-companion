@@ -107,6 +107,7 @@ final class PluginShortcodes
                 'container_fill' => 'rgba(0, 0, 0, 0.75)',
                 'container_primary_fill' => '#f8b864',
                 'published_date' => 'true',
+                'content' => 'true',
 
                 'button_color' => '#eb543a',
                 'button_text' => '',
@@ -155,6 +156,14 @@ final class PluginShortcodes
 
         $atts = shortcode_atts(
             array(
+                'layout_style' => 'style-2',
+                'content' => 'false',
+
+                'button_color' => '#eb543a',
+                'button_text' => '',
+                'button_title' => '',
+                'button_class' => '',
+
                 'number_of_posts' => 10,
                 'columns' => '3',
                 'published_date' => 'true',
@@ -164,6 +173,9 @@ final class PluginShortcodes
                 'progress_color' => '#eb543a',
                 'progress_transition_style' => 'easeInOut',
                 'progress_transition_duration' => '5000',
+                'progress_trail_color' => '#f8b765',
+                'progress_stroke_width' => '5',
+                'progress_trail_width' => '5',
             ),
             $atts,
             'cc_recent_campaigns'

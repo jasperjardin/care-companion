@@ -12,8 +12,10 @@
                 <?php echo esc_html( get_the_title( $form_id ) ); ?>
             </h1>
 
+            <?php if ( 'true' === $content ) { ?>
+                <?php care_companion_give_the_content( $form_id ); ?>
+            <?php } ?>
 
-            <?php care_companion_give_the_content( $form_id );  ?>
             <div class="action-section">
                 <span class="donation-action">
                     <i class="fa fa-heart primary care-companion-icon"></i>

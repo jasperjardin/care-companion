@@ -28,7 +28,7 @@ extract( $atts );
 /**
  * Donation Box Style Filter
  */
-$allowed_styles = array( 'style-1', 'style-2', 'style-3', 'style-4', 'style-5');
+$allowed_styles = array( 'style-1', 'style-2', 'style-3', 'style-4', 'style-5' );
 $background_image = '';
 
 if (! in_array( $layout_style, $allowed_styles, true ) ) {
@@ -48,6 +48,11 @@ $allowed_progress_shape = array( 'Line', 'Circle', 'SemiCircle', 'Square', 'Tria
 if (! in_array( $progress_shape, $allowed_progress_shape, true ) ) {
     $progress_shape = 'Circle';
 }
+
+if ( 'style-4' === $layout_style || 'style-5' === $layout_style ) {
+    $progress_shape = 'LinePercent';
+}
+
 /**
  * Progress Bar Transition Filter
  */

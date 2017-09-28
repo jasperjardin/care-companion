@@ -26,6 +26,16 @@ if (! defined('ABSPATH') ) {
 extract( $atts );
 
 /**
+ * Donation Box Style Filter
+ */
+$allowed_styles = array( 'style-1', 'style-2' );
+$background_image = '';
+
+if (! in_array( $layout_style, $allowed_styles, true ) ) {
+    $layout_style = 'style-1';
+}
+
+/**
  * Recent Campaigns Columns
  */
 $allowed_columns = array( '1', '2', '3', '4' );
@@ -68,8 +78,9 @@ $recent_posts = wp_get_recent_posts( $args ); ?>
         $progress_donation = care_companion_get_donation_progress( $form_id );
     ?>
 
-        <div class="care-companion-recent-campaigns care-companion-recent-campaigns-grid column-<?php echo esc_attr( absint( $columns ) ); ?>"
+        <div class="care-companion-recent-campaigns care-companion-recent-campaigns-grid column-<?php echo esc_attr( absint( $columns ) ); ?> care-companion-recent-campaigns-style <?php echo esc_attr( $layout_style ); ?>"
             data-form-id="<?php echo esc_attr( $form_id ); ?>"
+            data-style="<?php echo esc_attr( $layout_style ); ?>"
             data-progress-symbol="<?php echo esc_attr( $progress_symbol ); ?>"
 
             data-progress-donation="<?php echo esc_attr( $progress_donation ); ?>"
@@ -79,66 +90,14 @@ $recent_posts = wp_get_recent_posts( $args ); ?>
             data-progress-transition-duration="<?php echo esc_attr( $progress_transition_duration ); ?>"
             data-shortcode="cc_recent_campaigns"
         >
-            <div class="row main-container">
-
-                <div class="col-md-12 donation-left-section">
-
-                    <div class="background-overlay" style="background-color:<?php echo esc_attr( $container_primary_fill ); ?>"></div>
-
-                    <div class="progressbar-section" style="background-color: <?php echo esc_attr( $container_primary_fill ); ?>;">
-                        <div class="donation-raised">
-
-                            <span class="donation-value light"><?php echo care_companion_get_formated_donation_income( $form_id ); ?></span>
-                            <span class="donation-caption light"><?php echo esc_html( 'Pledge', 'care-companion' ); ?></span>
-
-
-                        </div>
-
-                        <div class="care-companion-progress-bar care-companion-percent-line-bar" role="progressbar">
-                            <span class="percentage-circle <?php echo esc_attr( $progress_transition_style ); ?>" aria-valuenow="0<?php echo esc_attr( $progress_symbol ); ?>">
-                            </span>
-                        </div>
-
-                    </div>
-
-                    <?php if ( ! empty( $background_image ) ) { ?>
-                        <div class="donation-featured-image" style="background-image: url('<?php echo esc_attr( $background_image ); ?>');"></div>
-                    <?php } else { ?>
-                        <div class="donation-featured-image" style="background-color: <?php echo esc_attr( $container_fill ); ?>;">
-                            <i class="donation-icon fa fa-heart" style="color: <?php echo esc_attr( $progress_color ); ?>;"></i>
-                        </div>
-                    <?php }?>
-
-                    <div class="col-md-12 information-wrapper">
-                        <h1 class="donation-title">
-                            <a class="dark" href="<?php echo esc_url( get_permalink( $form_id ) ); ?>" title="<?php echo esc_attr( get_the_title( $form_id ) ); ?>">
-                                <?php echo esc_html( get_the_title( $form_id ) ); ?>
-                            </a>
-                        </h1>
-
-                        <div class="action-section">
-                            <span class="donation-action">
-                                <i class="fa fa-heart primary care-companion-icon"></i>
-                                <?php
-                                    $donation_count = care_companion_get_donations_count( $form_id );
-                                    echo sprintf( _n( '%d Donation', '%d Donations', $donation_count, 'care-companion' ), $donation_count );
-                                ?>
-                            </span>
-
-                            <span class="donation-gap">
-                                <?php echo esc_html( '|', 'care-companion' ); ?>
-                            </span>
-
-                            <span class="donation-action">
-                                <i class="fa fa-share-alt primary care-companion-icon"></i>
-                                <?php echo esc_html( 'Share', 'care-companion' ); ?>
-                            </span>
-
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+            <?php
+                if ( 'style-1' === $layout_style ) {
+                    require( dirname( __FILE__ ) . '/recent-campaigns-style/style-1.php' );
+                }
+                if ( 'style-2' === $layout_style ) {
+                    require( dirname( __FILE__ ) . '/recent-campaigns-style/style-2.php' );
+                }
+            ?>
 
         </div>
 
