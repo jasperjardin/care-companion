@@ -83,6 +83,13 @@ final class PluginShortcodes
                 'registerCCDonateButton'
             )
         );
+        add_shortcode(
+            'cc_recent_blogs',
+            array(
+                $this,
+                'registerCCRecentBlogs'
+            )
+        );
         return $this;
     }
 
@@ -275,6 +282,33 @@ final class PluginShortcodes
         );
 
         $file = 'donate-button.php';
+
+        return $this->display( $atts, $file );
+    }
+
+    /**
+     * This method registers the cc_donate_button shortcode.
+     *
+     * @param array $atts The attributes for the shortcode.
+     *
+     * @since  1.0.0
+     * @access public
+     * @return array $atts Returns the set attributes for the shortcode.
+     */
+    public function registerCCRecentBlogs( $atts )
+    {
+
+        $atts = shortcode_atts(
+            array(
+                'number_of_posts' => '5',
+                'colums' => '3',
+                'overlay_color' => '#000',
+            ),
+            $atts,
+            'cc_recent_blogs'
+        );
+
+        $file = 'recent-blogs.php';
 
         return $this->display( $atts, $file );
     }

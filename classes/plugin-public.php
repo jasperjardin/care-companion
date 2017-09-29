@@ -306,7 +306,8 @@ final class PublicPages
             'cc_recent_campaigns',
             'cc_successful_campaigns',
             'cc_serch_form',
-            'cc_donate_button'
+            'cc_donate_button',
+            'cc_recent_blogs'
         );
 
         return $shortcodes;

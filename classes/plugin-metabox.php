@@ -78,6 +78,10 @@ final class Metabox
 
     public function CareCompanionCausesDescriptionField( $post )
     {
+        // @not_finished
+        $post_meta = get_post_meta( $post->ID, 'care_companion_causes_description_tiny_mce', true);
+        $content   = $post_meta->post_content;
+        echo $content;
 
         // Make sure the form request comes from WordPress
         wp_nonce_field( basename( __FILE__ ), 'care_companion_causes_description_nonce' );
@@ -91,6 +95,14 @@ final class Metabox
         <p class="howto"><?php esc_html_e('Add description for the cause.', 'care-companion'); ?></p>
 
         <?php
+        // @not_finished
+        wp_editor( $content, 'care_companion_causes_description_tiny_mce', array(
+                'wpautop'       =>      true,
+                'media_buttons' =>      true,
+                'textarea_name' =>      'care_companion_causes_description_tiny_mce',
+                'textarea_rows' =>      10,
+                'teeny'         =>      true
+        ));
 
     }
 
@@ -142,6 +154,14 @@ final class Metabox
         }
         if ( array_key_exists( 'care_companion_assigned_donation_form', $_POST ) ) {
             update_post_meta( $post_id, '_care_companion_assigned_donation_form_meta_key', $sanitized_care_companion_assigned_donation_form );
+        }
+
+        // Biography Info Content Check
+        if(isset($_POST['care_companion_causes_description_tiny_mce']) && $_POST['care_companion_causes_description_tiny_mce'] != '') {
+            update_post_meta($post_id, 'care_companion_causes_description_tiny_mce', $_POST['care_companion_causes_description_tiny_mce']);
+        }
+        else {
+            delete_post_meta($post_id, 'care_companion_causes_description_tiny_mce');
         }
     }
 }

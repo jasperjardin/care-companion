@@ -56,10 +56,6 @@ if (! in_array( $progress_transition_style, $allowed_progress_transition_style, 
  * Query the Form
  */
 $args = array(
-    'post_type' => 'give_forms'
-);
-
-$args = array(
 	'numberposts' => $number_of_posts,
 	'orderby' => 'post_date',
 	'order' => 'DESC',
@@ -69,51 +65,52 @@ $args = array(
 );
 
 $recent_posts = wp_get_recent_posts( $args ); ?>
+<ul class="care-companion-recent-campaigns-container">
+    <?php if ( ! empty ( $recent_posts ) ) : ?>
+        <?php
+        foreach( $recent_posts as $recent ) {
+            $form_id = $recent['ID'];
+            $background_image = care_companion_get_featured_image_url( $form_id );
+            $progress_donation = care_companion_get_donation_progress( $form_id );
+        ?>
 
-<?php if ( ! empty ( $recent_posts ) ) : ?>
-    <?php
-    foreach( $recent_posts as $recent ) {
-        $form_id = $recent['ID'];
-        $background_image = care_companion_get_featured_image_url( $form_id );
-        $progress_donation = care_companion_get_donation_progress( $form_id );
-    ?>
+            <li class="care-companion-recent-campaigns care-companion-recent-campaigns-grid column-<?php echo esc_attr( absint( $columns ) ); ?> care-companion-recent-campaigns-style <?php echo esc_attr( $layout_style ); ?>"
+                data-form-id="<?php echo esc_attr( $form_id ); ?>"
+                data-style="<?php echo esc_attr( $layout_style ); ?>"
+                data-progress-symbol="<?php echo esc_attr( $progress_symbol ); ?>"
 
-        <div class="care-companion-recent-campaigns care-companion-recent-campaigns-grid column-<?php echo esc_attr( absint( $columns ) ); ?> care-companion-recent-campaigns-style <?php echo esc_attr( $layout_style ); ?>"
-            data-form-id="<?php echo esc_attr( $form_id ); ?>"
-            data-style="<?php echo esc_attr( $layout_style ); ?>"
-            data-progress-symbol="<?php echo esc_attr( $progress_symbol ); ?>"
+                data-progress-donation="<?php echo esc_attr( $progress_donation ); ?>"
 
-            data-progress-donation="<?php echo esc_attr( $progress_donation ); ?>"
+                data-progress-color="<?php echo esc_attr( $progress_color ); ?>"
 
-            data-progress-color="<?php echo esc_attr( $progress_color ); ?>"
+                data-progress-transition-duration="<?php echo esc_attr( $progress_transition_duration ); ?>"
+                data-shortcode="cc_recent_campaigns"
+            >
+                <?php
+                    if ( 'style-1' === $layout_style ) {
+                        require( dirname( __FILE__ ) . '/recent-campaigns-style/style-1.php' );
+                    }
+                    if ( 'style-2' === $layout_style ) {
+                        require( dirname( __FILE__ ) . '/recent-campaigns-style/style-2.php' );
+                    }
+                ?>
 
-            data-progress-transition-duration="<?php echo esc_attr( $progress_transition_duration ); ?>"
-            data-shortcode="cc_recent_campaigns"
-        >
-            <?php
-                if ( 'style-1' === $layout_style ) {
-                    require( dirname( __FILE__ ) . '/recent-campaigns-style/style-1.php' );
-                }
-                if ( 'style-2' === $layout_style ) {
-                    require( dirname( __FILE__ ) . '/recent-campaigns-style/style-2.php' );
-                }
-            ?>
+            </li>
 
-        </div>
+            <?php wp_reset_postdata(); ?>
 
-        <?php wp_reset_postdata(); ?>
+        <?php } ?>
+    <?php else : ?>
 
-    <?php } ?>
-<?php else : ?>
+        <li class="alert alert-info">
+            <p>
+                <?php esc_html_e(
+                    'There are no items found in your donation form found.',
+                    'care-companion'
+                ); ?>
+            </p>
+        </li>
+        <div class="clearfix"></div>
 
-<div class="alert alert-info">
-    <p>
-        <?php esc_html_e(
-            'There are no items found in your donation form found.',
-            'care-companion'
-        ); ?>
-    </p>
-</div>
-
-<div class="clearfix"></div>
-<?php endif; ?>
+    <?php endif; ?>
+</ul>

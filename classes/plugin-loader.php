@@ -108,7 +108,7 @@ final class Loader
         /**
          * This class handles all the defined actions in the dashboard.
          */
-        // include_once plugin_dir_path(dirname(__FILE__)) . 'classes/care-companion-admin.php';
+        include_once plugin_dir_path(dirname(__FILE__)) . 'classes/plugin-admin.php';
 
         /**
          * This class handles the sanitation of the of the Reference Settings
@@ -183,16 +183,16 @@ final class Loader
             $this->getVersion(),
             $this->getLoader()
         );
-        // $plugin_admin = new \DSC\CareCompanion\Admin(
-        //     $this->getName(),
-        //     $this->getVersion(),
-        //     $this->getLoader()
-        // );
-        // $this->loader->addAction(
-        //     'admin_enqueue_scripts',
-        //     $plugin_admin,
-        //     'enqueueScripts'
-        // );
+        $plugin_admin = new \DSC\CareCompanion\Admin(
+            $this->getName(),
+            $this->getVersion(),
+            $this->getLoader()
+        );
+        $this->loader->addAction(
+            'admin_enqueue_scripts',
+            $plugin_admin,
+            'enqueueScripts'
+        );
     }
     /**
      * This method is used to load all the actions and filters hooks in the

@@ -39,4 +39,51 @@ if (! defined('ABSPATH')) {
 
 final class Admin
 {
+    /**
+	 * The ID of this plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      string    $name    The ID of this plugin.
+	 */
+	private $name;
+
+	/**
+	 * The version of this plugin.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      string    $version    The current version of this plugin.
+	 */
+	private $version;
+
+	/**
+	 * Initialize the class and set its properties.
+	 *
+	 * @since    1.0.0
+	 * @var      string    $name       The name of this plugin.
+	 * @var      string    $version    The version of this plugin.
+	 */
+	public $loader;
+
+    /**
+     * Reference settings class constructor
+     */
+	public function __construct( $name, $version, $loader )
+    {
+		$this->name = $name;
+		$this->version = $version;
+		$this->loader = $loader;
+	}
+
+    public function enqueueScripts()
+    {
+		wp_enqueue_script(
+            $this->name,
+            plugin_dir_url( dirname(__FILE__) ) . 'assets/js/reference-admin.js',
+            array( 'jquery' ),
+            $this->version,
+            FALSE
+        );
+	}
 }

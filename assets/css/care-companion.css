@@ -1,8 +1,20 @@
+.light {
+  color: #fff;
+}
+
 .care-companion-ellipsis, .care-companion-successful-campaigns .information-inner-left h1.donation-title, .care-companion-donation-box.style-5 .information-inner-wrap-left h1.donation-title {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   display: inline-block;
+}
+
+.care-companion-shadow-card:hover, .care-companion-recent-campaigns:hover, .care-companion-successful-campaigns:hover, .care-companion-donation-box.style-4:hover, .care-companion-donation-box.style-5:hover, .care-companion-recent-blogs:hover {
+  box-shadow: 0px 7px 10px 10px #f5f5f5;
+}
+
+.care-companion-ul, .care-companion-recent-campaigns-container, .care-companion-recent-blogs-container {
+  padding-left: 0;
 }
 
 .linear,
@@ -38,7 +50,7 @@
   transition-timing-function: ease-in-out;
 }
 
-.care-companion-transition-500, .care-companion-recent-campaigns, .care-companion-successful-campaigns, .care-companion-donation-box.style-4, .care-companion-donation-box.style-5 {
+.care-companion-transition-500, .care-companion-shadow-card, .care-companion-recent-campaigns, .care-companion-successful-campaigns, .care-companion-donation-box.style-4, .care-companion-donation-box.style-5, .care-companion-recent-blogs, .care-companion-recent-blogs .background-overlay {
   -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
@@ -223,10 +235,6 @@
   margin-bottom: 25px;
 }
 
-.care-companion-recent-campaigns:hover, .care-companion-successful-campaigns:hover, .care-companion-donation-box.style-4:hover, .care-companion-donation-box.style-5:hover {
-  box-shadow: 0px 7px 10px 10px #f5f5f5;
-}
-
 .care-companion-recent-campaigns .main-container, .care-companion-successful-campaigns .main-container, .care-companion-donation-box.style-4 .main-container, .care-companion-donation-box.style-5 .main-container {
   position: relative;
 }
@@ -387,11 +395,13 @@
   background-color: transparent;
 }
 
-.care-companion-recent-campaigns-grid.column-1, .care-companion-recent-campaigns-grid.column-2, .care-companion-recent-campaigns-grid.column-3, .care-companion-recent-campaigns-grid.column-4, .care-companion-recent-campaigns-grid.column-5, .care-companion-recent-campaigns-grid.column-6 {
+.care-companion-recent-campaigns-grid.column-1, .column-1.care-companion-recent-blogs-grid, .care-companion-recent-campaigns-grid.column-2, .column-2.care-companion-recent-blogs-grid, .care-companion-recent-campaigns-grid.column-3, .column-3.care-companion-recent-blogs-grid, .care-companion-recent-campaigns-grid.column-4, .column-4.care-companion-recent-blogs-grid, .care-companion-recent-campaigns-grid.column-5, .column-5.care-companion-recent-blogs-grid, .care-companion-recent-campaigns-grid.column-6, .column-6.care-companion-recent-blogs-grid {
   max-width: none;
+  display: inline-block;
+  vertical-align: top;
 }
 
-.care-companion-recent-campaigns-grid.column-1 {
+.care-companion-recent-campaigns-grid.column-1, .column-1.care-companion-recent-blogs-grid {
   width: 100%;
   width: -webkit-calc( 100% - 0px);
   width: -moz-calc( 100% - 0px);
@@ -399,7 +409,7 @@
   margin-right: 0px;
 }
 
-.care-companion-recent-campaigns-grid.column-2 {
+.care-companion-recent-campaigns-grid.column-2, .column-2.care-companion-recent-blogs-grid {
   width: 47.75%;
   width: -webkit-calc( 50% - 18px);
   width: -moz-calc( 50% - 18px);
@@ -407,23 +417,23 @@
   margin-right: 18px;
 }
 
-.care-companion-recent-campaigns-grid.column-2:nth-child(2n) {
+.care-companion-recent-campaigns-grid.column-2:nth-child(2n), .column-2.care-companion-recent-blogs-grid:nth-child(2n) {
   margin-right: 0;
 }
 
-.care-companion-recent-campaigns-grid.column-3 {
+.care-companion-recent-campaigns-grid.column-3, .column-3.care-companion-recent-blogs-grid {
   width: 31.08%;
   width: -webkit-calc( 33.33% - 18px);
   width: -moz-calc( 33.33% - 18px);
   width: calc( 33.33% - 18px);
-  margin-right: 18px;
+  margin-right: 14px;
 }
 
-.care-companion-recent-campaigns-grid.column-3:nth-child(3n) {
+.care-companion-recent-campaigns-grid.column-3:nth-child(3n), .column-3.care-companion-recent-blogs-grid:nth-child(3n) {
   margin-right: 0;
 }
 
-.care-companion-recent-campaigns-grid.column-4 {
+.care-companion-recent-campaigns-grid.column-4, .column-4.care-companion-recent-blogs-grid {
   width: 22.75%;
   width: -webkit-calc( 25% - 18px);
   width: -moz-calc( 25% - 18px);
@@ -431,8 +441,83 @@
   margin-right: 18px;
 }
 
-.care-companion-recent-campaigns-grid.column-4:nth-child(4n) {
+.care-companion-recent-campaigns-grid.column-4:nth-child(4n), .column-4.care-companion-recent-blogs-grid:nth-child(4n) {
   margin-right: 0;
+}
+
+.care-companion-recent-blogs {
+  width: 250px;
+  max-width: 250px;
+  padding: 0 0 20px;
+  vertical-align: top;
+  display: inline-block;
+  border: 1px solid #f5f5f5;
+  margin-bottom: 25px;
+}
+
+.care-companion-recent-blogs .featured-image-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.care-companion-recent-blogs:hover .background-overlay {
+  opacity: 0.75;
+  visibility: visible;
+}
+
+.care-companion-recent-blogs .background-overlay {
+  width: 100%;
+  height: 100%;
+  font-size: 2em;
+  text-align: center;
+  padding: 25% 0;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  display: table;
+  cursor: pointer;
+}
+
+.care-companion-recent-blogs .background-overlay-inner-wrap {
+  width: 100%;
+}
+
+.care-companion-recent-blogs .no-featured-image {
+  color: #676767;
+  background-color: #e7e7e7;
+  min-height: 90px;
+  width: 100%;
+  font-size: 3.5em;
+  text-align: center;
+  padding: 16.5% 0;
+}
+
+.care-companion-recent-blogs .information-wrapper .blog-title {
+  line-height: initial;
+  font-size: 0;
+}
+
+.care-companion-recent-blogs .information-wrapper .blog-title a {
+  color: #777;
+  font-size: 18px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 1.25;
+  display: inline-block;
+}
+
+.care-companion-recent-blogs .date-posted,
+.care-companion-recent-blogs .action-separator,
+.care-companion-recent-blogs .author {
+  font-style: italic;
+}
+
+.care-companion-recent-blogs .date-posted .care-companion-icon {
+  margin-right: 5px;
+}
+
+.care-companion-recent-blogs .action-separator {
+  margin: 0 5px;
 }
 
 .care-companion-successful-campaigns .information-wrapper {
