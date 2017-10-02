@@ -400,4 +400,51 @@ jQuery(document).ready( function($) {
 
     // bar.set(0);
     // bar.animate(1.0);  // Number from 0.0 to 1.0
+
+    /**
+     * Slider Revolution Compatability
+     */
+    var slider_revolution_wrapper_class = '.rev_slider_wrapper';
+    var $slider_revolution_wrapper = $( slider_revolution_wrapper_class );
+
+    var cc_donation_box_class = '.care-companion-donation-box';
+    var $cc_donation_box = $( cc_donation_box_class );
+
+    if ( $slider_revolution_wrapper.length >= 1 ) {
+        if ( $slider_revolution_wrapper.find( cc_donation_box_class ).length >= 1 ) {
+
+                $.each( $slider_revolution_wrapper, function() {
+                    var __this = $( this );
+
+                    setInterval(function(){
+                        $.each( __this.find( cc_donation_box_class ), function() {
+                            var __this = $( this );
+                            if ( __this.hasClass( 'style-1' ) ) {
+                                var bg = __this.css( 'background-color' );
+                                var children = '.main-container, .donation-left-section, .donation-right-section'
+
+                                __this.removeAttr( 'style' );
+                                __this.find( children ).removeAttr( 'style' );
+                                __this.find( '.donation-left-section' ).find( '*' ).removeAttr( 'style' );
+                                // __this.find( '.donation-right-section' ).find( '*' ).removeAttr( 'style' );
+                                __this.find( '.donation-right-section' ).find( '*' ).removeAttr( 'style' );
+                                // __this.find( '.donation-right-section' ).find( '*' ).css({
+                                //     'transition': '',
+                                //     'text-align': '',
+                                //     'border-width': '',
+                                //     'letter-spacing': '',
+                                //     'font-size': '',
+                                // });
+
+                                __this.css( 'background-color', bg );
+
+                            }
+                        });
+                    }, 1000, 2 );
+
+                });
+        };
+    };
+
+
 });

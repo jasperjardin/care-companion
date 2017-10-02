@@ -78,33 +78,22 @@ final class Metabox
 
     public function CareCompanionCausesDescriptionField( $post )
     {
-        // @not_finished
-        $post_meta = get_post_meta( $post->ID, 'care_companion_causes_description_tiny_mce', true);
-        $content   = $post_meta->post_content;
-        echo $content;
 
-        // Make sure the form request comes from WordPress
         wp_nonce_field( basename( __FILE__ ), 'care_companion_causes_description_nonce' );
 
         $value = get_post_meta($post->ID, '_care_companion_causes_description_meta_key', true);
-        ?>
-        <label class="screen-reader-text" for="care_companion_causes_description"><?php esc_html_e('Causes Description', 'care-companion'); ?></label>
 
-        <textarea class="widefat" cols="50" rows="5" name="care_companion_causes_description" id="care_companion_causes_description"><?php echo esc_html( $value ); ?></textarea>
+        wp_editor( $value, 'care_companion_causes_description', array(
+                'wpautop'       =>      true,
+                'media_buttons' =>      true,
+                'textarea_name' =>      'care_companion_causes_description',
+                'textarea_rows' =>      10,
+                'teeny'         =>      true
+        )); ?>
 
         <p class="howto"><?php esc_html_e('Add description for the cause.', 'care-companion'); ?></p>
 
-        <?php
-        // @not_finished
-        wp_editor( $content, 'care_companion_causes_description_tiny_mce', array(
-                'wpautop'       =>      true,
-                'media_buttons' =>      true,
-                'textarea_name' =>      'care_companion_causes_description_tiny_mce',
-                'textarea_rows' =>      10,
-                'teeny'         =>      true
-        ));
-
-    }
+    <?php }
 
     public function CareCompanionAssignedDonationFormField( $post )
     {
@@ -136,7 +125,7 @@ final class Metabox
     public function CareCompanionSavePostdata($post_id)
     {
         $sanitized_care_companion_causes_description_nonce = filter_input( INPUT_POST, 'care_companion_causes_description_nonce', FILTER_SANITIZE_STRING );
-        $sanitized_care_companion_causes_description = filter_input( INPUT_POST, 'care_companion_causes_description', FILTER_SANITIZE_STRING );
+        $sanitized_care_companion_causes_description = filter_input( INPUT_POST, 'care_companion_causes_description', FILTER_UNSAFE_RAW );
 
         $sanitized_care_companion_assigned_donation_form_nonce = filter_input( INPUT_POST, 'care_companion_assigned_donation_form_nonce', FILTER_SANITIZE_STRING );
         $sanitized_care_companion_assigned_donation_form = filter_input( INPUT_POST, 'care_companion_assigned_donation_form', FILTER_SANITIZE_STRING );
@@ -156,12 +145,5 @@ final class Metabox
             update_post_meta( $post_id, '_care_companion_assigned_donation_form_meta_key', $sanitized_care_companion_assigned_donation_form );
         }
 
-        // Biography Info Content Check
-        if(isset($_POST['care_companion_causes_description_tiny_mce']) && $_POST['care_companion_causes_description_tiny_mce'] != '') {
-            update_post_meta($post_id, 'care_companion_causes_description_tiny_mce', $_POST['care_companion_causes_description_tiny_mce']);
-        }
-        else {
-            delete_post_meta($post_id, 'care_companion_causes_description_tiny_mce');
-        }
     }
 }

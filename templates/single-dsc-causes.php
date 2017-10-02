@@ -90,7 +90,7 @@ get_header(); ?>
 
                                 <div class="entry-description">
                                     <h1 class="entry-description-title"><?php echo esc_html( 'Causes Description:', 'care-companion' ); ?></h1>
-                                    <?php esc_html( care_companion_causes_description() ); ?>
+                                    <?php care_companion_causes_description(); ?>
                                 </div>
 
                                 <div class="entry-content">

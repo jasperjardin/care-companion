@@ -24,7 +24,9 @@
 if (! defined('ABSPATH')) {
     return;
 }
+
 function care_companion_get_donation_forms( $orderby = '', $order = '' ) {
+
     $helper = '';
     $donation_forms = '';
 
@@ -41,6 +43,7 @@ function care_companion_get_donation_forms( $orderby = '', $order = '' ) {
     if ( ! empty( $donation_forms ) ) {
         return $donation_forms;
     }
+
     return;
 }
 function care_companion_give_the_content( $form_id = '' ) {
@@ -104,11 +107,12 @@ function care_companion_replace_first_text_occurance($search, $replace, $source)
     $explode = explode( $search, $source );
     $shift = array_shift( $explode );
     $implode = implode( $search, $explode );
+
     return $shift.$replace.$implode;
 
 }
 
-function care_companion_metabox_value( $meta_key = '', $post_id = '' ) {
+function care_companion_metabox_value( $meta_key = '', $post_id = 0 ) {
 
     if ( empty( $post_id ) ) {
         $post_id = get_the_ID();
@@ -121,8 +125,14 @@ function care_companion_metabox_value( $meta_key = '', $post_id = '' ) {
     return;
 }
 function care_companion_causes_description() {
-    echo esc_html( care_companion_metabox_value('_care_companion_causes_description_meta_key') );
+    $content = care_companion_metabox_value( '_care_companion_causes_description_meta_key' );
+    $allowed_html = care_companion_allowed_html_tags();
+    $filtered_content = wp_kses( $content, $allowed_html );
+    echo do_shortcode( $filtered_content );
+
+    return;
 }
+
 function care_companion_get_assigned_donation_form_id() {
     return care_companion_metabox_value('_care_companion_assigned_donation_form_meta_key');
 }
@@ -560,3 +570,66 @@ function care_companion_share_count() { ?>
         </span>
     </div>
 <?php }
+
+
+function care_companion_allowed_html_tags() {
+
+    /**
+    * Allow basic attributes.
+    */
+    $allowed_atts = apply_filters(
+        'care_companion_allowed_html_tags_attr',
+        array(
+            'align'      => array(),
+            'class'      => array(),
+            'type'       => array(),
+            'id'         => array(),
+            'dir'        => array(),
+            'lang'       => array(),
+            'style'      => array(),
+            'alt'        => array(),
+            'href'       => array(),
+            'rev'        => array(),
+            'novalidate' => array(),
+            'value'      => array(),
+            'name'       => array(),
+            'tabindex'   => array(),
+            'action'     => array(),
+            'method'     => array(),
+            'for'        => array(),
+            'width'      => array(),
+            'height'     => array(),
+            'data'       => array(),
+            'title'      => array(),
+        )
+    );
+
+    /**
+     *Allow formatting tags.
+    */
+    $allowed_html_tags = array(
+        'label'    => $allowed_atts,
+        'strong'   => $allowed_atts,
+        'small'    => $allowed_atts,
+        'span'     => $allowed_atts,
+        'abbr'     => $allowed_atts,
+        'h1'       => $allowed_atts,
+        'h2'       => $allowed_atts,
+        'h3'       => $allowed_atts,
+        'h4'       => $allowed_atts,
+        'h5'       => $allowed_atts,
+        'h6'       => $allowed_atts,
+        'ol'       => $allowed_atts,
+        'ul'       => $allowed_atts,
+        'li'       => $allowed_atts,
+        'em'       => $allowed_atts,
+        'hr'       => $allowed_atts,
+        'br'       => $allowed_atts,
+        'p'        => $allowed_atts,
+        'a'        => $allowed_atts,
+        'b'        => $allowed_atts,
+        'i'        => $allowed_atts,
+    );
+
+    return apply_filters( 'care_companion_allowed_html_tags', $allowed_html_tags );
+}
