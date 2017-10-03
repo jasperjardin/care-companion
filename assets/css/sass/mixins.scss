@@ -30,3 +30,10 @@
        -moz-transition: $selector $duration $transition;
             transition: $selector $duration $transition;
 }
+@mixin transform( $transforms ) {
+    -webkit-transform: $transforms;
+       -moz-transform: $transforms;
+        -ms-transform: $transforms;
+         -o-transform: $transforms;
+            transform: $transforms;
+}

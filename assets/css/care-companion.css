@@ -17,6 +17,69 @@
   padding-left: 0;
 }
 
+.care-companion-floating-share-button:hover .entry-share-right li, .care-companion-entry-share:hover .entry-share-right li {
+  opacity: 1;
+  visibility: visible;
+  margin-right: 0;
+  padding-right: 5px;
+}
+
+.care-companion-floating-share-button:hover .entry-share-right li:nth-child(2), .care-companion-entry-share:hover .entry-share-right li:nth-child(2) {
+  -webkit-transform: translateX(27.25px);
+  -moz-transform: translateX(27.25px);
+  -ms-transform: translateX(27.25px);
+  -o-transform: translateX(27.25px);
+  transform: translateX(27.25px);
+}
+
+.care-companion-floating-share-button:hover .entry-share-right li:nth-child(3), .care-companion-entry-share:hover .entry-share-right li:nth-child(3) {
+  -webkit-transform: translateX(54.5px);
+  -moz-transform: translateX(54.5px);
+  -ms-transform: translateX(54.5px);
+  -o-transform: translateX(54.5px);
+  transform: translateX(54.5px);
+}
+
+.care-companion-floating-share-button:hover .entry-share-right li:nth-child(4), .care-companion-entry-share:hover .entry-share-right li:nth-child(4) {
+  -webkit-transform: translateX(81.75px);
+  -moz-transform: translateX(81.75px);
+  -ms-transform: translateX(81.75px);
+  -o-transform: translateX(81.75px);
+  transform: translateX(81.75px);
+}
+
+.care-companion-floating-share-button:hover .entry-share-right li:nth-child(5), .care-companion-entry-share:hover .entry-share-right li:nth-child(5) {
+  -webkit-transform: translateX(109px);
+  -moz-transform: translateX(109px);
+  -ms-transform: translateX(109px);
+  -o-transform: translateX(109px);
+  transform: translateX(109px);
+}
+
+.care-companion-floating-share-button:hover .entry-share-right li:nth-child(6), .care-companion-entry-share:hover .entry-share-right li:nth-child(6) {
+  -webkit-transform: translateX(136.25px);
+  -moz-transform: translateX(136.25px);
+  -ms-transform: translateX(136.25px);
+  -o-transform: translateX(136.25px);
+  transform: translateX(136.25px);
+}
+
+.care-companion-floating-share-button .entry-share-left, .care-companion-entry-share .entry-share-left {
+  margin-right: 0;
+  cursor: pointer;
+}
+
+.care-companion-floating-share-button ul, .care-companion-entry-share ul {
+  position: relative;
+  top: -10px;
+}
+
+.care-companion-floating-share-button ul li, .care-companion-entry-share ul li {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+}
+
 .linear,
 .easeIn,
 .easeOut,
@@ -50,7 +113,7 @@
   transition-timing-function: ease-in-out;
 }
 
-.care-companion-transition-500, .care-companion-shadow-card, .care-companion-recent-campaigns, .care-companion-successful-campaigns, .care-companion-donation-box.style-4, .care-companion-donation-box.style-5, .care-companion-recent-blogs, .care-companion-recent-blogs .background-overlay {
+.care-companion-transition-500, .care-companion-shadow-card, .care-companion-recent-campaigns, .care-companion-successful-campaigns, .care-companion-donation-box.style-4, .care-companion-donation-box.style-5, .care-companion-recent-blogs, .care-companion-floating-share-button ul li, .care-companion-entry-share ul li, .care-companion-recent-blogs .background-overlay {
   -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
@@ -665,7 +728,7 @@
 }
 
 .care-companion-donation-box.style-1.Circle .progressbar-section {
-  padding: 0 10%;
+  padding: 0 5%;
 }
 
 .care-companion-donation-box.style-2 {
@@ -914,6 +977,8 @@
  * Care Companion Entry Share
  */
 .care-companion-entry-share {
+  position: relative;
+  top: -2px;
   margin-bottom: 15px;
   display: inline-block;
 }

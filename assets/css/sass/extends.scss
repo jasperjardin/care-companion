@@ -13,3 +13,46 @@
 .care-companion-ul {
     padding-left: 0;
 }
+.care-companion-floating-share-button {
+    &:hover {
+        .entry-share-right {
+            li {
+                opacity: 1;
+                visibility: visible;
+                margin-right: 0;
+                padding-right: 5px;
+                &:nth-child(1) {}
+                &:nth-child(2) {
+                    @include transform( translateX(27.25px) );
+                }
+                &:nth-child(3) {
+                    @include transform( translateX(54.5px) );
+                }
+                &:nth-child(4) {
+                    @include transform( translateX(81.75px) );
+                }
+                &:nth-child(5) {
+                    @include transform( translateX(109px) );
+                }
+                &:nth-child(6) {
+                    @include transform( translateX(136.25px) );
+                }
+            }
+        }
+    }
+
+    .entry-share-left {
+        margin-right: 0;
+        cursor: pointer;
+    }
+    ul {
+        position: relative;
+        top: -10px;
+        li {
+            position: absolute;
+            opacity: 0;
+            visibility: hidden;
+            @extend .care-companion-transition-500;
+        }
+    }
+}

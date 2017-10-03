@@ -95,7 +95,7 @@
                 line-height: 0;
             }
             .progressbar-section {
-                padding: 0 10%;
+                padding: 0 5%;
             }
         }
     }
@@ -313,6 +313,9 @@
  * Care Companion Entry Share
  */
 .care-companion-entry-share {
+    @extend .care-companion-floating-share-button;
+    position: relative;
+    top: -2px;
     margin-bottom: 15px;
     display: inline-block;
     .entry-share-left,

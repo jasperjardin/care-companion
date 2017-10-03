@@ -57,11 +57,11 @@
                 </div>
                 <div class="footer-wrapper col-md-12 dark">
 
-                    <div class="donate-section col-md-6">
+                    <div class="donate-section col-md-4">
                         <?php echo care_companion_donate_button( $form_id, $button_text, $button_class, $button_title, $button_color ); ?>
                     </div>
 
-                    <div class="action-section col-md-6">
+                    <div class="action-section col-md-8">
                         <span class="donation-action">
                             <i class="fa fa-heart primary care-companion-icon"></i>
                             <?php
