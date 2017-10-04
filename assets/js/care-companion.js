@@ -34,6 +34,26 @@ jQuery(document).ready( function($) {
 
         }
     }
+    function care_companion_path_percentage( parent = '', percentage_selector = '', width = '', transition ) {
+        if ( $( percentage_selector ).length >= 1 ) {
+            var loader = parent.find( percentage_selector );
+
+            loader.animate({
+                width: width + '%',
+            }, {
+                duration: parseInt( transition ),
+                step: function(now) {
+                    loader.css({
+                        'overflow' : 'visible',
+                    });
+
+                    var percentage = now.toFixed(0);
+
+                    loader.attr( 'aria-valuenow', percentage + '%');
+                }
+            });
+        }
+    }
 
     var $progress_bar_selector = $( '.care-companion-progress-bar' );
 
@@ -53,6 +73,8 @@ jQuery(document).ready( function($) {
             var semi_circle = 150.818;
             var line = 100;
             var heart = 269.663;
+            var triangle = 310.663;
+            var square = 384;
 
             var progress_offset = '';
 
@@ -119,6 +141,14 @@ jQuery(document).ready( function($) {
             if ( 'Heart' === progress_shape ) {
                 progress_bar_width = care_companion_get_percentage( heart, progress_donation );
                 progress_offset = heart;
+            }
+            if ( 'Triangle' === progress_shape ) {
+                progress_bar_width = care_companion_get_percentage( triangle, progress_donation );
+                progress_offset = triangle;
+            }
+            if ( 'Square' === progress_shape ) {
+                progress_bar_width = care_companion_get_percentage( square, progress_donation );
+                progress_offset = square;
             }
 
 
@@ -284,20 +314,49 @@ jQuery(document).ready( function($) {
                     progress_bar = new ProgressBar.SemiCircle( this, $settings );
                 }
 
+                path_element = this.getAttribute('id');
+
                 if ( 'Heart' === progress_shape ) {
                     path = '.care-companion-heart';
+                    path_element_child = '#' + path_element + ' .care-companion-heart';
+
+                    $( '#' + path_element + ' .care-companion-heart-trail' ).attr({
+                        'stroke': progress_trail_color,
+                        'stroke-width':parseInt( progress_trail_width )
+                    });
+                    $( path_element_child ).attr({
+                        'stroke': progress_color,
+                        'stroke-width':parseInt( progress_stroke_width )
+                    });
+                    care_companion_path_percentage( __this, '.percentage-path', progress_donation, progress_transition_duration );
                 }
                 if ( 'Square' === progress_shape ) {
                     path = '#care-companion-square';
+                    path_element_child = '#' + path_element + ' .care-companion-square';
+                    $( '#' + path_element + ' .care-companion-square-trail' ).attr({
+                        'stroke': progress_trail_color,
+                        'stroke-width':parseInt( progress_trail_width )
+                    });
+                    $( path_element_child ).attr({
+                        'stroke': progress_color,
+                        'stroke-width':parseInt( progress_stroke_width )
+                    });
+                    care_companion_path_percentage( __this, '.percentage-path', progress_donation, progress_transition_duration );
                 }
                 if ( 'Triangle' === progress_shape ) {
                     path = '#care-companion-triangle';
+                    path_element_child = '#' + path_element + ' .care-companion-triangle';
+
+                    $( '#' + path_element + ' .care-companion-triangle-trail' ).attr({
+                        'stroke': progress_trail_color,
+                        'stroke-width':parseInt( progress_trail_width )
+                    });
+                    $( path_element_child ).attr({
+                        'stroke': progress_color,
+                        'stroke-width':parseInt( progress_stroke_width )
+                    });
+                    care_companion_path_percentage( __this, '.percentage-path', progress_donation, progress_transition_duration );
                 }
-
-                path_element = this.getAttribute('id');
-
-                path_element_child = '#' + path_element + ' .care-companion-heart';
-
 
                 if ( 'Square' === progress_shape || 'Triangle' === progress_shape || 'Heart' === progress_shape ) {
                     $settings = {

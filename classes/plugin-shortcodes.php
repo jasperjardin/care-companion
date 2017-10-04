@@ -128,7 +128,7 @@ final class PluginShortcodes
                 'progress_color' => '#eb543a',
                 'progress_fill' => 'rgba(0, 0, 0, 0.5)',
                 'progress_trail_color' => '#fff',
-                'progress_shape' => 'Square',
+                'progress_shape' => 'Circle',
                 'progress_stroke_width' => '5',
                 'progress_trail_width' => '5',
                 'progress_transition_style' => 'easeInOut',

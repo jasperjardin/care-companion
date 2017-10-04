@@ -1067,6 +1067,104 @@
   color: inherit;
 }
 
+.care-companion-progress-bar.path {
+  line-height: 0;
+}
+
+.care-companion-progress-bar.path .percentage-path:before {
+  content: attr(aria-valuenow);
+  width: 100%;
+  min-height: 40px;
+  line-height: 34px;
+  padding: 0 2.5px;
+  margin-right: -20px;
+  color: #fff;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+  display: inline-block;
+  position: absolute;
+  top: 20%;
+  left: 0;
+  z-index: 10;
+  line-height: normal;
+}
+
+.care-companion-progress-bar.path .percentage-path.Heart {
+  min-width: 100%;
+}
+
+.care-companion-progress-bar.path .percentage-path.Heart:before {
+  font-size: 100%;
+  top: 25%;
+}
+
+.care-companion-progress-bar.path .percentage-path.Heart .completed-text {
+  position: relative;
+  width: 100%;
+  display: inline-block;
+  line-height: normal;
+  min-width: 100%;
+  margin-bottom: 15px;
+}
+
+.care-companion-progress-bar.path .percentage-path.Square:before {
+  top: 10%;
+}
+
+.care-companion-progress-bar.path .percentage-path.Triangle {
+  min-width: 100%;
+}
+
+.care-companion-progress-bar.path .percentage-path.Triangle:before {
+  font-size: 100%;
+  top: auto;
+  bottom: 35%;
+}
+
+.care-companion-progress-bar.path .percentage-path.Triangle .completed-text {
+  position: relative;
+  width: 100%;
+  display: inline-block;
+  line-height: normal;
+  min-width: 100%;
+  margin-bottom: 15px;
+}
+
+.care-companion-progress-bar.path .percentage-path .completed-text {
+  width: 100%;
+  font-size: 0.65em;
+  text-align: center;
+  position: absolute;
+  top: 70%;
+}
+
+.style-3 .care-companion-progress-bar.path .percentage-path.Heart:before {
+  top: 35%;
+}
+
+.style-3 .care-companion-progress-bar.path .percentage-path.Heart .completed-text {
+  position: absolute;
+  top: 50%;
+}
+
+.style-3 .care-companion-progress-bar.path .percentage-path.Triangle:before {
+  top: 50%;
+}
+
+.style-3 .care-companion-progress-bar.path .percentage-path.Triangle .completed-text {
+  position: absolute;
+  top: 65%;
+}
+
+.style-3 .care-companion-progress-bar.path .percentage-path:before {
+  top: 30%;
+}
+
+.style-3 .care-companion-progress-bar.path .completed-text {
+  top: 60%;
+}
+
 .care-companion-search-field {
   background-image: url("images/search-form-background.png");
   background-size: cover;
