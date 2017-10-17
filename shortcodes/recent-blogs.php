@@ -1,6 +1,6 @@
 <?php
 /**
-  * Donation Box Shortcode Template [cc_recent_campaigns]
+  * Donation Box Shortcode Template [cc_recent_blogs]
   *
   * (c) Dunhakdis <dunhakdis@useissuestabinstead.com>
   *
@@ -67,7 +67,7 @@ $recent_posts = wp_get_recent_posts( $args ); ?>
 
                     <div class="col-md-12 donation-left-section">
                         <div class="featured-image-section">
-                            
+
                             <a href="<?php echo esc_url( get_permalink( $id ) ); ?>" title="<?php echo esc_attr( get_the_title( $id ) ); ?>">
                                 <div class="background-overlay" style="background-color:<?php echo esc_attr( $overlay_color ); ?>">
                                     <div class="background-overlay-inner-wrap">

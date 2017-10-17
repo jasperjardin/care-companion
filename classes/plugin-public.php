@@ -197,7 +197,11 @@ final class PublicPages
     {
         $post = Helper::globalPost();
         $shortcodes = self::getShortcodes();
-        $form_ids = Helper::getShortcodeFormID( $post->post_content, 'cc_donation_box' );
+        $shortcodes = array(
+            'cc_donation_box',
+            'cc_recent_campaigns'
+        );
+        $form_ids = '';
         $sharer_url = array();
         $translation_array = array();
 
@@ -206,6 +210,9 @@ final class PublicPages
         }
 
         foreach ( $shortcodes as $shortcode ) {
+
+            $form_ids = Helper::getShortcodeFormID( $post->post_content, $shortcode );
+
             if (self::isPluginComponentActive(
                 'dsc-causes',
                 'dsc-causes',
@@ -307,7 +314,8 @@ final class PublicPages
             'cc_successful_campaigns',
             'cc_serch_form',
             'cc_donate_button',
-            'cc_recent_blogs'
+            'cc_recent_blogs',
+            'cc_step_boxes'
         );
 
         return $shortcodes;

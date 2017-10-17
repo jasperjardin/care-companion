@@ -24,12 +24,13 @@ function( $ ) {
 
     var form_ids = care_companion_sharer_js_vars.form_ids;
     var id, form_id = '';
+    var classes = '.care-companion-donation-box, .care-companion-recent-campaigns'
 
     // Sharer
     $('.facebook-share a').click(function(e){
         e.preventDefault();
 
-        form_id = $( this ).parents( '.care-companion-donation-box' ).attr( 'data-form-id' );
+        form_id = $( this ).parents( classes ).attr( 'data-form-id' );
         id = 'form_' + form_id;
 
         CareCompanionSharerPopup( care_companion_sharer_js_vars[id].fb_sharer_url );
@@ -38,7 +39,7 @@ function( $ ) {
     $('.twitter-share a').click(function(e){
         e.preventDefault();
 
-        form_id = $( this ).parents( '.care-companion-donation-box' ).attr( 'data-form-id' );
+        form_id = $( this ).parents( classes ).attr( 'data-form-id' );
         id = 'form_' + form_id;
 
         CareCompanionSharerPopup( care_companion_sharer_js_vars[id].tw_sharer_url );
@@ -48,7 +49,7 @@ function( $ ) {
     $('.linkedin-share a').click(function(e){
         e.preventDefault();
 
-        form_id = $( this ).parents( '.care-companion-donation-box' ).attr( 'data-form-id' );
+        form_id = $( this ).parents( classes ).attr( 'data-form-id' );
         id = 'form_' + form_id;
 
         CareCompanionSharerPopup( care_companion_sharer_js_vars[id].li_sharer_url );
@@ -58,7 +59,7 @@ function( $ ) {
     $('.google-plus-share a').click(function(e){
         e.preventDefault();
 
-        form_id = $( this ).parents( '.care-companion-donation-box' ).attr( 'data-form-id' );
+        form_id = $( this ).parents( classes ).attr( 'data-form-id' );
         id = 'form_' + form_id;
 
         CareCompanionSharerPopup( care_companion_sharer_js_vars[id].gp_sharer_url );
@@ -68,7 +69,7 @@ function( $ ) {
     $('.reddit-share a').click(function(e){
         e.preventDefault();
 
-        form_id = $( this ).parents( '.care-companion-donation-box' ).attr( 'data-form-id' );
+        form_id = $( this ).parents( classes ).attr( 'data-form-id' );
         id = 'form_' + form_id;
 
         CareCompanionSharerPopup( care_companion_sharer_js_vars[id].rd_sharer_url );

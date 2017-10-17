@@ -90,6 +90,13 @@ final class PluginShortcodes
                 'registerCCRecentBlogs'
             )
         );
+        add_shortcode(
+            'cc_step_boxes',
+            array(
+                $this,
+                'registerCCStepBoxes'
+            )
+        );
         return $this;
     }
 
@@ -312,6 +319,37 @@ final class PluginShortcodes
 
         return $this->display( $atts, $file );
     }
+    /**
+     * This method registers the cc_donate_button shortcode.
+     *
+     * @param array $atts The attributes for the shortcode.
+     *
+     * @since  1.0.0
+     * @access public
+     * @return array $atts Returns the set attributes for the shortcode.
+     */
+    public function registerCCStepBoxes( $atts, $content = null )
+    {
+
+        $atts = shortcode_atts(
+            array(
+                'columns' => '3',
+                'step_number' => '',
+                'title' => '',
+                'icon' => 'fa fa-user',
+                'link' => '#',
+                'link_text' => __( 'Learn More', 'care-companion' ),
+                'link_text_icon' => 'fa fa-angle-double-right',
+                'button_mode' => 'off'
+            ),
+            $atts,
+            'cc_step_boxes'
+        );
+
+        $file = 'step-boxes.php';
+
+        return $this->display( $atts, $file, $content );
+    }
 
     /**
      * This method sets the template for the reference_loop shortcode.
@@ -323,7 +361,7 @@ final class PluginShortcodes
      * @access public
      * @return array $atts Returns the current buffer contents.
      */
-    public function display($atts, $file)
+    public function display( $atts, $file, $content = null )
     {
 
         ob_start();
