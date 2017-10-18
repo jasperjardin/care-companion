@@ -17,6 +17,10 @@
   padding-left: 0;
 }
 
+.care-companion-floating-share-button:hover, .care-companion-entry-share:hover {
+  z-index: 20;
+}
+
 .care-companion-floating-share-button:hover .entry-share-right li, .care-companion-entry-share:hover .entry-share-right li {
   opacity: 1;
   visibility: visible;
@@ -336,6 +340,7 @@
   border-bottom-left-radius: 100px;
   border-bottom-right-radius: 100px;
   z-index: 1;
+  padding: 0 10px;
 }
 
 .care-companion-recent-campaigns .progressbar-section .donation-raised, .care-companion-successful-campaigns .progressbar-section .donation-raised, .care-companion-donation-box.style-4 .progressbar-section .donation-raised, .care-companion-donation-box.style-5 .progressbar-section .donation-raised {

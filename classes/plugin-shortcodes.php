@@ -308,7 +308,7 @@ final class PluginShortcodes
         $atts = shortcode_atts(
             array(
                 'number_of_posts' => '5',
-                'colums' => '3',
+                'columns' => '3',
                 'overlay_color' => '#000',
             ),
             $atts,

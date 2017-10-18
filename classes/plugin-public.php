@@ -197,10 +197,7 @@ final class PublicPages
     {
         $post = Helper::globalPost();
         $shortcodes = self::getShortcodes();
-        $shortcodes = array(
-            'cc_donation_box',
-            'cc_recent_campaigns'
-        );
+
         $form_ids = '';
         $sharer_url = array();
         $translation_array = array();
@@ -222,6 +219,26 @@ final class PublicPages
                 ),
                 $shortcode
             )) {
+
+                if ( 'cc_recent_campaigns' === $shortcode ) {
+                    $post_content = $post->post_content;
+                    $temporary_holder = array();
+                    $shortcode_markup = array();
+                    preg_match_all("/\[" . $shortcode . " (.+?)\]/", $post_content, $temporary_holder );
+
+                    foreach ( $temporary_holder[0] as $value ) {
+                        $shortcode_markup[] = esc_html( do_shortcode( $value ) );
+                        preg_match_all('/data-form-id="[\s\S]*?"/', esc_html( do_shortcode( $value ) ), $matches, PREG_OFFSET_CAPTURE);
+
+                        print_r($matches);
+                    }
+                    echo '<pre>';
+                    // print_r( $shortcode_markup );
+                    echo '</pre>';
+                    echo 'stop_shortcode';
+
+                }
+                echo 'hey';
 
                 foreach ( $form_ids as $form_id ) {
 

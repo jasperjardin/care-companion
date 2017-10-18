@@ -15,6 +15,7 @@
 }
 .care-companion-floating-share-button {
     &:hover {
+        z-index: 20;
         .entry-share-right {
             li {
                 opacity: 1;
