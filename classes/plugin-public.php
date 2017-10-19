@@ -196,6 +196,7 @@ final class PublicPages
     public function setLocalizeScripts( $id = '' )
     {
         $post = Helper::globalPost();
+        $post_content = $post->post_content;
         $shortcodes = self::getShortcodes();
 
         $form_ids = '';
@@ -208,7 +209,11 @@ final class PublicPages
 
         foreach ( $shortcodes as $shortcode ) {
 
-            $form_ids = Helper::getShortcodeFormID( $post->post_content, $shortcode );
+            $form_ids = Helper::getShortcodeFormID( $post_content, $shortcode );
+
+            if ( 'cc_recent_campaigns' === $shortcode || 'cc_successful_campaigns' === $shortcode ) {
+                $form_ids = Helper::getRecentCampaignID( $post_content, $shortcode );
+            }
 
             if (self::isPluginComponentActive(
                 'dsc-causes',
@@ -219,26 +224,6 @@ final class PublicPages
                 ),
                 $shortcode
             )) {
-
-                if ( 'cc_recent_campaigns' === $shortcode ) {
-                    $post_content = $post->post_content;
-                    $temporary_holder = array();
-                    $shortcode_markup = array();
-                    preg_match_all("/\[" . $shortcode . " (.+?)\]/", $post_content, $temporary_holder );
-
-                    foreach ( $temporary_holder[0] as $value ) {
-                        $shortcode_markup[] = esc_html( do_shortcode( $value ) );
-                        preg_match_all('/data-form-id="[\s\S]*?"/', esc_html( do_shortcode( $value ) ), $matches, PREG_OFFSET_CAPTURE);
-
-                        print_r($matches);
-                    }
-                    echo '<pre>';
-                    // print_r( $shortcode_markup );
-                    echo '</pre>';
-                    echo 'stop_shortcode';
-
-                }
-                echo 'hey';
 
                 foreach ( $form_ids as $form_id ) {
 

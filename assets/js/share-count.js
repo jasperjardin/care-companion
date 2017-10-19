@@ -24,7 +24,7 @@ function( $ ) {
 
     var form_ids = care_companion_sharer_js_vars.form_ids;
     var id, form_id = '';
-    var classes = '.care-companion-donation-box, .care-companion-recent-campaigns'
+    var classes = '.care-companion-donation-box, .care-companion-recent-campaigns, .care-companion-successful-campaigns';
 
     // Sharer
     $('.facebook-share a').click(function(e){

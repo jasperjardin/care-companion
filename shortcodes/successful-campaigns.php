@@ -81,7 +81,7 @@ $form = new WP_Query( $args );
                 data-progress-color="<?php echo esc_attr( $progress_color ); ?>"
 
                 data-progress-transition-duration="<?php echo esc_attr( $progress_transition_duration ); ?>"
-                data-shortcode="cc_recent_campaigns"
+                data-shortcode="cc_successful_campaigns"
             >
                 <div class="row main-container">
 
@@ -122,8 +122,7 @@ $form = new WP_Query( $args );
                                         </span>
 
                                         <span class="donation-action">
-                                            <i class="fa fa-share-alt primary care-companion-icon"></i>
-                                            <?php echo esc_html( 'Share', 'care-companion' ); ?>
+                                            <?php care_companion_social_link(); ?>
                                         </span>
 
                                     </div>

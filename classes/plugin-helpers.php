@@ -157,4 +157,57 @@ final class Helper
 
         return $form_ids;
     }
+
+    /**
+     * This method extracts the parameter of a shortcode into an array.
+     *
+     * @since  1.0.0
+     * @access public
+     * @return array $sanitize_ids Returns the shortcode parameters.
+     */
+    public static function getRecentCampaignID( $post_content = '', $shortcode = '' )
+    {
+        $temporary_holder = array();
+        $sanitize_ids = array();
+        if ( 'cc_successful_campaigns' === $shortcode ) {
+            preg_match_all( "/\[" . $shortcode . "\]/", $post_content, $temporary_holder );
+        } else {
+            preg_match_all( "/\[" . $shortcode . " (.+?)\]/", $post_content, $temporary_holder );
+        }
+
+        foreach ( $temporary_holder[0] as $value ) {
+            $ids = self::getHTMLAttributeValue( 'data-form-id', esc_html( do_shortcode( $value ) ) );
+
+            foreach ( $ids as $id ) {
+                preg_match_all('!\d+!', $id, $matched);
+                $sanitize_ids[] = implode( '', $matched[0] );
+            }
+        }
+        return $sanitize_ids;
+    }
+
+    /**
+     * This method fetch the value of a parameter.
+     *
+     * @param $attrib the attribute name
+     * @param $tag the HTML tag
+     *
+     * @since  1.0.0
+     * @access public
+     * @return array $match Returns the attribute value.
+     */
+    public static function getHTMLAttributeValue( $attrib, $tag ){
+
+        //get attribute from html tag
+        $re = '/'.$attrib.'=["\']?([^"\' ]*)["\' ]/is';
+        preg_match_all( $re, $tag, $match );
+
+        if ( $match ) {
+            return $match[1];
+        } else {
+            return false;
+        }
+
+        return;
+    }
 }

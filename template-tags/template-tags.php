@@ -633,3 +633,9 @@ function care_companion_allowed_html_tags() {
 
     return apply_filters( 'care_companion_allowed_html_tags', $allowed_html_tags );
 }
+
+function care_get_html_attribute_value( $attrib, $tag ){
+    $helper = new \DSC\CareCompanion\Helper();
+    $attribute_value = $helper->getHTMLAttributeValue( $attrib, $tag );
+    return $attribute_value;
+}
