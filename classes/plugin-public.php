@@ -196,8 +196,13 @@ final class PublicPages
     public function setLocalizeScripts( $id = '' )
     {
         $post = Helper::globalPost();
-        $post_content = $post->post_content;
-        $shortcodes = self::getShortcodes();
+        $post_content = '';
+
+        if ( ! is_null( $post ) ) {
+            $post_content = $post->post_content;
+        }
+
+        $shortcodes = array( 'cc_donation_box', 'cc_recent_campaigns', 'cc_successful_campaigns' );
 
         $form_ids = '';
         $sharer_url = array();
@@ -255,7 +260,9 @@ final class PublicPages
 
 
                 // Attach localisation to our main script.
-                wp_localize_script( $this->name, 'care_companion_sharer_js_vars', $translation_array );
+                if ( has_shortcode( $post_content, $shortcode ) ) {
+                    wp_localize_script( $this->name, 'care_companion_sharer_js_vars', $translation_array );
+                }
 
                 // Enqueued script with localized data.
                 wp_enqueue_script( 'care_companion_sharer_js_vars' );
