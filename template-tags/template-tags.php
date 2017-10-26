@@ -154,7 +154,7 @@ function care_companion_single_progress_bar( $args = '' ) { ?>
                 'progress_stroke_width' => 4,
                 'progress_trail_width' => 4,
                 'progress_transition_style' => 'easeInOut',
-                'progress_transition_duration' => 5000
+                'progress_transition_duration' => 3000
             );
         }
     ?>

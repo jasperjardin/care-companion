@@ -138,6 +138,7 @@ final class PublicPages
     {
         $post = Helper::globalPost();
         $shortcodes = self::getShortcodes();
+        $shortcodes_social_sharer = array( 'cc_donation_box', 'cc_recent_campaigns', 'cc_successful_campaigns' );
 
         if (!isset($post)) {
             return;
@@ -169,7 +170,12 @@ final class PublicPages
                     $this->version,
                     false
                 );
-                wp_enqueue_script( 'care-companion-share-count' );
+
+                foreach ( $shortcodes_social_sharer as $shortcode ) {
+                    if ( has_shortcode( $post->post_content, $shortcode ) ) {
+                        wp_enqueue_script( 'care-companion-share-count' );
+                    }
+                }
 
             }
 

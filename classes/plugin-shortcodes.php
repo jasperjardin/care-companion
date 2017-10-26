@@ -186,7 +186,7 @@ final class PluginShortcodes
                 'container_primary_fill' => '#f8b864',
                 'progress_color' => '#eb543a',
                 'progress_transition_style' => 'easeInOut',
-                'progress_transition_duration' => '5000',
+                'progress_transition_duration' => '3000',
                 'progress_trail_color' => '#f8b765',
                 'progress_stroke_width' => '5',
                 'progress_trail_width' => '5',
@@ -222,7 +222,7 @@ final class PluginShortcodes
                 'container_primary_fill' => '#f8b864',
                 'progress_color' => '#eb543a',
                 'progress_transition_style' => 'easeInOut',
-                'progress_transition_duration' => '5000',
+                'progress_transition_duration' => '3000',
             ),
             $atts,
             'cc_successful_campaigns'
