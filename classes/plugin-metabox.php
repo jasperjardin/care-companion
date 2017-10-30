@@ -40,7 +40,7 @@ final class Metabox
 {
 
     /**
-     * Reference metabox class constructor
+     * Plugin metabox class constructor
      */
     public function __construct()
     {

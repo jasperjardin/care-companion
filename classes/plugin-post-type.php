@@ -98,19 +98,6 @@ final class PostType
     */
     public function registerPostTypeAndTaxonomies()
     {
-        // @todo add an Option Class to handle the Post Type and Taxonomy names
-        // $care_companion_singular_option = Options::getKnbSingular();
-        // $care_companion_plural_option = Options::getKnbPlural();
-        // $care_companion_slug_option = Options::getKnbSlug();
-        //
-        // $category_singular_option = Options::getCategorySingular();
-        // $category_plural_option = Options::getCategoryPlural();
-        // $category_slug_option = Options::getCategorySlug();
-        //
-        // $tag_singular_option = Options::getTagSingular();
-        // $tag_plural_option = Options::getTagPlural();
-        // $tag_slug_option = Options::getTagSlug();
-
         $care_companion_singular_option = 'Cause';
         $care_companion_plural_option = 'Causes';
         $care_companion_slug_option = 'causes';

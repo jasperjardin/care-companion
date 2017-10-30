@@ -94,7 +94,7 @@ final class PublicPages
          add_filter( 'template_include', array( $this, 'template_loader' ) );
     }
     /**
-     * This method enqueue the CSS filess for the frontend of the Reference plugin.
+     * This method enqueue the CSS filess for the frontend of the plugin.
      *
      * @since  1.0.0
      * @access public

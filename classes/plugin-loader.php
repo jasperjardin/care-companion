@@ -52,10 +52,10 @@ final class Loader
      *
      * @since  1.0.0
      * @access protected
-     * @var    string    $reference    The string the plugin uses to identify
-     *                                 the plugin.
+     * @var    string    $care_companion    The string the plugin uses to identify
+     *                                      the plugin.
      */
-    protected $reference;
+    protected $care_companion;
 
     /**
      * The current version of the plugin.
@@ -76,7 +76,7 @@ final class Loader
      */
     public function __construct()
     {
-        $this->reference = CARE_COMPANION_NAME;
+        $this->care_companion = CARE_COMPANION_NAME;
         $this->version = CARE_COMPANION_VERSION;
 
         $this->loadDependencies();
@@ -85,8 +85,7 @@ final class Loader
         $this->setPublicHooks();
     }
     /**
-     * This method is used to load all the dependencies needed by the Reference
-     * plugin.
+     * This method is used to load all the dependencies needed by the plugin.
      *
      * @since  1.0.0
      * @access private
@@ -111,12 +110,6 @@ final class Loader
         include_once plugin_dir_path(dirname(__FILE__)) . 'classes/plugin-admin.php';
 
         /**
-         * This class handles the sanitation of the of the Reference Settings
-         * before displayed.
-         */
-        // include_once plugin_dir_path(dirname(__FILE__)) . 'classes/care-companion-options.php';
-
-        /**
          * This class handles all the defined ations and filters in the
          * frontend.
          */
@@ -133,33 +126,32 @@ final class Loader
         include_once plugin_dir_path(dirname(__FILE__)) . 'classes/plugin-metabox.php';
 
         /**
-         * This class handles the structure of the Reference Breadcrumbs.
-         */
-        // include_once plugin_dir_path(dirname(__FILE__)) . 'classes/care-companion-breadcrumb.php';
-
-        /**
          * This class handles the registration of the Plugin Shortcodes.
          */
         include_once plugin_dir_path(dirname(__FILE__)) . 'classes/plugin-shortcodes.php';
 
         /**
-         * This class handles the Reference hooks.
+         * This class handles the registration of the Plugin Widgets.
          */
-        // include_once plugin_dir_path(dirname(__FILE__)) . 'classes/care-companion-action-hooks.php';
+        include_once plugin_dir_path(dirname(__FILE__)) . 'classes/plugin-widgets.php';
+
+        /**
+         * This class handles the Plugin hooks.
+         */
+        // include_once plugin_dir_path(dirname(__FILE__)) . 'classes/plugin-action-hooks.php';
 
         $this->loader = new \DSC\CareCompanion\AddFiltersActions();
 
         new \DSC\CareCompanion\PluginShortcodes();
 
-        // new ActionHooks();
-
-        // new Options();
+        new \DSC\CareCompanion\PluginWidgets();
 
         new \DSC\CareCompanion\Metabox();
 
     }
+
     /**
-     * This method is used to load the localization file of the Reference plugin.
+     * This method is used to load the localization file of the plugin.
      *
      * @since  1.0.0
      * @access private
@@ -168,6 +160,7 @@ final class Loader
     private function setLocale()
     {
     }
+
     /**
      * This method is used to load all the actions and filters hooks in the
      * WordPress backend.
@@ -243,11 +236,11 @@ final class Loader
      *
      * @since  1.0.0
      * @access public
-     * @return string reference The name of the plugin.
+     * @return string care_companion The name of the plugin.
      */
     public function getName()
     {
-        return $this->reference;
+        return $this->care_companion;
     }
 
     /**

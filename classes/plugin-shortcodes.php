@@ -352,7 +352,7 @@ final class PluginShortcodes
     }
 
     /**
-     * This method sets the template for the reference_loop shortcode.
+     * This method sets the template for the plugin shortcode.
      *
      * @param array $atts  The attributes for the shortcode.
      * @param string $file The file name that contains the mark-up of the shortcode.

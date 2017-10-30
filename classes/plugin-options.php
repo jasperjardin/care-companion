@@ -18,7 +18,7 @@
  * @link     github.com/codehaiku/care-companion
  */
 
-namespace DSC\Reference;
+namespace DSC\CareCompanion;
 
 if (! defined('ABSPATH')) {
     return;

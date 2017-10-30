@@ -67,7 +67,7 @@ final class Admin
 	public $loader;
 
     /**
-     * Reference settings class constructor
+     * Class constructor
      */
 	public function __construct( $name, $version, $loader )
     {
@@ -78,12 +78,5 @@ final class Admin
 
     public function enqueueScripts()
     {
-		wp_enqueue_script(
-            $this->name,
-            plugin_dir_url( dirname(__FILE__) ) . 'assets/js/reference-admin.js',
-            array( 'jquery' ),
-            $this->version,
-            FALSE
-        );
 	}
 }
