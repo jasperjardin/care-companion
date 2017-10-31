@@ -136,6 +136,11 @@ final class Loader
         include_once plugin_dir_path(dirname(__FILE__)) . 'classes/plugin-widgets.php';
 
         /**
+         * This class handles the registration of the Plugin Widgets.
+         */
+        include_once plugin_dir_path(dirname(__FILE__)) . 'classes/plugin-widgets.php';
+
+        /**
          * This class handles the Plugin hooks.
          */
         // include_once plugin_dir_path(dirname(__FILE__)) . 'classes/plugin-action-hooks.php';
