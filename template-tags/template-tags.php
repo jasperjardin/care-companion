@@ -640,102 +640,116 @@ function care_get_html_attribute_value( $attrib, $tag ){
     return $attribute_value;
 }
 
-if ( class_exists( 'Tribe__Main' ) ) {
-}
-function care_companion_get_the_event_period( $post_id = '', $display_time = true, $date_format = '' ) {
-    $tribe_date_utils_class = new Tribe__Date_Utils();
-    $event_period = array();
-    $all_day = '';
+function care_companion_is_event_calendar_active() {
+    include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+    $plugin = false;
 
-    if ( empty( $date_format ) ) {
-        $date_format = care_companion_event_date_format();
+    if ( is_plugin_active( 'the-events-calendar/the-events-calendar.php' ) ) {
+        //plugin is activated
+        $plugin = true;
     }
+    return $plugin;
+}
 
-    if ( ! empty ( $post_id ) ) {
+if ( true === care_companion_is_event_calendar_active() ) {
 
-        $all_day = $tribe_date_utils_class->is_all_day( get_post_meta( $post_id, '_EventAllDay', true ) );
+    function care_companion_get_the_event_period( $post_id = '', $display_time = true, $date_format = '' ) {
+        $tribe_date_utils_class = new Tribe__Date_Utils();
+        $event_period = array();
+        $all_day = '';
 
-        if ( true === $all_day ) {
-            $event_period['start_date'] = tribe_get_start_date( $post_id, false, $date_format );
-            $event_period['end_date'] = tribe_get_end_date( $post_id, false, $date_format  );
-            $event_period['all_day'] = __( 'All Day Event', 'care-companion' );
-        } else {
-            $event_period['start_date'] = tribe_get_start_date( $post_id, false, $date_format );
-            $event_period['start_time'] = tribe_get_start_time( $post_id, false, $date_format );
-            $event_period['end_date'] = tribe_get_end_date( $post_id, false, $date_format  );
-            $event_period['end_time'] = tribe_get_end_time( $post_id, false, $date_format );
+        if ( empty( $date_format ) ) {
+            $date_format = care_companion_event_date_format();
         }
 
-        return $event_period;
-    }
+        if ( ! empty ( $post_id ) ) {
 
-    return;
-}
+            $all_day = $tribe_date_utils_class->is_all_day( get_post_meta( $post_id, '_EventAllDay', true ) );
 
-function care_companion_the_event_period( $post_id = '', $display_time = true, $date_format = '', $event_date_icon = '', $event_time_icon = '', $event_date_separator = '' ) {
+            if ( true === $all_day ) {
+                $event_period['start_date'] = tribe_get_start_date( $post_id, false, $date_format );
+                $event_period['end_date'] = tribe_get_end_date( $post_id, false, $date_format  );
+                $event_period['all_day'] = __( 'All Day Event', 'care-companion' );
+            } else {
+                $event_period['start_date'] = tribe_get_start_date( $post_id, false, $date_format );
+                $event_period['start_time'] = tribe_get_start_time( $post_id, false, $date_format );
+                $event_period['end_date'] = tribe_get_end_date( $post_id, false, $date_format  );
+                $event_period['end_time'] = tribe_get_end_time( $post_id, false, $date_format );
+            }
 
-    if ( empty( $date_format ) ) {
-        $date_format = care_companion_event_date_format();
-    }
-    if ( empty( $event_date_icon ) ) {
-        $event_date_icon = '<i class="fa fa-map-marker"></i>';
-    }
-    if ( empty( $event_time_icon ) ) {
-        $event_time_icon = '<i class="fa fa-clock-o"></i>';
-    }
-    if ( empty( $event_date_separator ) ) {
-        $event_date_separator = __( '|', 'care-companion' );
-    }
-
-    if ( ! empty( $post_id ) ) { ?>
-        <?php $event_period = care_companion_get_the_event_period( $post_id ); ?>
-
-        <div class="cc-event-period-wrapper">
-            <?php if ( array_key_exists( 'all_day', $event_period ) ) { ?>
-                <span class="event-date"><?php echo $event_date_icon; ?> <?php echo esc_html( $event_period['start_date'] . ' - ' . $event_period['end_date'] ); ?></span>
-                <span class="event-date-saparator"><?php echo esc_html( $event_date_separator ); ?></span>
-                <span class="event-time"><?php echo $event_time_icon; ?> <?php echo esc_html( $event_period['all_day'] ); ?></span>
-            <?php } else { ?>
-                <span class="event-date"><?php echo $event_date_icon; ?> <?php echo esc_html( $event_period['start_date'] . ' - ' . $event_period['end_date'] ); ?></span>
-                <span class="event-date-saparator"><?php echo esc_html( $event_date_separator ); ?></span>
-                <span class="event-time"><?php echo $event_time_icon; ?> <?php echo esc_html( $event_period['start_time'] . ' - ' . $event_period['end_time'] ); ?></span>
-            <?php } ?>
-        </div>
-
-    <?php }
-
-    return;
-}
-function care_companion_the_event_content( $id = null, $limit = 200, $excerpt_end = '...', $read_more_enable = true ) {
-    // Set $id to the current post by default
-    if ( ! $id ) {
-        global $post;
-        $id = get_the_id();
-    }
-
-    // Get the post content
-    $post_content = get_post_field( 'post_content', $id );
-    $post_excerpt = get_post_field( 'post_excerpt', $id );
-    $post_title = get_post_field( 'post_title', $id );
-    $read_more = '';
-
-    if ( ! empty( $post_content ) ) {
-        if ( true === $read_more_enable ) {
-            $read_more = '<a class="care-companion-event-read-more" href="' . esc_url( get_the_permalink( $id ) ) .'" title="' . esc_attr( $post_title ) . '">' . __( 'Read more', 'care-companion' ) . '</a>';
+            return $event_period;
         }
 
-        $excerpt = strip_tags( substr( $post_content, 0, $limit ) );
-
-        if ( ! empty( $post_excerpt ) ) {
-            $excerpt = $post_excerpt;
-        }
-
-        return $excerpt . $excerpt_end . $read_more;
+        return;
     }
 
-    return;
-}
-function care_companion_event_date_format() {
-    $date_format = 'M m, Y';
-    return $date_format;
+    function care_companion_the_event_period( $post_id = '', $display_time = true, $date_format = '', $event_date_icon = '', $event_time_icon = '', $event_date_separator = '' ) {
+
+        if ( empty( $date_format ) ) {
+            $date_format = care_companion_event_date_format();
+        }
+        if ( empty( $event_date_icon ) ) {
+            $event_date_icon = '<i class="fa fa-map-marker"></i>';
+        }
+        if ( empty( $event_time_icon ) ) {
+            $event_time_icon = '<i class="fa fa-clock-o"></i>';
+        }
+        if ( empty( $event_date_separator ) ) {
+            $event_date_separator = __( '|', 'care-companion' );
+        }
+
+        if ( ! empty( $post_id ) ) { ?>
+            <?php $event_period = care_companion_get_the_event_period( $post_id ); ?>
+
+            <div class="cc-event-period-wrapper">
+                <?php if ( array_key_exists( 'all_day', $event_period ) ) { ?>
+                    <span class="event-date"><?php echo $event_date_icon; ?> <?php echo esc_html( $event_period['start_date'] . ' - ' . $event_period['end_date'] ); ?></span>
+                    <span class="event-date-saparator"><?php echo esc_html( $event_date_separator ); ?></span>
+                    <span class="event-time"><?php echo $event_time_icon; ?> <?php echo esc_html( $event_period['all_day'] ); ?></span>
+                <?php } else { ?>
+                    <span class="event-date"><?php echo $event_date_icon; ?> <?php echo esc_html( $event_period['start_date'] . ' - ' . $event_period['end_date'] ); ?></span>
+                    <span class="event-date-saparator"><?php echo esc_html( $event_date_separator ); ?></span>
+                    <span class="event-time"><?php echo $event_time_icon; ?> <?php echo esc_html( $event_period['start_time'] . ' - ' . $event_period['end_time'] ); ?></span>
+                <?php } ?>
+            </div>
+
+        <?php }
+
+        return;
+    }
+    function care_companion_the_event_content( $id = null, $read_more_enable = true, $limit = 200, $ellipsis = '...' ) {
+        // Set $id to the current post by default
+        if ( ! $id ) {
+            global $post;
+            $id = get_the_id();
+        }
+
+        // Get the post content
+        $post_content = get_post_field( 'post_content', $id );
+        $post_excerpt = get_post_field( 'post_excerpt', $id );
+        $post_title = get_post_field( 'post_title', $id );
+        $read_more = '';
+
+        if ( ! empty( $post_content ) ) {
+            if ( true === $read_more_enable ) {
+                $read_more = '<a class="care-companion-event-read-more" href="' . esc_url( get_the_permalink( $id ) ) .'" title="' . esc_attr( $post_title ) . '">' . __( 'Read more', 'care-companion' ) . '</a>';
+            }
+
+            $excerpt = strip_tags( substr( $post_content, 0, $limit ) );
+
+            if ( ! empty( $post_excerpt ) ) {
+                $excerpt = $post_excerpt;
+            }
+
+            $excerpt = $excerpt . '<span class="cc-event-ellipsis">' . $ellipsis . '</span>' . $read_more;
+
+            return $excerpt;
+        }
+
+        return;
+    }
+    function care_companion_event_date_format() {
+        $date_format = 'M m, Y';
+        return $date_format;
+    }
 }

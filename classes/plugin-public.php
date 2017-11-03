@@ -113,7 +113,8 @@ final class PublicPages
                     'dsc-causes-tags'
                 ),
                 $shortcode
-            )) {
+            ) ||
+            is_active_widget( false, false, 'care_companion_upcoming_events_widget', true ) ) {
                 wp_enqueue_style(
                     $this->name,
                     plugin_dir_url(dirname(__FILE__)) . 'assets/css/care-companion.css',
@@ -153,7 +154,8 @@ final class PublicPages
                     'dsc-causes-tags'
                 ),
                 $shortcode
-            )) {
+            ) ||
+            is_active_widget( false, false, 'care_companion_upcoming_events_widget', true ) ) {
                 wp_register_script(
                     $this->name,
                     plugin_dir_url(dirname(__FILE__)) . 'assets/js/care-companion.js',
@@ -330,7 +332,8 @@ final class PublicPages
             'cc_serch_form',
             'cc_donate_button',
             'cc_recent_blogs',
-            'cc_step_boxes'
+            'cc_step_boxes',
+            'cc_upcoming_events',
         );
 
         return $shortcodes;

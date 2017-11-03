@@ -67,7 +67,7 @@ final class PluginWidgets
 
     public function register_upcoming_events_widget() {
 
-        if ( class_exists( 'Tribe__Events__Main' ) ) {
+        if ( true === care_companion_is_event_calendar_active() ) {
             register_widget( 'CareCompanionUpcomingEventsWidget' );
         }
 

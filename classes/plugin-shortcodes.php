@@ -97,6 +97,15 @@ final class PluginShortcodes
                 'registerCCStepBoxes'
             )
         );
+        if ( true === care_companion_is_event_calendar_active() ) {
+            add_shortcode(
+                'cc_upcoming_events',
+                array(
+                    $this,
+                    'registerCCUpcomingEvents'
+                )
+            );
+        }
         return $this;
     }
 
@@ -319,6 +328,7 @@ final class PluginShortcodes
 
         return $this->display( $atts, $file );
     }
+
     /**
      * This method registers the cc_donate_button shortcode.
      *
@@ -349,6 +359,32 @@ final class PluginShortcodes
         $file = 'step-boxes.php';
 
         return $this->display( $atts, $file, $content );
+    }
+
+    /**
+     * This method registers the cc_upcoming_events shortcode.
+     *
+     * @param array $atts The attributes for the shortcode.
+     *
+     * @since  1.0.0
+     * @access public
+     * @return array $atts Returns the set attributes for the shortcode.
+     */
+    public function registerCCUpcomingEvents( $atts )
+    {
+
+        $atts = shortcode_atts(
+            array(
+                'number_of_posts' => '5',
+                'read_more' => 'enable',
+            ),
+            $atts,
+            'cc_upcoming_events'
+        );
+
+        $file = 'upcoming-events.php';
+
+        return $this->display( $atts, $file );
     }
 
     /**

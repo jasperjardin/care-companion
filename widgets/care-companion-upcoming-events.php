@@ -30,6 +30,8 @@ class CareCompanionUpcomingEventsWidget extends WP_Widget {
 
 		echo $args['before_widget'];
         $number_of_posts = $instance['number_of_posts'];
+        $read_more = boolval( $instance['read_more'] );
+        $no_thumbnail = '';
 
 		if ( ! empty( $instance['title'] ) ) {
 
@@ -40,6 +42,7 @@ class CareCompanionUpcomingEventsWidget extends WP_Widget {
         if ( empty( $number_of_posts ) || 0 === $number_of_posts ) {
             $number_of_posts = '5';
         }
+
 
         $event_args = array(
         	'numberposts' => $number_of_posts,
@@ -52,14 +55,18 @@ class CareCompanionUpcomingEventsWidget extends WP_Widget {
         $upcoming_events = wp_get_recent_posts( $event_args ); ?>
 
 
-        <ul class="care-companion-upcoming-events">
+        <ul class="care-companion-upcoming-events widget-element">
             <?php if ( ! empty ( $upcoming_events ) ) : ?>
                 <?php foreach( $upcoming_events as $event ) { ?>
                     <li class="care-companion-upcoming-event">
+                        
+                        <?php if ( ! has_post_thumbnail( $event['ID'] ) ) {
+                            $no_thumbnail = 'no-thumbnail';
+                        } ?>
 
-                        <div class="row care-companion-upcoming-event-inner-wrap">
+                        <div class="row care-companion-upcoming-event-inner-wrap <?php echo esc_attr( $no_thumbnail ); ?>">
 
-                            <div class="col-md-4">
+                            <div class="col-md-4 content-wrapper-left">
                                 <?php if ( has_post_thumbnail( $event['ID'] ) ) { ?>
                                     <?php echo get_the_post_thumbnail( $event['ID'], 'full', array( 'class' => 'cc-event-thumbnail' ) ); ?>
                                 <?php } else { ?>
@@ -67,7 +74,7 @@ class CareCompanionUpcomingEventsWidget extends WP_Widget {
                                 <?php } ?>
                             </div>
 
-                            <div class="col-md-8">
+                            <div class="col-md-8 content-wrapper-right">
                                 <div class="cc-event-date">
                                     <span class='date'>
                                         <?php echo get_the_date( 'd', $event['ID'] ); ?>
@@ -83,11 +90,11 @@ class CareCompanionUpcomingEventsWidget extends WP_Widget {
                                 </h4>
                                 <?php care_companion_the_event_period( $event['ID'] ); ?>
                                 <div class="cc-event-content">
-                                    <?php echo care_companion_the_event_content( $event['ID'] ); ?>
+                                    <?php echo care_companion_the_event_content( $event['ID'], $read_more ); ?>
                                 </div>
 
                             </div>
-                            
+
                         </div>
 
                     </li>
@@ -125,7 +132,8 @@ class CareCompanionUpcomingEventsWidget extends WP_Widget {
 	public function form( $instance ) {
 
 		$title = ! empty( $instance['title'] ) ? $instance['title'] : __( 'Upcoming Events', 'care-companion' );
-		$number_of_posts = ! empty( $instance['number_of_posts'] ) ? $instance['number_of_posts'] : '';
+		$number_of_posts = ! empty( $instance['number_of_posts'] ) ? $instance['number_of_posts'] : '5';
+		$read_more = ! empty( $instance['read_more'] ) ? $instance['read_more'] : '';
 		?>
 		<p>
 
@@ -145,9 +153,12 @@ class CareCompanionUpcomingEventsWidget extends WP_Widget {
 			<input class="widefat" id="<?php echo $this->get_field_id( 'number_of_posts' ); ?>" name="<?php echo $this->get_field_name( 'number_of_posts' ); ?>" type="text" value="<?php echo esc_attr( $number_of_posts  ); ?>">
 
 			<span class="help-text">
-				<em><?php _e('Enter the username of the member that you want to be featured.', 'care-companion' ); ?></em>
+				<em><?php _e('Enter the number of events to display.', 'care-companion' ); ?></em>
 			</span>
 
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'read_more' ); ?>"><?php _e( 'Show Read More Link: ', 'care-companion' ); ?><input type="checkbox" id="<?php echo $this->get_field_id( 'read_more' ); ?>" name="<?php echo $this->get_field_name( 'read_more' ); ?>" <?php checked( true, $read_more ); ?> value="1" /></label>
 		</p>
 		<?php
 	}
@@ -168,6 +179,7 @@ class CareCompanionUpcomingEventsWidget extends WP_Widget {
 
 		$instance['title']    = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 		$instance['number_of_posts'] = ( ! empty( $new_instance['number_of_posts'] ) ) ? strip_tags( $new_instance['number_of_posts'] ) : '';
+		$instance['read_more'] = ( ! empty( $new_instance['read_more'] ) ) ? strip_tags( $new_instance['read_more'] ) : '';
 
 		return $instance;
 	}
