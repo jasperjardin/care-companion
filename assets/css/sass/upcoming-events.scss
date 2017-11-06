@@ -58,15 +58,37 @@
     }
 
     .care-companion-event-read-more {
-        display: block;
+        margin-left: 5px;
+        display: inline-block;
     }
     .cc-event-content {
         padding-right: 15px;
     }
 
     &.widget-element {
+        .care-companion-upcoming-event-inner-wrap {
+            position: relative;
+        }
+        .has-thumbnail {
+            .content-wrapper-right {
+                position: static;
+            }
+        }
+        .no-thumbnail {
+            .cc-event-title,
+            .cc-event-period-wrapper {
+                @include calc( width, 90%, '100% - 40px' );
+            }
+        }
+        .cc-event-content {
+            margin-top: 15px;
+        }
+        .content-wrapper-right {
+            padding: 15px 30px;
+        }
         .cc-event-date {
             padding: 5px;
+            right: 15px;
         }
         .date {
             font-size: 15px;
@@ -81,7 +103,17 @@
         .care-companion-upcoming-event-inner-wrap {
             min-height: 180px;
             position: relative;
-            padding-left: 33.33333333%;
+            @media(min-width: 768px) {
+                padding-left: 33.33333333%;
+            }
+            &.has-thumbnail {
+                .cc-event-title,
+                .cc-event-period-wrapper {
+                    @media(max-width: 768px) {
+                        width: 100%;
+                    }
+                }
+            }
             &.no-thumbnail {
                 min-height: 0;
                 padding-left: 0;
@@ -96,13 +128,30 @@
         .content-wrapper-left {
             background-size: cover;
             background-position: 50%;
-            height: 100%;
-            position: absolute;
-            left: 15px;
+            @media(min-width: 768px) {
+                width: 33.33%;
+                height: 100%;
+                position: absolute;
+                left: 15px;
+            }
+            @media(max-width: 768px) {
+                background-size: 0;
+            }
+        }
+        .cc-event-thumbnail {
+            @media(min-width: 768px) {
+                display: none;
+            }
         }
         .content-wrapper-right {
-            width: 100%;
-            padding: 25px 15px 25px 60px;
+            @media(min-width: 768px) {
+                width: 100%;
+                padding: 25px 15px 25px 60px;
+            }
+            @media(max-width: 768px) {
+                padding: 25px 30px;
+                position: static;
+            }
         }
         .cc-event-title,
         .cc-event-period-wrapper {
@@ -114,6 +163,9 @@
             margin-bottom: 10px;
             a {
                 font-size: 25px;
+                @media(max-width: 768px) {
+                    font-size: 20px;
+                }
             }
         }
         .cc-event-period-wrapper {

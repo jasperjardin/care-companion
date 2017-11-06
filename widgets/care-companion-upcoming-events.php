@@ -31,7 +31,7 @@ class CareCompanionUpcomingEventsWidget extends WP_Widget {
 		echo $args['before_widget'];
         $number_of_posts = $instance['number_of_posts'];
         $read_more = boolval( $instance['read_more'] );
-        $no_thumbnail = '';
+        $post_thumbnail = '';
 
 		if ( ! empty( $instance['title'] ) ) {
 
@@ -59,14 +59,16 @@ class CareCompanionUpcomingEventsWidget extends WP_Widget {
             <?php if ( ! empty ( $upcoming_events ) ) : ?>
                 <?php foreach( $upcoming_events as $event ) { ?>
                     <li class="care-companion-upcoming-event">
-                        
+
                         <?php if ( ! has_post_thumbnail( $event['ID'] ) ) {
-                            $no_thumbnail = 'no-thumbnail';
+                            $post_thumbnail = 'no-thumbnail';
+                        } else {
+                            $post_thumbnail = 'has-thumbnail';
                         } ?>
 
-                        <div class="row care-companion-upcoming-event-inner-wrap <?php echo esc_attr( $no_thumbnail ); ?>">
+                        <div class="row care-companion-upcoming-event-inner-wrap <?php echo esc_attr( $post_thumbnail ); ?>">
 
-                            <div class="col-md-4 content-wrapper-left">
+                            <div class="col-md-12 content-wrapper-left">
                                 <?php if ( has_post_thumbnail( $event['ID'] ) ) { ?>
                                     <?php echo get_the_post_thumbnail( $event['ID'], 'full', array( 'class' => 'cc-event-thumbnail' ) ); ?>
                                 <?php } else { ?>
@@ -74,7 +76,7 @@ class CareCompanionUpcomingEventsWidget extends WP_Widget {
                                 <?php } ?>
                             </div>
 
-                            <div class="col-md-8 content-wrapper-right">
+                            <div class="col-md-12 content-wrapper-right">
                                 <div class="cc-event-date">
                                     <span class='date'>
                                         <?php echo get_the_date( 'd', $event['ID'] ); ?>

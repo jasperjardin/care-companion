@@ -45,8 +45,13 @@ if (! in_array( $columns, $allowed_columns, true ) ) {
             <?php } ?>
 
             <div class="icon-wrapper">
-                <i class="step-icon <?php echo esc_attr( $icon ); ?>"></i>
+                <?php if ( empty( $image_url ) ) { ?>
+                    <i class="step-icon <?php echo esc_attr( $icon ); ?>"></i>
+                <?php } else { ?>
+                    <img class="step-icon image" src="<?php echo esc_url( $image_url ); ?>">
+                <?php }?>
             </div>
+
             <div class="title-wrapper">
                 <h4 class="step-title"><?php echo esc_html( $title ); ?></h4>
             </div>

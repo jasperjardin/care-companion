@@ -31,7 +31,7 @@ if ( 'enable' === $read_more ) {
     $read_more = false;
 }
 
-$no_thumbnail = '';
+$post_thumbnail = '';
 
 /**
  * Query the Form
@@ -53,12 +53,18 @@ $upcoming_events = wp_get_recent_posts( $event_args ); ?>
             <li class="care-companion-upcoming-event">
 
                 <?php if ( ! has_post_thumbnail( $event['ID'] ) ) {
-                    $no_thumbnail = 'no-thumbnail';
+                    $post_thumbnail = 'no-thumbnail';
+                } else {
+                    $post_thumbnail = 'has-thumbnail';
                 } ?>
-
-                <div class="row care-companion-upcoming-event-inner-wrap <?php echo esc_attr( $no_thumbnail ); ?>">
+                <div class="row care-companion-upcoming-event-inner-wrap <?php echo esc_attr( $post_thumbnail ); ?>">
 
                     <div class="col-md-4 content-wrapper-left" style="background-image: url('<?php echo esc_url( get_the_post_thumbnail_url( $event['ID'] ), 'full' ); ?>');">
+                        <?php if ( has_post_thumbnail( $event['ID'] ) ) { ?>
+                            <?php echo get_the_post_thumbnail( $event['ID'], 'full', array( 'class' => 'cc-event-thumbnail' ) ); ?>
+                        <?php } else { ?>
+                            <div class="event-has-no-thumbnail"></div>
+                        <?php } ?>
                     </div>
 
                     <div class="col-md-8 content-wrapper-right">

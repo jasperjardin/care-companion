@@ -347,6 +347,7 @@ final class PluginShortcodes
                 'step_number' => '',
                 'title' => '',
                 'icon' => 'fa fa-user',
+                'image_url' => '',
                 'link' => '#',
                 'link_text' => __( 'Learn More', 'care-companion' ),
                 'link_text_icon' => 'fa fa-angle-double-right',
