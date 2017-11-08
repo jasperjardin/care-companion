@@ -61,7 +61,7 @@ $recent_posts = wp_get_recent_posts( $args ); ?>
             $recent_author = $recent_author_data->display_name;
             $background_image = care_companion_get_featured_image_url( $id );
         ?>
-            <li class="care-companion-recent-blogs care-companion-recent-blogs-grid column-<?php echo esc_attr( absint( $columns ) ); ?>">
+            <li class="care-companion-recent-blogs care-companion-shortcode-grid column-<?php echo esc_attr( absint( $columns ) ); ?>">
 
                 <div class="row main-container">
 

@@ -74,7 +74,7 @@ $recent_posts = wp_get_recent_posts( $args ); ?>
             $progress_donation = care_companion_get_donation_progress( $form_id );
         ?>
 
-            <li class="care-companion-recent-campaigns care-companion-recent-campaigns-grid column-<?php echo esc_attr( absint( $columns ) ); ?> care-companion-recent-campaigns-style <?php echo esc_attr( $layout_style ); ?>"
+            <li class="care-companion-recent-campaigns care-companion-shortcode-grid column-<?php echo esc_attr( absint( $columns ) ); ?> care-companion-recent-campaigns-style <?php echo esc_attr( $layout_style ); ?>"
                 data-form-id="<?php echo esc_attr( $form_id ); ?>"
                 data-style="<?php echo esc_attr( $layout_style ); ?>"
                 data-progress-symbol="<?php echo esc_attr( $progress_symbol ); ?>"

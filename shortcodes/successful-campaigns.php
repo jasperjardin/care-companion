@@ -72,7 +72,7 @@ $form = new WP_Query( $args );
 
         <?php if ( $income >= $goal && 0 !== $income  ) : ?>
 
-            <div class="care-companion-successful-campaigns care-companion-recent-campaigns-grid column-<?php echo esc_attr( absint( $columns ) ); ?>"
+            <div class="care-companion-successful-campaigns care-companion-shortcode-grid column-<?php echo esc_attr( absint( $columns ) ); ?>"
                 data-form-id="<?php echo esc_attr( $form_id ); ?>"
                 data-progress-symbol="<?php echo esc_attr( $progress_symbol ); ?>"
 

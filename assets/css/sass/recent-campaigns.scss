@@ -159,39 +159,3 @@
         }
     }
 }
-
-.care-companion-recent-campaigns-grid {
-    &.column-1,
-    &.column-2,
-    &.column-3,
-    &.column-4,
-    &.column-5,
-    &.column-6 {
-        max-width: none;
-        display: inline-block;
-        vertical-align: top;
-    }
-    &.column-1 {
-        @include column( width, 100%, '100% - 0px', 0px );
-    }
-    &.column-2 {
-        @include column( width, 47.75%, '50% - 18px', 18px );
-        &:nth-child(2n) {
-            margin-right: 0;
-        }
-    }
-    &.column-3 {
-        @include column( width, 31.08%, '33.33% - 18px', 14px );
-
-        &:nth-child(3n) {
-            margin-right: 0;
-        }
-    }
-    &.column-4 {
-        @include column( width, 22.75%, '25% - 18px', 18px );
-
-        &:nth-child(4n) {
-            margin-right: 0;
-        }
-    }
-}

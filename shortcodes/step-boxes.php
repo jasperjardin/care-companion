@@ -34,7 +34,7 @@ if (! in_array( $columns, $allowed_columns, true ) ) {
     $columns = '3';
 }
 ?>
-<div class="care-companion-step-boxes care-companion-step-boxes-grid column-<?php echo esc_attr( absint( $columns ) ); ?>">
+<div class="care-companion-step-boxes care-companion-shortcode-grid column-<?php echo esc_attr( absint( $columns ) ); ?>">
     <div class="outer-wrapper">
         <div class="inner-wrapper">
 

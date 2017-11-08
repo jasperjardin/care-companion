@@ -1,9 +1,6 @@
 .care-companion-recent-blogs-container {
     @extend .care-companion-ul;
 }
-.care-companion-recent-blogs-grid {
-    @extend .care-companion-recent-campaigns-grid;
-}
 
 .care-companion-recent-blogs {
     width: 250px;
@@ -17,6 +14,12 @@
     .featured-image-section {
         position: relative;
         overflow: hidden;
+        > a {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+        }
     }
     &:hover {
         .background-overlay {
@@ -77,5 +80,5 @@
     }
     .action-separator {
         margin: 0 5px;
-    } 
+    }
 }
