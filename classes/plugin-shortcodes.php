@@ -97,15 +97,13 @@ final class PluginShortcodes
                 'registerCCStepBoxes'
             )
         );
-        if ( true === care_companion_is_event_calendar_active() ) {
-            add_shortcode(
-                'cc_upcoming_events',
-                array(
-                    $this,
-                    'registerCCUpcomingEvents'
-                )
-            );
-        }
+        add_shortcode(
+            'cc_upcoming_events',
+            array(
+                $this,
+                'registerCCUpcomingEvents'
+            )
+        );
         return $this;
     }
 

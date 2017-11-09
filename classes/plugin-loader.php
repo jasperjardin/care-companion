@@ -102,7 +102,7 @@ final class Loader
         /**
          * This class handles the localization functionality of the plugin.
          */
-        // include_once plugin_dir_path(dirname(__FILE__)) . 'classes/care-companion-i18n.php';
+        include_once plugin_dir_path(dirname(__FILE__)) . 'classes/plugin-i18n.php';
 
         /**
          * This class handles all the defined actions in the dashboard.
@@ -146,6 +146,8 @@ final class Loader
         // include_once plugin_dir_path(dirname(__FILE__)) . 'classes/plugin-action-hooks.php';
 
         $this->loader = new \DSC\CareCompanion\AddFiltersActions();
+
+        new \DSC\CareCompanion\Language();
 
         new \DSC\CareCompanion\PluginShortcodes();
 

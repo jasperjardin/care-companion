@@ -93,6 +93,7 @@ final class PublicPages
          */
          add_filter( 'template_include', array( $this, 'template_loader' ) );
     }
+
     /**
      * This method enqueue the CSS filess for the frontend of the plugin.
      *

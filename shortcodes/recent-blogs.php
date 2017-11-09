@@ -112,7 +112,7 @@ $recent_posts = wp_get_recent_posts( $args ); ?>
         <?php } ?>
     <?php else : ?>
 
-    <li class="alert alert-info">
+    <li class="care-companion-message alert alert-info nothing-found">
         <p>
             <?php esc_html_e(
                 'There are no items found in your donation form found.',

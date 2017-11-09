@@ -24,7 +24,23 @@ if (! defined('ABSPATH') ) {
 }
 
 extract( $atts );
-?>
+
+/**
+ * Show if Give plugin is disabled.
+ */
+if ( ! class_exists( 'Give' ) ) { ?>
+    <div class="care-companion-message alert alert-info requires-plugin">
+        <p>
+            <?php esc_html_e(
+                'The cc_serch_form shortcode requires the Give plugin to be installed and activated.',
+                'care-companion'
+            ); ?>
+        </p>
+    </div>
+    <?php return; ?>
+<?php } ?>
+
+
 <?php if ( empty ( $background_image_url ) ) : ?>
     <div class="care-companion-search-field">
 <?php else: ?>

@@ -2,8 +2,7 @@
 /**
  * Plugin Name: Care Companion
  * Plugin URI:  https://wordpress.org/plugins/care-companion/
- * Description: A lightweight knowledgebase plugin for your WordPress
- *              website. Works with any theme.
+ * Description: A companion plugin for the Care WordPress theme.
  * Version:     1.0.0
  * Author:      Dunhakdis
  * Author URI:  https://profiles.wordpress.org/dunhakdis/

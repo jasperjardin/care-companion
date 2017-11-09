@@ -15,7 +15,12 @@
 get_header(); ?>
 
 <?php while ( have_posts() ) : the_post(); ?>
-    <div id="printable-content" class="care-companion-causes-container">
+    <?php if ( class_exists( 'Give' ) ) { ?>
+        <div id="printable-content" class="care-companion-causes-container">
+    <?php } else { ?>
+        <div id="printable-content" class="care-companion-causes-container give-is-not-installed">
+    <?php } ?>
+
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
@@ -39,43 +44,59 @@ get_header(); ?>
                                         <div class="row">
 
                                             <div class="left-section-wrapper col-md-9">
-                                                <div class="action-section">
-                                                    <span class="donation-action">
-                                                        <i class="fa fa-heart primary care-companion-icon"></i>
-                                                        <?php
-                                                            $donation_count = care_companion_get_donations_count( care_companion_get_assigned_donation_form_id() );
-                                                            echo sprintf( _n( '%d Donation', '%d Donations', $donation_count, 'care-companion' ), $donation_count );
-                                                        ?>
-                                                    </span>
 
-                                                    <span class="donation-gap">
-                                                        <?php echo esc_html( '|', 'care-companion' ); ?>
-                                                    </span>
+                                                <?php if ( class_exists( 'Give' ) ) { ?>
+                                                    <div class="action-section">
+                                                        <span class="donation-action">
+                                                            <i class="fa fa-heart primary care-companion-icon"></i>
+                                                            <?php
+                                                                $donation_count = care_companion_get_donations_count( care_companion_get_assigned_donation_form_id() );
+                                                                echo sprintf( _n( '%d Donation', '%d Donations', $donation_count, 'care-companion' ), $donation_count );
+                                                            ?>
+                                                        </span>
 
-                                                    <span class="donation-action">
+                                                        <span class="donation-gap">
+                                                            <?php echo esc_html( '|', 'care-companion' ); ?>
+                                                        </span>
+
                                                         <i class="fa fa-share-alt primary care-companion-icon"></i>
-                                                        <?php echo esc_html( 'Share', 'care-companion' ); ?>
-                                                    </span>
-                                                </div>
+                                                        <span data-url="<?php echo esc_url( the_permalink() ); ?>" id="flocks-share-count" class="flocks-share-count-number">
+                                                            <?php echo esc_html__( '0', 'care' ); ?>
+                                                        </span>
+                                                    </div>
+                                                <?php } ?>
 
                                                 <?php the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' ); ?>
 
-                                                <div class="donation-raised">
+                                                <?php if ( class_exists( 'Give' ) ) { ?>
+                                                    <div class="donation-raised">
 
-                                                    <span class="donation-caption"><?php echo esc_html( 'Raised:', 'care-companion' ); ?></span>
+                                                        <span class="donation-caption"><?php echo esc_html( 'Raised:', 'care-companion' ); ?></span>
 
-                                                    <span class="donation-value"><?php echo care_companion_get_formated_donation_income(); ?></span>
-                                                    <span class="donation-value-separator"><?php echo esc_html( '/', 'care-companion' ); ?></span>
-                                                    <span class="donation-value"><?php echo care_companion_get_formated_donation_goal(); ?></span>
+                                                        <span class="donation-value"><?php echo care_companion_get_formated_donation_income(); ?></span>
+                                                        <span class="donation-value-separator"><?php echo esc_html( '/', 'care-companion' ); ?></span>
+                                                        <span class="donation-value"><?php echo care_companion_get_formated_donation_goal(); ?></span>
 
-                                                </div>
+                                                    </div>
+                                                <?php } ?>
 
-                                                <?php care_companion_donate_button( '', __( 'Donate Now', 'care-companion') ); ?>
+                                                <?php if ( class_exists( 'Give' ) ) {
+                                                    care_companion_donate_button( '', __( 'Donate Now', 'care-companion') );
+                                                } ?>
 
                                             </div>
 
                                             <div class="right-section-wrapper col-md-3">
-                                                <?php care_companion_single_progress_bar(); ?>
+                                                <?php if ( class_exists( 'Give' ) ) { ?>
+                                                    <?php care_companion_single_progress_bar(); ?>
+                                                <?php } else { ?>
+                                                    <div class="social-sharer-right text-right">
+                                                        <i class="fa fa-share-alt primary care-companion-icon"></i>
+                                                        <span data-url="<?php echo esc_url( the_permalink() ); ?>" id="flocks-share-count" class="flocks-share-count-number">
+                                                            <?php echo esc_html__( '0', 'care' ); ?>
+                                                        </span>
+                                                    </div>
+                                                <?php } ?>
                                             </div>
 
                                         </div>

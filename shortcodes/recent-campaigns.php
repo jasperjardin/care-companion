@@ -64,6 +64,21 @@ $args = array(
 	'suppress_filters' => true
 );
 
+/**
+ * Show if Give plugin is disabled.
+ */
+if ( ! class_exists( 'Give' ) ) { ?>
+    <div class="care-companion-message alert alert-info requires-plugin">
+        <p>
+            <?php esc_html_e(
+                'The cc_recent_campaigns shortcode requires the Give plugin to be installed and activated.',
+                'care-companion'
+            ); ?>
+        </p>
+    </div>
+    <?php return; ?>
+<?php }
+
 $recent_posts = wp_get_recent_posts( $args ); ?>
 <ul class="care-companion-recent-campaigns-container">
     <?php if ( ! empty ( $recent_posts ) ) : ?>
@@ -102,10 +117,10 @@ $recent_posts = wp_get_recent_posts( $args ); ?>
         <?php } ?>
     <?php else : ?>
 
-        <li class="alert alert-info">
+        <li class="care-companion-message alert alert-info nothing-found">
             <p>
                 <?php esc_html_e(
-                    'There are no items found in your donation form found.',
+                    'There are no campaigns found.',
                     'care-companion'
                 ); ?>
             </p>

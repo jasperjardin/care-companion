@@ -378,6 +378,22 @@
   padding: 10px 25px;
 }
 
+@media (min-width: 992px) {
+  body.single-dsc-causes .information-section .left-section-wrapper {
+    padding-left: 0;
+  }
+}
+
+@media (min-width: 992px) {
+  body.single-dsc-causes .information-section .right-section-wrapper {
+    padding-right: 0;
+  }
+}
+
+body.single-dsc-causes #content.site-content .give-is-not-installed #primary.content-area article.hentry .entry-title {
+  margin-bottom: 0;
+}
+
 .care-companion-recent-campaigns, .care-companion-successful-campaigns, .care-companion-donation-box.style-4, .care-companion-donation-box.style-5 {
   width: 250px;
   max-width: 250px;
@@ -514,8 +530,9 @@
 }
 
 .care-companion-recent-campaigns-style.style-2 .progressbar-section {
-  max-width: none;
   width: 100%;
+  max-width: none;
+  padding: 0;
   left: 0;
 }
 
@@ -606,6 +623,7 @@
 .care-companion-recent-blogs .information-wrapper .blog-title {
   line-height: initial;
   font-size: 0;
+  margin-top: 20px;
 }
 
 .care-companion-recent-blogs .information-wrapper .blog-title a {

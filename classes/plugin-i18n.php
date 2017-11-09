@@ -38,4 +38,31 @@ if (! defined('ABSPATH')) {
 
 final class Language
 {
+    public function __construct()
+    {
+        add_action(
+            'plugins_loaded',
+            array(
+                $this,
+                'loadTextDomain'
+            )
+        );
+    }
+
+    /**
+     * This file declares an action hook for wordpress
+     * to know that there is a localisation going on here
+     *
+     * @since  1.0
+     * @access public
+     *
+     * @return void
+     */
+    public function loadTextDomain() {
+
+        load_plugin_textdomain( 'care-companion', false, CARE_COMPANION_DIR_PATH . '/languages' );
+
+        // load_plugin_textdomain( 'care-companion', false, basename( dirname( __FILE__ ) ) . '/languages' );
+        return;
+    }
 }

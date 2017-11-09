@@ -127,8 +127,9 @@
             margin-bottom: 15px;
         }
         .progressbar-section {
-            max-width: none;
             width: 100%;
+            max-width: none;
+            padding: 0;
             left: 0;
             .care-companion-progress-bar {
                 background-color: #f6f8f9;

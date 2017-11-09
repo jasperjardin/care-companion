@@ -72,6 +72,36 @@ $args = array(
     'post_type' => 'give_forms'
 );
 
+/**
+ * Show if Give plugin is disabled.
+ */
+if ( ! class_exists( 'Give' ) ) { ?>
+    <div class="care-companion-message alert alert-info requires-plugin">
+        <p>
+            <?php esc_html_e(
+                'The cc_donation_box shortcode requires the Give plugin to be installed and activated.',
+                'care-companion'
+            ); ?>
+        </p>
+    </div>
+    <?php return; ?>
+<?php }
+
+/**
+* Show if Give plugin is disabled.
+*/
+if ( empty( $form_id ) ) { ?>
+    <div class="care-companion-message alert alert-info empty-form-id">
+        <p>
+            <?php esc_html_e(
+                'Using cc_donation_box shortcode requires the form_id parameter to be a valid form ID and the form must exist.',
+                'care-companion'
+            ); ?>
+        </p>
+    </div>
+    <?php return; ?>
+<?php }
+
 $form = new WP_Query( $args ); ?>
 
 <?php if ( $form->have_posts() ) : ?>
@@ -138,10 +168,10 @@ $form = new WP_Query( $args ); ?>
 
 <?php else : ?>
 
-<div class="alert alert-info">
+<div class="care-companion-message alert alert-info nothing-found">
     <p>
         <?php esc_html_e(
-            'There are no items found in your donation form found.',
+            'There are no donation form found.',
             'care-companion'
         ); ?>
     </p>

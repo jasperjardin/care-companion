@@ -36,14 +36,29 @@ $post_thumbnail = '';
 /**
  * Query the Form
  */
- $event_args = array(
-     'numberposts' => $number_of_posts,
-     'orderby' => 'post_date',
-     'order' => 'ASC',
-     'post_type' => 'tribe_events',
-     'post_status' => 'publish',
-     'suppress_filters' => true
- );
+$event_args = array(
+    'numberposts' => $number_of_posts,
+    'orderby' => 'post_date',
+    'order' => 'ASC',
+    'post_type' => 'tribe_events',
+    'post_status' => 'publish',
+    'suppress_filters' => true
+);
+
+/**
+ * Show if Give plugin is disabled.
+ */
+if ( ! class_exists( 'Tribe__Events__Main' ) ) { ?>
+    <div class="care-companion-message alert alert-info requires-plugin">
+        <p>
+            <?php esc_html_e(
+                'The cc_upcoming_events shortcode requires the The Events Calendar plugin to be installed and activated.',
+                'care-companion'
+            ); ?>
+        </p>
+    </div>
+    <?php return; ?>
+<?php }
 
 $upcoming_events = wp_get_recent_posts( $event_args ); ?>
 
@@ -97,7 +112,7 @@ $upcoming_events = wp_get_recent_posts( $event_args ); ?>
 
     <?php else : ?>
 
-        <li class="alert alert-info">
+        <li class="care-companion-message alert alert-info nothing-found">
             <p>
                 <?php esc_html_e(
                     'There are no items found in your donation form found.',

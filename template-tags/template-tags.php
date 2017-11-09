@@ -142,19 +142,22 @@ function care_companion_single_progress_bar( $args = '' ) { ?>
         $progress_donation = care_companion_get_donation_progress( $form_id );
 
         if( empty( $args ) ) {
-            $args = array(
-                'text_color' => '#f8b864',
-                'progress_symbol' => __( '%', 'care-companion' ),
-                'progress_text' => __( 'Completed', 'care-companion' ),
-                'progress_text_size' => '45px',
-                'progress_color' => '#eb543a',
-                'progress_fill' => 'transparent',
-                'progress_trail_color' => '#e7e7e7',
-                'progress_shape' => 'Circle',
-                'progress_stroke_width' => 4,
-                'progress_trail_width' => 4,
-                'progress_transition_style' => 'easeInOut',
-                'progress_transition_duration' => 3000
+            $args = apply_filters(
+                'care_companion_single_progress_bar_args',
+                array(
+                    'text_color' => '#f8b864',
+                    'progress_symbol' => __( '%', 'care-companion' ),
+                    'progress_text' => __( 'Completed', 'care-companion' ),
+                    'progress_text_size' => '45px',
+                    'progress_color' => '#eb543a',
+                    'progress_fill' => 'transparent',
+                    'progress_trail_color' => '#e7e7e7',
+                    'progress_shape' => 'Circle',
+                    'progress_stroke_width' => 4,
+                    'progress_trail_width' => 4,
+                    'progress_transition_style' => 'easeInOut',
+                    'progress_transition_duration' => 3000
+                )
             );
         }
     ?>
@@ -210,14 +213,22 @@ function care_companion_get_formated_donation_income( $form_id = '' ) {
     if ( is_singular( 'dsc-causes' ) ) {
         $form_id = care_companion_get_assigned_donation_form_id();
         if ( empty( $form_id ) ) {
-            return give_currency_filter(give_format_amount(0));
+            if ( function_exists( 'give_currency_filter' ) ) {
+                return give_currency_filter(give_format_amount(0));
+            } else {
+                return;
+            }
         }
     }
 
     if ( ! empty( $form_id ) ) {
-        $currency_symbol = give_currency_symbol();
-        $donation = care_companion_get_donation_info( $form_id );
-        return $currency_symbol . $donation['income'];
+        if ( function_exists( 'give_currency_symbol' ) ) {
+            $currency_symbol = give_currency_symbol();
+            $donation = care_companion_get_donation_info( $form_id );
+            return $currency_symbol . $donation['income'];
+        } else {
+            return;
+        }
     }
     return;
 }
@@ -249,14 +260,22 @@ function care_companion_get_formated_donation_goal( $form_id = '' ) {
     if ( is_singular( 'dsc-causes' ) ) {
         $form_id = care_companion_get_assigned_donation_form_id();
         if ( empty( $form_id ) ) {
-            return give_currency_filter(give_format_amount(0));
+            if ( function_exists( 'give_currency_filter' ) ) {
+                return give_currency_filter(give_format_amount(0));
+            } else {
+                return;
+            }
         }
     }
 
     if ( ! empty( $form_id ) ) {
-        $currency_symbol = give_currency_symbol();
-        $donation = care_companion_get_donation_info( $form_id );
-        return $currency_symbol . $donation['goal'];
+        if ( function_exists( 'give_currency_symbol' ) ) {
+            $currency_symbol = give_currency_symbol();
+            $donation = care_companion_get_donation_info( $form_id );
+            return $currency_symbol . $donation['goal'];
+        } else {
+            return;
+        }
     }
     return;
 }
@@ -304,7 +323,20 @@ function care_companion_donate_button( $form_id = '', $text = '', $class_name = 
         $the_permalink = get_permalink( $form_id );
 
         echo '<a href="' . esc_url( $the_permalink ) . '#give-form-' . esc_attr( $form_id ) . '" class="care-companion-btn ' . esc_attr( $class_name ) . '"' . $style . ' title="' . esc_attr( $title ) . '" >' . esc_html( $text ) . '</a>';
-    }
+    } else { ?>
+        <?php if ( ! is_singular( 'dsc-causes' ) ) { ?>
+
+            <div class="care-companion-message alert alert-info empty-form-id">
+                <p>
+                    <?php esc_html_e(
+                        'Using cc_donate_button shortcode requires the form_id parameter to be a valid form ID and the form must exist.',
+                        'care-companion'
+                    ); ?>
+                </p>
+            </div>
+
+        <?php } ?>
+    <?php }
 
     return;
 }
@@ -441,6 +473,10 @@ function care_companion_get_featured_image( $form_id = '', $size = '', $class_na
 }
 
 function care_companion_get_donation_info( $form_id = '' ) {
+
+    if ( ! class_exists( 'Give_Donate_Form' ) ) {
+        return;
+    }
 
     $form = new Give_Donate_Form( $form_id );
     $donation_income = '';

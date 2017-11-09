@@ -158,3 +158,30 @@
 .care-button.care-companion-button {
     padding: 10px 25px;
 }
+body {
+    &.single-dsc-causes {
+        .information-section {
+            .left-section-wrapper {
+                @media(min-width: 992px) {
+                    padding-left: 0;
+                }
+            }
+            .right-section-wrapper {
+                @media(min-width: 992px) {
+                    padding-right: 0;
+                }
+            }
+        }
+        #content.site-content {
+            .give-is-not-installed {
+                #primary.content-area {
+                    article.hentry {
+                        .entry-title {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
