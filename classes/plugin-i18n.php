@@ -60,7 +60,7 @@ final class Language
      */
     public function loadTextDomain() {
 
-        load_plugin_textdomain( 'care-companion', false, CARE_COMPANION_DIR_PATH . '/languages' );
+        load_plugin_textdomain( 'care-companion', false, CARE_COMPANION_DIR_PATH . '\languages' );
 
         // load_plugin_textdomain( 'care-companion', false, basename( dirname( __FILE__ ) ) . '/languages' );
         return;

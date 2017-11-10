@@ -31,9 +31,11 @@ define( 'CARE_COMPANION_NAME', 'Care Companion' );
 
 define( 'CARE_COMPANION_VERSION', '1.0.0' );
 
-define('CARE_COMPANION_DIR_PATH', trailingslashit(plugin_dir_path(__FILE__)));
+define( 'CARE_COMPANION_DIR_PATH', trailingslashit( plugin_dir_path( __FILE__ ) ) );
 
-define('CARE_COMPANION_PATH', plugin_dir_path(__FILE__));
+define( 'CARE_COMPANION_PATH', plugin_dir_path( __FILE__ ) );
+
+define( 'CARE_COMPANION_REALPATH', realpath( dirname( __FILE__ ) . '/..' ) );
 
 // Require the plugin activation class.
 require_once plugin_dir_path(__FILE__) . 'classes/plugin-activator.php';

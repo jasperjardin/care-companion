@@ -326,7 +326,7 @@ function care_companion_donate_button( $form_id = '', $text = '', $class_name = 
     } else { ?>
         <?php if ( ! is_singular( 'dsc-causes' ) ) { ?>
 
-            <div class="care-companion-message alert alert-info empty-form-id">
+            <div class="care-companion-message alert alert-warning empty-form-id">
                 <p>
                     <?php esc_html_e(
                         'Using cc_donate_button shortcode requires the form_id parameter to be a valid form ID and the form must exist.',
@@ -753,7 +753,7 @@ if ( true === care_companion_is_event_calendar_active() ) {
 
         return;
     }
-    function care_companion_the_event_content( $id = null, $read_more_enable = true, $limit = 200, $ellipsis = '...' ) {
+    function care_companion_the_event_content( $id = null, $read_more_enable = true, $limit = 120, $ellipsis = '...' ) {
         // Set $id to the current post by default
         if ( ! $id ) {
             global $post;
@@ -768,7 +768,7 @@ if ( true === care_companion_is_event_calendar_active() ) {
 
         if ( ! empty( $post_content ) ) {
             if ( true === $read_more_enable ) {
-                $read_more = '<a class="care-companion-event-read-more" href="' . esc_url( get_the_permalink( $id ) ) .'" title="' . esc_attr( $post_title ) . '">' . __( 'Read more', 'care-companion' ) . '</a>';
+                $read_more = '<span class="cc-read-more-container"><a class="care-companion-event-read-more primary" href="' . esc_url( get_the_permalink( $id ) ) .'" title="' . esc_attr( $post_title ) . '">' . __( 'Read more', 'care-companion' ) . '</a></span>';
             }
 
             $excerpt = strip_tags( substr( $post_content, 0, $limit ) );
@@ -785,7 +785,7 @@ if ( true === care_companion_is_event_calendar_active() ) {
         return;
     }
     function care_companion_event_date_format() {
-        $date_format = 'M m, Y';
+        $date_format = apply_filters( 'care_companion_event_date_format', 'M m, Y' );
         return $date_format;
     }
 }

@@ -76,7 +76,7 @@ $args = array(
  * Show if Give plugin is disabled.
  */
 if ( ! class_exists( 'Give' ) ) { ?>
-    <div class="care-companion-message alert alert-info requires-plugin">
+    <div class="care-companion-message alert alert-warning requires-plugin">
         <p>
             <?php esc_html_e(
                 'The cc_donation_box shortcode requires the Give plugin to be installed and activated.',
@@ -91,7 +91,7 @@ if ( ! class_exists( 'Give' ) ) { ?>
 * Show if Give plugin is disabled.
 */
 if ( empty( $form_id ) ) { ?>
-    <div class="care-companion-message alert alert-info empty-form-id">
+    <div class="care-companion-message alert alert-warning empty-form-id">
         <p>
             <?php esc_html_e(
                 'Using cc_donation_box shortcode requires the form_id parameter to be a valid form ID and the form must exist.',

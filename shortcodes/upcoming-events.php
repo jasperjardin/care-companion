@@ -49,7 +49,7 @@ $event_args = array(
  * Show if Give plugin is disabled.
  */
 if ( ! class_exists( 'Tribe__Events__Main' ) ) { ?>
-    <div class="care-companion-message alert alert-info requires-plugin">
+    <div class="care-companion-message alert alert-warning requires-plugin">
         <p>
             <?php esc_html_e(
                 'The cc_upcoming_events shortcode requires the The Events Calendar plugin to be installed and activated.',

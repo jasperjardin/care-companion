@@ -68,7 +68,7 @@ $args = array(
  * Show if Give plugin is disabled.
  */
 if ( ! class_exists( 'Give' ) ) { ?>
-    <div class="care-companion-message alert alert-info requires-plugin">
+    <div class="care-companion-message alert alert-warning requires-plugin">
         <p>
             <?php esc_html_e(
                 'The cc_recent_campaigns shortcode requires the Give plugin to be installed and activated.',

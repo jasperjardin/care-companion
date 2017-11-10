@@ -233,6 +233,7 @@
         max-width: none;
         display: inline-block;
         vertical-align: top;
+        padding-bottom: 45px;
         .donation-left-section {
             .progressbar-section {
                 padding: 5px 10px 0;
@@ -258,7 +259,7 @@
         }
         .footer-wrapper {
             .donate-section {
-                padding-left: 0;
+                padding: 0;
             }
             .action-section {
                 padding-left: 15px;
