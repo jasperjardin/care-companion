@@ -100,6 +100,7 @@
     }
     &.shortcode-element {
         .care-companion-upcoming-event {
+            @extend .care-companion-shadow-card;
         }
         .cc-read-more-container {
             display: block;

@@ -38,6 +38,11 @@ if (! defined('ABSPATH')) {
 
 final class Language
 {
+    /**
+     * This plugin's identifier
+     */
+    const ID = 'care-companion';
+
     public function __construct()
     {
         add_action(
@@ -60,9 +65,8 @@ final class Language
      */
     public function loadTextDomain() {
 
-        load_plugin_textdomain( 'care-companion', false, CARE_COMPANION_DIR_PATH . '\languages' );
+        load_plugin_textdomain( 'care-companion', false, self::ID . '/languages' );
 
-        // load_plugin_textdomain( 'care-companion', false, basename( dirname( __FILE__ ) ) . '/languages' );
         return;
     }
 }
