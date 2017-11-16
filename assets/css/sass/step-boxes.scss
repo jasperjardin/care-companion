@@ -1,5 +1,6 @@
 .care-companion-step-boxes {
     @extend .care-companion-shadow-card;
+    background-size: cover;
     padding: 0 25px 35px;
     vertical-align: top;
     text-align: center;
@@ -7,6 +8,19 @@
     margin-bottom: 25px;
     display: inline-block;
     position: relative;
+
+    &.care-companion-shortcode-grid {
+        &.column-1,
+        &.column-2,
+        &.column-3,
+        &.column-4,
+        &.column-5,
+        &.column-6 {
+            &.no-margin {
+                margin-right: 0;
+            }
+        }
+    }
     .step-number-wrapper {
         width: 100%;
         position: absolute;
@@ -16,6 +30,7 @@
     .step-number {
         color: $primary;
         background: $light;
+        background-size: cover;
         min-width: 50px;
         min-height: 50px;
         line-height: 37px;

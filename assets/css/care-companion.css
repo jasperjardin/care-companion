@@ -650,6 +650,7 @@ body.single-dsc-causes #content.site-content .give-is-not-installed #primary.con
 }
 
 .care-companion-step-boxes {
+  background-size: cover;
   padding: 0 25px 35px;
   vertical-align: top;
   text-align: center;
@@ -657,6 +658,10 @@ body.single-dsc-causes #content.site-content .give-is-not-installed #primary.con
   margin-bottom: 25px;
   display: inline-block;
   position: relative;
+}
+
+.care-companion-step-boxes.care-companion-shortcode-grid.column-1.no-margin, .care-companion-step-boxes.care-companion-shortcode-grid.column-2.no-margin, .care-companion-step-boxes.care-companion-shortcode-grid.column-3.no-margin, .care-companion-step-boxes.care-companion-shortcode-grid.column-4.no-margin, .care-companion-step-boxes.care-companion-shortcode-grid.column-5.no-margin, .care-companion-step-boxes.care-companion-shortcode-grid.column-6.no-margin {
+  margin-right: 0;
 }
 
 .care-companion-step-boxes .step-number-wrapper {
@@ -669,6 +674,7 @@ body.single-dsc-causes #content.site-content .give-is-not-installed #primary.con
 .care-companion-step-boxes .step-number {
   color: #f8b864;
   background: #fff;
+  background-size: cover;
   min-width: 50px;
   min-height: 50px;
   line-height: 37px;
@@ -1299,6 +1305,12 @@ body.single-dsc-causes #content.site-content .give-is-not-installed #primary.con
   background-image: url("images/search-form-background.png");
   background-size: cover;
   padding: 50px;
+}
+
+@media (max-width: 768px) {
+  .care-companion-search-field.care-companion-shortcode-grid.column-1, .care-companion-search-field.care-companion-shortcode-grid.column-2, .care-companion-search-field.care-companion-shortcode-grid.column-3, .care-companion-search-field.care-companion-shortcode-grid.column-4, .care-companion-search-field.care-companion-shortcode-grid.column-5, .care-companion-search-field.care-companion-shortcode-grid.column-6 {
+    width: 100%;
+  }
 }
 
 .care-companion-search-field .search-title {

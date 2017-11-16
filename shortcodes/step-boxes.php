@@ -33,14 +33,35 @@ $allowed_columns = array( '1', '2', '3', '4' );
 if (! in_array( $columns, $allowed_columns, true ) ) {
     $columns = '3';
 }
-?>
-<div class="care-companion-step-boxes care-companion-shortcode-grid column-<?php echo esc_attr( absint( $columns ) ); ?>">
+
+$style_background = '';
+$style_step_number_background = '';
+$style_text_color = '';
+
+if ( 'true' === $no_margin ) {
+    $no_margin = 'no-margin';
+}
+
+if ( ! empty ( $text_color ) ) {
+    $style_text_color = 'style="color: ' . esc_attr( $text_color ) . '"';
+}
+
+if ( ! empty ( $background_color ) ) {
+    $style_background = 'style="background-color: ' . esc_attr( $background_color ) . '"';
+    $style_step_number_background = 'style="background-color: ' . esc_attr( $background_color ) . '"';
+}
+
+if ( ! empty ( $background_image_url ) ) {
+    $style_background = 'style="background-image: url(' . esc_attr( $background_image_url ) . ')"';
+} ?>
+
+<div class="care-companion-step-boxes care-companion-shortcode-grid column-<?php echo esc_attr( absint( $columns ) ) . ' ' . esc_attr( $no_margin ); ?>" <?php echo $style_background; ?>>
     <div class="outer-wrapper">
         <div class="inner-wrapper">
 
             <?php if ( ! empty( $step_number ) ) { ?>
                 <div class="step-number-wrapper">
-                    <span class="step-number"><?php echo esc_html( $step_number ); ?></span>
+                    <span class="step-number" <?php echo $style_background; ?> ><?php echo esc_html( $step_number ); ?></span>
                 </div>
             <?php } ?>
 
@@ -53,10 +74,10 @@ if (! in_array( $columns, $allowed_columns, true ) ) {
             </div>
 
             <div class="title-wrapper">
-                <h4 class="step-title"><?php echo esc_html( $title ); ?></h4>
+                <h4 class="step-title" <?php echo $style_text_color; ?>><?php echo esc_html( $title ); ?></h4>
             </div>
             <div class="content-wrapper">
-                <p class="step-content"><?php echo esc_html( $content ); ?></p>
+                <p class="step-content" <?php echo $style_text_color; ?>><?php echo esc_html( $content ); ?></p>
             </div>
 
             <?php if ( 'on' === $button_mode ) { ?>

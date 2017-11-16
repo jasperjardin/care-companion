@@ -255,8 +255,10 @@ final class PluginShortcodes
         $atts = shortcode_atts(
             array(
                 'title' => __( 'Search for Causes', 'care-companion' ),
+                'columns' => '1',
                 'sub_title' => 'These days are all share them with me oh baby said ins knew it was much more than a hunch.',
                 'color' => '',
+                'background_color' => '',
                 'background_image_url' => '',
                 'search_text' => __( 'Keywords', 'care-companion' ),
                 'search_button_text' => __( 'Search Here', 'care-companion' ),
@@ -344,8 +346,12 @@ final class PluginShortcodes
                 'columns' => '3',
                 'step_number' => '',
                 'title' => '',
+                'text_color' => '',
+                'background_color' => '',
+                'no_margin' => '',
                 'icon' => 'fa fa-user',
                 'image_url' => '',
+                'background_image_url' => '',
                 'link' => '#',
                 'link_text' => __( 'Learn More', 'care-companion' ),
                 'link_text_icon' => 'fa fa-angle-double-right',
