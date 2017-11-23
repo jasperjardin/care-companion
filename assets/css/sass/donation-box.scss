@@ -66,6 +66,40 @@
 
     &.style-1 {
         background: rgba(0, 0, 0, 0.87);
+        &.SemiCircle,
+        &.Triangle,
+        &.Heart,
+        &.Square {
+            .progressbar-section {
+                @media(max-width: 992px) {
+                    padding: 0 35%;
+                }
+                @media(max-width: 768px) {
+                    padding: 0 25%;
+                }
+            }
+        }
+        &.Line {
+            .progressbar-text .completed-text {
+                @media(max-width: 992px) {
+                    margin-bottom: 15px;
+                }
+            }
+        }
+        &.Heart {
+            .percentage-path.Heart:before {
+                @media(max-width: 992px) {
+                    top: 25%;
+                }
+                @media(max-width: 768px) {
+                    top: 30%;
+                }
+                @media(max-width: 480px) {
+                    font-size: 0.85em;
+                    top: 22.5%;
+                }
+            }
+        }
         .care-companion-entry-share {
             position: relative;
             top: -2.5px;
@@ -95,7 +129,16 @@
                 line-height: 0;
             }
             .progressbar-section {
-                padding: 0 10%;
+                padding: 0 5%;
+                @media( max-width: 992px ) {
+                    padding: 0 35%;
+                }
+                @media( max-width: 480px ) {
+                    padding: 0 25%;
+                }
+                @media( max-width: 375px ) {
+                    padding: 0 15%;
+                }
             }
         }
     }
@@ -119,6 +162,10 @@
             display: table-cell;
             vertical-align: top;
             position: relative;
+            @media(max-width: 992px) {
+                width: 100%;
+                display: inline-block;
+            }
             .background-overlay {
                 width: 100%;
                 height: 100%;
@@ -419,7 +466,7 @@
             min-width: 100%;
             &:before {
                 font-size: 100%;
-                top: 25%;
+                top: 20%;
             }
             .completed-text {
                 position: relative;
@@ -432,15 +479,23 @@
         }
         &.Square {
             &:before {
+                font-size: 1.15em;
                 top: 10%;
+                @media(max-width: 992px) {
+                    top: 20%;
+                }
+            }
+            .completed-text {
+                font-size: 0.45em;
+                top: 60%;
             }
         }
         &.Triangle {
             min-width: 100%;
             &:before {
-                font-size: 100%;
-                top: auto;
-                bottom: 35%;
+                font-size: 0.75em;
+                top: 35%;
+                bottom: 38%;
             }
             .completed-text {
                 position: relative;

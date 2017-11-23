@@ -828,6 +828,43 @@ body.single-dsc-causes #content.site-content .give-is-not-installed #primary.con
   background: rgba(0, 0, 0, 0.87);
 }
 
+@media (max-width: 992px) {
+  .care-companion-donation-box.style-1.SemiCircle .progressbar-section, .care-companion-donation-box.style-1.Triangle .progressbar-section, .care-companion-donation-box.style-1.Heart .progressbar-section, .care-companion-donation-box.style-1.Square .progressbar-section {
+    padding: 0 35%;
+  }
+}
+
+@media (max-width: 768px) {
+  .care-companion-donation-box.style-1.SemiCircle .progressbar-section, .care-companion-donation-box.style-1.Triangle .progressbar-section, .care-companion-donation-box.style-1.Heart .progressbar-section, .care-companion-donation-box.style-1.Square .progressbar-section {
+    padding: 0 25%;
+  }
+}
+
+@media (max-width: 992px) {
+  .care-companion-donation-box.style-1.Line .progressbar-text .completed-text {
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 992px) {
+  .care-companion-donation-box.style-1.Heart .percentage-path.Heart:before {
+    top: 25%;
+  }
+}
+
+@media (max-width: 768px) {
+  .care-companion-donation-box.style-1.Heart .percentage-path.Heart:before {
+    top: 30%;
+  }
+}
+
+@media (max-width: 480px) {
+  .care-companion-donation-box.style-1.Heart .percentage-path.Heart:before {
+    font-size: 0.85em;
+    top: 22.5%;
+  }
+}
+
 .care-companion-donation-box.style-1 .care-companion-entry-share {
   position: relative;
   top: -2.5px;
@@ -863,7 +900,25 @@ body.single-dsc-causes #content.site-content .give-is-not-installed #primary.con
 }
 
 .care-companion-donation-box.style-1.Circle .progressbar-section {
-  padding: 0 10%;
+  padding: 0 5%;
+}
+
+@media (max-width: 992px) {
+  .care-companion-donation-box.style-1.Circle .progressbar-section {
+    padding: 0 35%;
+  }
+}
+
+@media (max-width: 480px) {
+  .care-companion-donation-box.style-1.Circle .progressbar-section {
+    padding: 0 25%;
+  }
+}
+
+@media (max-width: 375px) {
+  .care-companion-donation-box.style-1.Circle .progressbar-section {
+    padding: 0 15%;
+  }
 }
 
 .care-companion-donation-box.style-2 {
@@ -891,6 +946,14 @@ body.single-dsc-causes #content.site-content .give-is-not-installed #primary.con
   display: table-cell;
   vertical-align: top;
   position: relative;
+}
+
+@media (max-width: 992px) {
+  .care-companion-donation-box.style-2 .donation-left-section,
+  .care-companion-donation-box.style-2 .donation-right-section {
+    width: 100%;
+    display: inline-block;
+  }
 }
 
 .care-companion-donation-box.style-2 .donation-left-section .background-overlay,
@@ -1232,7 +1295,7 @@ body.single-dsc-causes #content.site-content .give-is-not-installed #primary.con
 
 .care-companion-progress-bar.path .percentage-path.Heart:before {
   font-size: 100%;
-  top: 25%;
+  top: 20%;
 }
 
 .care-companion-progress-bar.path .percentage-path.Heart .completed-text {
@@ -1245,7 +1308,19 @@ body.single-dsc-causes #content.site-content .give-is-not-installed #primary.con
 }
 
 .care-companion-progress-bar.path .percentage-path.Square:before {
+  font-size: 1.15em;
   top: 10%;
+}
+
+@media (max-width: 992px) {
+  .care-companion-progress-bar.path .percentage-path.Square:before {
+    top: 20%;
+  }
+}
+
+.care-companion-progress-bar.path .percentage-path.Square .completed-text {
+  font-size: 0.45em;
+  top: 60%;
 }
 
 .care-companion-progress-bar.path .percentage-path.Triangle {
@@ -1253,9 +1328,9 @@ body.single-dsc-causes #content.site-content .give-is-not-installed #primary.con
 }
 
 .care-companion-progress-bar.path .percentage-path.Triangle:before {
-  font-size: 100%;
-  top: auto;
-  bottom: 35%;
+  font-size: 0.75em;
+  top: 35%;
+  bottom: 38%;
 }
 
 .care-companion-progress-bar.path .percentage-path.Triangle .completed-text {
