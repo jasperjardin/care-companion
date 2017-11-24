@@ -67,6 +67,7 @@ jQuery(document).ready( function($) {
 
             var path = '';
             var path_element = '';
+            var $path_element = '';
             var path_element_child = '';
 
             var circle = 301.635;
@@ -315,6 +316,14 @@ jQuery(document).ready( function($) {
                 }
 
                 path_element = this.getAttribute('id');
+                // $path_element = $( '#' + path_element );
+                //
+                // if( $path_element.length >= 1 ) {
+                //     $.each( $path_element, function() {
+                //         $( this ).attr( 'id', this.getAttribute('id') + 'clone' );
+                //         console.log( this.getAttribute('id'));
+                //     });
+                // }
 
                 if ( 'Heart' === progress_shape ) {
                     path = '.care-companion-heart';

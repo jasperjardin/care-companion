@@ -34,7 +34,7 @@
 
     <?php if ( 'LinePercent' !== $progress_shape ) { ?>
 
-            <div id="care-companion-progress-bar-<?php echo esc_attr( $form_id ); ?>" class="care-companion-progress-bar path">
+            <div id="care-companion-progress-bar-<?php echo esc_attr( $form_id . '-' . uniqid() ); ?>" class="care-companion-progress-bar path">
                 <?php
                     if ( 'Square' === $progress_shape ) {
                         require( dirname( __FILE__ ) . '/svg/square.php' );

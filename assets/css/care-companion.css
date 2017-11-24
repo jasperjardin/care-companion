@@ -828,43 +828,6 @@ body.single-dsc-causes #content.site-content .give-is-not-installed #primary.con
   background: rgba(0, 0, 0, 0.87);
 }
 
-@media (max-width: 992px) {
-  .care-companion-donation-box.style-1.SemiCircle .progressbar-section, .care-companion-donation-box.style-1.Triangle .progressbar-section, .care-companion-donation-box.style-1.Heart .progressbar-section, .care-companion-donation-box.style-1.Square .progressbar-section {
-    padding: 0 35%;
-  }
-}
-
-@media (max-width: 768px) {
-  .care-companion-donation-box.style-1.SemiCircle .progressbar-section, .care-companion-donation-box.style-1.Triangle .progressbar-section, .care-companion-donation-box.style-1.Heart .progressbar-section, .care-companion-donation-box.style-1.Square .progressbar-section {
-    padding: 0 25%;
-  }
-}
-
-@media (max-width: 992px) {
-  .care-companion-donation-box.style-1.Line .progressbar-text .completed-text {
-    margin-bottom: 15px;
-  }
-}
-
-@media (max-width: 992px) {
-  .care-companion-donation-box.style-1.Heart .percentage-path.Heart:before {
-    top: 25%;
-  }
-}
-
-@media (max-width: 768px) {
-  .care-companion-donation-box.style-1.Heart .percentage-path.Heart:before {
-    top: 30%;
-  }
-}
-
-@media (max-width: 480px) {
-  .care-companion-donation-box.style-1.Heart .percentage-path.Heart:before {
-    font-size: 0.85em;
-    top: 22.5%;
-  }
-}
-
 .care-companion-donation-box.style-1 .care-companion-entry-share {
   position: relative;
   top: -2.5px;
@@ -879,6 +842,21 @@ body.single-dsc-causes #content.site-content .give-is-not-installed #primary.con
   margin-bottom: 15px;
 }
 
+@media (max-width: 480px) {
+  .care-companion-donation-box.style-1 .donation-information .donation-raised,
+  .care-companion-donation-box.style-1 .donation-information .donation-goal {
+    width: 100%;
+    padding: 0;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .care-companion-donation-box.style-1 .donation-information .donation-separator {
+    display: none;
+  }
+}
+
 .care-companion-donation-box.style-1 .donation-content {
   color: rgba(255, 255, 255, 0.75);
   margin-bottom: 15px;
@@ -891,6 +869,22 @@ body.single-dsc-causes #content.site-content .give-is-not-installed #primary.con
   line-height: normal;
 }
 
+@media (max-width: 992px) {
+  .care-companion-donation-box.style-1 .progressbar-section,
+  .care-companion-donation-box.style-1 .donation-information-section {
+    width: 49%;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+@media (max-width: 992px) {
+  .care-companion-donation-box.style-1.Line .progressbar-text .completed-text {
+    margin-bottom: 15px;
+  }
+}
+
 .care-companion-donation-box.style-1.Circle .donation-information-section {
   padding-top: 20px;
 }
@@ -899,25 +893,64 @@ body.single-dsc-causes #content.site-content .give-is-not-installed #primary.con
   line-height: 0;
 }
 
-.care-companion-donation-box.style-1.Circle .progressbar-section {
-  padding: 0 5%;
-}
-
 @media (max-width: 992px) {
-  .care-companion-donation-box.style-1.Circle .progressbar-section {
-    padding: 0 35%;
+  .care-companion-donation-box.style-1.Circle .progressbar-text {
+    top: 32.5%;
   }
 }
 
 @media (max-width: 480px) {
-  .care-companion-donation-box.style-1.Circle .progressbar-section {
-    padding: 0 25%;
+  .care-companion-donation-box.style-1.Circle .progressbar-text {
+    top: 30%;
   }
 }
 
 @media (max-width: 375px) {
-  .care-companion-donation-box.style-1.Circle .progressbar-section {
-    padding: 0 15%;
+  .care-companion-donation-box.style-1.Circle .progressbar-text {
+    top: 25%;
+  }
+}
+
+@media (max-width: 992px) {
+  .care-companion-donation-box.style-1.Circle .progressbar-text .percentage-text {
+    font-size: 1.5em;
+  }
+}
+
+@media (max-width: 768px) {
+  .care-companion-donation-box.style-1.Circle .progressbar-text .percentage-text {
+    font-size: 1.15em;
+  }
+}
+
+@media (max-width: 480px) {
+  .care-companion-donation-box.style-1.Circle .progressbar-text .percentage-text {
+    font-size: 0.75em;
+  }
+}
+
+@media (max-width: 375px) {
+  .care-companion-donation-box.style-1.Circle .progressbar-text .percentage-text {
+    font-size: 0.5em;
+  }
+}
+
+@media (max-width: 992px) {
+  .care-companion-donation-box.style-1.Heart .care-companion-progress-bar .percentage-path.Heart:before {
+    top: 25%;
+  }
+}
+
+@media (max-width: 768px) {
+  .care-companion-donation-box.style-1.Heart .care-companion-progress-bar .percentage-path.Heart:before {
+    top: 30%;
+  }
+}
+
+@media (max-width: 480px) {
+  .care-companion-donation-box.style-1.Heart .care-companion-progress-bar .percentage-path.Heart:before {
+    font-size: 0.85em;
+    top: 22.5%;
   }
 }
 
@@ -1007,6 +1040,12 @@ body.single-dsc-causes #content.site-content .give-is-not-installed #primary.con
   display: inline-block;
 }
 
+@media (max-width: 992px) {
+  .care-companion-donation-box.style-3 {
+    width: 100%;
+  }
+}
+
 .care-companion-donation-box.style-3 .action-section {
   margin-bottom: 20px;
 }
@@ -1046,8 +1085,33 @@ body.single-dsc-causes #content.site-content .give-is-not-installed #primary.con
   padding-bottom: 45px;
 }
 
+@media (max-width: 992px) {
+  .care-companion-donation-box.style-3 .donation-left-section {
+    padding: 30px;
+  }
+}
+
 .care-companion-donation-box.style-3 .donation-left-section .background-overlay {
   left: 0;
+}
+
+@media (max-width: 992px) {
+  .care-companion-donation-box.style-3 .donation-right-section .progressbar-section,
+  .care-companion-donation-box.style-3 .donation-right-section .donation-information-section {
+    width: 49%;
+    padding: 0;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+@media (max-width: 992px) {
+  .care-companion-donation-box.style-3 .donation-right-section .donation-information-section .donation-raised,
+  .care-companion-donation-box.style-3 .donation-right-section .donation-information-section .donation-goal {
+    width: 100%;
+    padding: 0;
+    text-align: center;
+  }
 }
 
 .care-companion-donation-box.style-3 .donation-right-section .background-overlay {
@@ -1058,7 +1122,7 @@ body.single-dsc-causes #content.site-content .give-is-not-installed #primary.con
 .care-companion-donation-box.style-3 .donation-goal {
   color: #fff;
   font-size: 18px;
-  font-size: bold;
+  font-weight: bold;
 }
 
 .care-companion-donation-box.style-3 .donation-raised {
@@ -1073,6 +1137,160 @@ body.single-dsc-causes #content.site-content .give-is-not-installed #primary.con
   max-width: 180px;
   margin: 0 auto;
   float: none;
+}
+
+@media (max-width: 992px) {
+  .care-companion-donation-box.style-3.Circle .progressbar-section {
+    max-width: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .care-companion-donation-box.style-3.Circle .progressbar-text {
+    top: 35%;
+  }
+}
+
+@media (max-width: 480px) {
+  .care-companion-donation-box.style-3.Circle .progressbar-text {
+    top: 27.5%;
+  }
+}
+
+@media (max-width: 992px) {
+  .care-companion-donation-box.style-3.Circle .progressbar-text .percentage-text {
+    font-size: 1.75em;
+  }
+}
+
+@media (max-width: 768px) {
+  .care-companion-donation-box.style-3.Circle .progressbar-text .percentage-text {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .care-companion-donation-box.style-3.Circle .progressbar-text .percentage-text {
+    font-size: 0.65em;
+  }
+}
+
+@media (max-width: 992px) {
+  .care-companion-donation-box.style-3.Circle .progressbar-text .completed-text {
+    font-size: 0.5em;
+  }
+}
+
+@media (max-width: 480px) {
+  .care-companion-donation-box.style-3.Circle .progressbar-text .completed-text {
+    font-size: 0.35em;
+  }
+}
+
+@media (max-width: 992px) {
+  .care-companion-donation-box.style-3.SemiCircle .progressbar-text .percentage-text {
+    font-size: 1.25em;
+  }
+}
+
+@media (max-width: 768px) {
+  .care-companion-donation-box.style-3.SemiCircle .progressbar-text .percentage-text {
+    font-size: 0.75em;
+  }
+}
+
+@media (max-width: 480px) {
+  .care-companion-donation-box.style-3.SemiCircle .progressbar-text .percentage-text {
+    font-size: 0.5em;
+  }
+}
+
+@media (max-width: 768px) {
+  .care-companion-donation-box.style-3.SemiCircle .progressbar-text .completed-text {
+    font-size: 0.5em;
+  }
+}
+
+@media (max-width: 480px) {
+  .care-companion-donation-box.style-3.SemiCircle .progressbar-text .completed-text {
+    font-size: 0.35em;
+  }
+}
+
+@media (max-width: 480px) {
+  .care-companion-donation-box.style-3.Triangle .care-companion-progress-bar .percentage-path.Triangle:before {
+    top: 45%;
+    font-size: 0.5em;
+  }
+}
+
+@media (max-width: 375px) {
+  .care-companion-donation-box.style-3.Triangle .care-companion-progress-bar .percentage-path.Triangle:before {
+    top: 35%;
+    font-size: 0.45em;
+  }
+}
+
+@media (max-width: 480px) {
+  .care-companion-donation-box.style-3.Triangle .care-companion-progress-bar .percentage-path.Triangle .completed-text {
+    top: 65%;
+    font-size: 0.45em;
+  }
+}
+
+@media (max-width: 375px) {
+  .care-companion-donation-box.style-3.Triangle .care-companion-progress-bar .percentage-path.Triangle .completed-text {
+    top: 55%;
+    font-size: 0.30em;
+  }
+}
+
+@media (max-width: 768px) {
+  .care-companion-donation-box.style-3.Heart .care-companion-progress-bar .percentage-path.Heart:before {
+    top: 25%;
+  }
+}
+
+@media (max-width: 480px) {
+  .care-companion-donation-box.style-3.Heart .care-companion-progress-bar .percentage-path.Heart:before {
+    top: 25%;
+    font-size: 0.75em;
+  }
+}
+
+@media (max-width: 375px) {
+  .care-companion-donation-box.style-3.Heart .care-companion-progress-bar .percentage-path.Heart:before {
+    top: 22%;
+    font-size: 0.65em;
+  }
+}
+
+@media (max-width: 768px) {
+  .care-companion-donation-box.style-3.Heart .care-companion-progress-bar .percentage-path.Heart .completed-text {
+    top: 48%;
+    font-size: 0.45em;
+  }
+}
+
+@media (max-width: 480px) {
+  .care-companion-donation-box.style-3.Heart .care-companion-progress-bar .percentage-path.Heart .completed-text {
+    top: 45%;
+    font-size: 0.35em;
+  }
+}
+
+@media (max-width: 375px) {
+  .care-companion-donation-box.style-3.Heart .care-companion-progress-bar .percentage-path.Heart .completed-text {
+    top: 42%;
+    font-size: 0.35em;
+  }
+}
+
+@media (max-width: 480px) {
+  .care-companion-donation-box.style-3.Square .care-companion-progress-bar .percentage-path:before {
+    font-size: 1em;
+    top: 15%;
+  }
 }
 
 .care-companion-donation-box.style-4 {

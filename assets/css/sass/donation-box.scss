@@ -66,40 +66,6 @@
 
     &.style-1 {
         background: rgba(0, 0, 0, 0.87);
-        &.SemiCircle,
-        &.Triangle,
-        &.Heart,
-        &.Square {
-            .progressbar-section {
-                @media(max-width: 992px) {
-                    padding: 0 35%;
-                }
-                @media(max-width: 768px) {
-                    padding: 0 25%;
-                }
-            }
-        }
-        &.Line {
-            .progressbar-text .completed-text {
-                @media(max-width: 992px) {
-                    margin-bottom: 15px;
-                }
-            }
-        }
-        &.Heart {
-            .percentage-path.Heart:before {
-                @media(max-width: 992px) {
-                    top: 25%;
-                }
-                @media(max-width: 768px) {
-                    top: 30%;
-                }
-                @media(max-width: 480px) {
-                    font-size: 0.85em;
-                    top: 22.5%;
-                }
-            }
-        }
         .care-companion-entry-share {
             position: relative;
             top: -2.5px;
@@ -110,6 +76,19 @@
         }
         .donation-information {
             margin-bottom: 15px;
+            .donation-raised,
+            .donation-goal {
+                @media(max-width: 480px) {
+                    width: 100%;
+                    padding: 0;
+                    text-align: center;
+                }
+            }
+            .donation-separator {
+                @media(max-width: 480px) {
+                    display: none;
+                }
+            }
         }
         .donation-content {
             color: rgba(255, 255, 255, 0.75);
@@ -121,6 +100,24 @@
             display: inline-block;
             line-height: normal;
         }
+
+        .progressbar-section,
+        .donation-information-section {
+            @media(max-width: 992px) {
+                width: 49%;
+                text-align: center;
+                display: inline-block;
+                vertical-align: middle;
+            }
+        }
+
+        &.Line {
+            .progressbar-text .completed-text {
+                @media(max-width: 992px) {
+                    margin-bottom: 15px;
+                }
+            }
+        }
         &.Circle {
             .donation-information-section {
                 padding-top: 20px;
@@ -128,16 +125,159 @@
             .care-companion-progress-bar {
                 line-height: 0;
             }
-            .progressbar-section {
-                padding: 0 5%;
-                @media( max-width: 992px ) {
-                    padding: 0 35%;
+            .progressbar-text {
+                @media(max-width: 992px) {
+                    top: 32.5%;
                 }
-                @media( max-width: 480px ) {
-                    padding: 0 25%;
+                @media(max-width: 480px) {
+                    top: 30%;
                 }
-                @media( max-width: 375px ) {
-                    padding: 0 15%;
+                @media(max-width: 375px) {
+                    top: 25%;
+                }
+                .percentage-text {
+                    @media(max-width: 992px) {
+                        font-size: 1.5em;
+                    }
+                    @media(max-width: 768px) {
+                        font-size: 1.15em;
+                    }
+                    @media(max-width: 480px) {
+                        font-size: 0.75em;
+                    }
+                    @media(max-width: 375px) {
+                        font-size: 0.5em;
+                    }
+                }
+                .completed-text {
+                }
+            }
+        }
+        &.SemiCircle {
+            .progressbar-text {
+                @media(max-width: 992px) {
+                }
+                @media(max-width: 768px) {
+                }
+                @media(max-width: 480px) {
+                }
+                .percentage-text {
+                    @media(max-width: 992px) {
+                    }
+                    @media(max-width: 768px) {
+                    }
+                    @media(max-width: 480px) {
+                    }
+                }
+                .completed-text {
+                    @media(max-width: 992px) {
+                    }
+                    @media(max-width: 768px) {
+                    }
+                    @media(max-width: 480px) {
+                    }
+                }
+            }
+        }
+        &.Line {
+            .progressbar-text {
+                @media(max-width: 992px) {
+                }
+                @media(max-width: 768px) {
+                }
+                @media(max-width: 480px) {
+                }
+                .percentage-text {
+                    @media(max-width: 992px) {
+                    }
+                    @media(max-width: 768px) {
+                    }
+                    @media(max-width: 480px) {
+                    }
+                }
+                .completed-text {
+                    @media(max-width: 992px) {
+                    }
+                    @media(max-width: 768px) {
+                    }
+                    @media(max-width: 480px) {
+                    }
+                }
+            }
+        }
+        &.Triangle {
+            .care-companion-progress-bar .percentage-path.Triangle {
+                @media(max-width: 992px) {
+                }
+                @media(max-width: 768px) {
+                }
+                @media(max-width: 480px) {
+                }
+                &:before {
+                    @media(max-width: 992px) {
+                    }
+                    @media(max-width: 768px) {
+                    }
+                    @media(max-width: 480px) {
+                    }
+                }
+                .completed-text {
+                    @media(max-width: 992px) {
+                    }
+                    @media(max-width: 768px) {
+                    }
+                    @media(max-width: 480px) {
+                    }
+                }
+            }
+        }
+        &.Heart {
+            .care-companion-progress-bar .percentage-path.Heart {
+                @media(max-width: 992px) {
+                }
+                @media(max-width: 768px) {
+                }
+                @media(max-width: 480px) {
+                }
+                &:before {
+                    @media(max-width: 992px) {
+                        top: 25%;
+                    }
+                    @media(max-width: 768px) {
+                        top: 30%;
+                    }
+                    @media(max-width: 480px) {
+                        font-size: 0.85em;
+                        top: 22.5%;
+                    }
+                }
+                .completed-text {
+                    @media(max-width: 992px) {
+                    }
+                    @media(max-width: 768px) {
+                    }
+                    @media(max-width: 480px) {
+                    }
+                }
+            }
+        }
+        &.Square {
+            .care-companion-progress-bar .percentage-path.Square {
+                &:before {
+                    @media(max-width: 992px) {
+                    }
+                    @media(max-width: 768px) {
+                    }
+                    @media(max-width: 480px) {
+                    }
+                }
+                .completed-text {
+                    @media(max-width: 992px) {
+                    }
+                    @media(max-width: 768px) {
+                    }
+                    @media(max-width: 480px) {
+                    }
                 }
             }
         }
@@ -211,6 +351,9 @@
         padding: 0;
         vertical-align: top;
         display: inline-block;
+        @media(max-width: 992px) {
+            width: 100%;
+        }
         .action-section {
             margin-bottom: 20px;
         }
@@ -240,11 +383,33 @@
         .donation-left-section {
             padding-top: 35px;
             padding-bottom: 45px;
+            @media(max-width: 992px) {
+                padding: 30px;
+            }
             .background-overlay {
                 left: 0;
             }
         }
         .donation-right-section {
+            .progressbar-section,
+            .donation-information-section {
+                @media(max-width: 992px) {
+                    width: 49%;
+                    padding: 0;
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+            }
+            .donation-information-section {
+                .donation-raised,
+                .donation-goal {
+                    @media(max-width: 992px) {
+                        width: 100%;
+                        padding: 0;
+                        text-align: center;
+                    }
+                }
+            }
             .background-overlay {
                 right: 0;
             }
@@ -253,7 +418,7 @@
         .donation-goal {
             color: #fff;
             font-size: 18px;
-            font-size: bold;
+            font-weight: bold;
         }
         .donation-raised {
             text-align: left;
@@ -266,6 +431,142 @@
                 max-width: 180px;
                 margin: 0 auto;
                 float: none;
+                @media(max-width: 992px) {
+                    max-width: none;
+                }
+            }
+        }
+        &.Circle {
+            .progressbar-text {
+                @media(max-width: 768px) {
+                    top: 35%;
+                }
+                @media(max-width: 480px) {
+                    top: 27.5%;
+                }
+                .percentage-text {
+                    @media(max-width: 992px) {
+                        font-size: 1.75em;
+                    }
+                    @media(max-width: 768px) {
+                        font-size: 1em;
+                    }
+                    @media(max-width: 480px) {
+                        font-size: 0.65em;
+                    }
+                }
+                .completed-text {
+                    @media(max-width: 992px) {
+                        font-size: 0.5em;
+                    }
+                    @media(max-width: 480px) {
+                        font-size: 0.35em;
+                    }
+                }
+            }
+        }
+        &.SemiCircle {
+            .progressbar-text {
+                .percentage-text {
+                    @media(max-width: 992px) {
+                        font-size: 1.25em;
+                    }
+                    @media(max-width: 768px) {
+                        font-size: 0.75em;
+                    }
+                    @media(max-width: 480px) {
+                        font-size: 0.5em;
+                    }
+                }
+                .completed-text {
+                    @media(max-width: 992px) {
+                    }
+                    @media(max-width: 768px) {
+                        font-size: 0.5em;
+                    }
+                    @media(max-width: 480px) {
+                        font-size: 0.35em;
+                    }
+                }
+            }
+        }
+        &.Line {
+        }
+        &.Triangle {
+            .care-companion-progress-bar .percentage-path.Triangle {
+                &:before {
+                    @media(max-width: 480px) {
+                        top: 45%;
+                        font-size: 0.5em;
+                    }
+                    @media(max-width: 375px) {
+                        top: 35%;
+                        font-size: 0.45em;
+                    }
+                }
+                .completed-text {
+                    @media(max-width: 480px) {
+                        top: 65%;
+                        font-size: 0.45em;
+                    }
+                    @media(max-width: 375px) {
+                        top: 55%;
+                        font-size: 0.30em;
+                    }
+                }
+            }
+        }
+        &.Heart {
+            .care-companion-progress-bar .percentage-path.Heart {
+                &:before {
+                    @media(max-width: 768px) {
+                        top: 25%;
+                    }
+                    @media(max-width: 480px) {
+                        top: 25%;
+                        font-size: 0.75em;
+                    }
+                    @media(max-width: 375px) {
+                        top: 22%;
+                        font-size: 0.65em;
+                    }
+                }
+                .completed-text {
+                    @media(max-width: 768px) {
+                        top: 48%;
+                        font-size: 0.45em;
+                    }
+                    @media(max-width: 480px) {
+                        top: 45%;
+                        font-size: 0.35em;
+                    }
+                    @media(max-width: 375px) {
+                        top: 42%;
+                        font-size: 0.35em;
+                    }
+                }
+            }
+        }
+        &.Square {
+            .care-companion-progress-bar .percentage-path {
+                &:before {
+                    @media(max-width: 992px) {
+                    }
+                    @media(max-width: 768px) {
+                    }
+                    @media(max-width: 480px) {
+                        font-size: 1em;
+                        top: 15%;
+                    }
+                }
+                .completed-text {
+                    @media(max-width: 992px) {
+                    }
+                    @media(max-width: 768px) {
+                    }
+                    @media(max-width: 480px) {
+                    }
+                }
             }
         }
     }
