@@ -22,12 +22,25 @@
         padding-left: 12.5px;
         padding-right: 0;
     }
+    .donation-featured-image {
+        @media(max-width: 768px) {
+            min-height: 250px;
+        }
+    }
+    .published-date-box {
+        @media(max-width: 768px) {
+            text-align: center;
+        }
+        @media(max-width: 480px) {
+            width: 100%;
+        }
+    }
     .information-inner-left {
         h1.donation-title {
             @extend .care-companion-ellipsis;
             max-width: 190px;
             font-size: 18px;
-            line-height: 18px;
+            line-height: 24px;
             margin-top: 2.5px;
             margin-bottom: 0;
         }

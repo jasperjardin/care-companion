@@ -16,27 +16,47 @@
 .care-companion-floating-share-button {
     &:hover {
         z-index: 20;
+
         .entry-share-right {
             li {
                 opacity: 1;
                 visibility: visible;
                 margin-right: 0;
                 padding-right: 5px;
+                @media(max-width: 480px) {
+                    padding-right: 0;
+                    padding-bottom: 5px;
+                }
                 &:nth-child(1) {}
                 &:nth-child(2) {
                     @include transform( translateX(27.25px) );
+                    @media(max-width: 768px) {
+                        @include transform( translateY(27.25px) );
+                    }
                 }
                 &:nth-child(3) {
                     @include transform( translateX(54.5px) );
+                    @media(max-width: 768px) {
+                        @include transform( translateY(54.5px) );
+                    }
                 }
                 &:nth-child(4) {
                     @include transform( translateX(81.75px) );
+                    @media(max-width: 768px) {
+                        @include transform( translateY(81.75px) );
+                    }
                 }
                 &:nth-child(5) {
                     @include transform( translateX(109px) );
+                    @media(max-width: 768px) {
+                        @include transform( translateY(109px) );
+                    }
                 }
                 &:nth-child(6) {
                     @include transform( translateX(136.25px) );
+                    @media(max-width: 768px) {
+                        @include transform( translateY(136.25px) );
+                    }
                 }
             }
         }

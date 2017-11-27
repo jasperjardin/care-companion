@@ -155,26 +155,11 @@
         }
         &.SemiCircle {
             .progressbar-text {
-                @media(max-width: 992px) {
-                }
-                @media(max-width: 768px) {
-                }
-                @media(max-width: 480px) {
-                }
                 .percentage-text {
-                    @media(max-width: 992px) {
-                    }
-                    @media(max-width: 768px) {
-                    }
-                    @media(max-width: 480px) {
-                    }
                 }
                 .completed-text {
-                    @media(max-width: 992px) {
-                    }
-                    @media(max-width: 768px) {
-                    }
-                    @media(max-width: 480px) {
+                    @media(max-width: 375px) {
+                        margin-top: 15px;
                     }
                 }
             }
@@ -215,30 +200,32 @@
                 }
                 &:before {
                     @media(max-width: 992px) {
+                        font-size: 1.5em;
+                        top: 40%;
                     }
                     @media(max-width: 768px) {
+                        font-size: 1em;
+                        top: 40%;
                     }
                     @media(max-width: 480px) {
+                        font-size: 0.75em;
+                    }
+                    @media(max-width: 375px) {
+                        font-size: 0.5em;
                     }
                 }
                 .completed-text {
-                    @media(max-width: 992px) {
+                    @media(max-width: 400px) {
+                        font-size: 0.5em;
                     }
-                    @media(max-width: 768px) {
-                    }
-                    @media(max-width: 480px) {
+                    @media(max-width: 375px) {
+                        font-size: 0.35em;
                     }
                 }
             }
         }
         &.Heart {
             .care-companion-progress-bar .percentage-path.Heart {
-                @media(max-width: 992px) {
-                }
-                @media(max-width: 768px) {
-                }
-                @media(max-width: 480px) {
-                }
                 &:before {
                     @media(max-width: 992px) {
                         top: 25%;
@@ -250,13 +237,14 @@
                         font-size: 0.85em;
                         top: 22.5%;
                     }
+                    @media(max-width: 375px) {
+                        font-size: 0.5em;
+                        top: 25.5%;
+                    }
                 }
                 .completed-text {
-                    @media(max-width: 992px) {
-                    }
-                    @media(max-width: 768px) {
-                    }
-                    @media(max-width: 480px) {
+                    @media(max-width: 375px) {
+                        font-size: 0.45em;
                     }
                 }
             }
@@ -264,19 +252,16 @@
         &.Square {
             .care-companion-progress-bar .percentage-path.Square {
                 &:before {
-                    @media(max-width: 992px) {
-                    }
-                    @media(max-width: 768px) {
-                    }
-                    @media(max-width: 480px) {
+                    @media(max-width: 375px) {
+                        font-size: 0.65em;
                     }
                 }
                 .completed-text {
                     @media(max-width: 992px) {
+                        left: 0;
                     }
-                    @media(max-width: 768px) {
-                    }
-                    @media(max-width: 480px) {
+                    @media(max-width: 375px) {
+                        font-size: 0.35em;
                     }
                 }
             }
@@ -582,15 +567,30 @@
         display: inline-block;
         vertical-align: top;
         padding-bottom: 45px;
+        @media(max-width: 768px) {
+            padding-bottom: 15px;
+        }
         .donation-left-section {
             .progressbar-section {
                 padding: 5px 10px 0;
                 left: 42.5%;
+                @media(max-width: 992px) {
+                    left: 40%;
+                }
+                @media(max-width: 768px) {
+                    left: 37.5%;
+                }
+                @media(max-width: 480px) {
+                    left: 41.5%;
+                }
             }
         }
         .information-wrapper {
             margin: 35px 0 15px;
             padding: 0 25px;
+            @media(max-width: 768px) {
+                margin-bottom: 0;
+            }
         }
         .information-inner-wrap {
             display: inline-block;
@@ -606,24 +606,61 @@
             margin-bottom: 25px;
         }
         .footer-wrapper {
+            .donate-section,
+            .action-section {
+                @media(max-width: 992px) {
+                    width: 49%;
+                    display: inline-block;
+                    .donation-gap {
+                        display: none;
+                    }
+                }
+                @media(max-width: 768px) {
+                    width: 100%;
+                }
+            }
             .donate-section {
                 padding: 0;
+                @media(max-width: 768px) {
+                    .care-companion-btn.donate {
+                        width: 100%;
+                        text-align: center;
+                        margin-bottom: 15px;
+                    }
+                }
             }
             .action-section {
                 padding-left: 15px;
                 margin: 10px 0;
                 text-align: right;
+                @media(max-width: 992px) {
+                    padding: 0;
+                    margin: 0;
+                    .entry-share-left {
+                        margin-right: 0;
+                    }
+                }
             }
         }
 
         .information-inner-wrap-left {
             padding-left: 0;
+            @media(max-width: 992px) {
+                padding-right: 0;
+            }
             h1.donation-title {
                 @extend .care-companion-ellipsis;
                 max-width: 150px;
                 line-height: 18px;
                 margin-top: 2.5px;
                 margin-bottom: 0;
+                @media(max-width: 992px) {
+                    max-width: none;
+                    white-space: inherit;
+                    width: 100%;
+                    display: inline-block;
+                    padding: 0;
+                }
             }
         }
         .information-inner-wrap-right {
@@ -655,6 +692,22 @@
         }
         .action-section {
             padding: 0;
+        }
+    }
+
+    &.style-4,
+    &.style-5 {
+        @media(max-width: 992px) {
+            @include column( width, 47.75%, '50% - 18px', 33px );
+            &:nth-child(odd) {
+                margin-right: 0;
+            }
+        }
+        @media(max-width: 480px) {
+            width: 100%;
+            &:nth-child(even) {
+                margin-right: 0;
+            }
         }
     }
 }

@@ -11,6 +11,21 @@
     margin-bottom: 25px;
     @extend .care-companion-shadow-card;
 
+    &.column-3 {
+        .donation-featured-image {
+            min-height: 250px;
+        }
+    }
+    &.column-4 {
+        .donation-featured-image {
+            min-height: 150px;
+        }
+    }
+    &.care-companion-shortcode-grid {
+        @media(max-width: 768px) {
+            min-height: 250px;
+        }
+    }
     .main-container {
         position: relative;
     }
