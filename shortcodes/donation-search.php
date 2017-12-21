@@ -1,6 +1,6 @@
 <?php
 /**
-  * Donation Box Shortcode Template [cc_serch_form]
+  * Donation Box Shortcode Template [cc_search_form]
   *
   * (c) Dunhakdis <dunhakdis@useissuestabinstead.com>
   *
@@ -32,7 +32,7 @@ if ( ! class_exists( 'Give' ) ) { ?>
     <div class="care-companion-message alert alert-warning requires-plugin">
         <p>
             <?php esc_html_e(
-                'The cc_serch_form shortcode requires the Give plugin to be installed and activated.',
+                'The cc_search_form shortcode requires the Give plugin to be installed and activated.',
                 'care-companion'
             ); ?>
         </p>

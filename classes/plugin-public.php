@@ -330,7 +330,7 @@ final class PublicPages
             'cc_donation_box',
             'cc_recent_campaigns',
             'cc_successful_campaigns',
-            'cc_serch_form',
+            'cc_search_form',
             'cc_donate_button',
             'cc_recent_blogs',
             'cc_step_boxes',

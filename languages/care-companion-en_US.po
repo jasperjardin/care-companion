@@ -229,7 +229,7 @@ msgstr ""
 
 #: shortcodes/donation-search.php:35
 msgid ""
-"The cc_serch_form shortcode requires the Give plugin to be installed and "
+"The cc_search_form shortcode requires the Give plugin to be installed and "
 "activated."
 msgstr ""
 

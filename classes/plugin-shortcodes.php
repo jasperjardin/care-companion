@@ -70,7 +70,7 @@ final class PluginShortcodes
             )
         );
         add_shortcode(
-            'cc_serch_form',
+            'cc_search_form',
             array(
                 $this,
                 'registerCCSearchForm'
@@ -241,7 +241,7 @@ final class PluginShortcodes
     }
 
     /**
-     * This method registers the cc_serch_form shortcode.
+     * This method registers the cc_search_form shortcode.
      *
      * @param array $atts The attributes for the shortcode.
      *
@@ -264,7 +264,7 @@ final class PluginShortcodes
                 'search_button_text' => __( 'Search Here', 'care-companion' ),
             ),
             $atts,
-            'cc_serch_form'
+            'cc_search_form'
         );
 
         $file = 'donation-search.php';
@@ -348,7 +348,7 @@ final class PluginShortcodes
                 'title' => '',
                 'text_color' => '',
                 'background_color' => '',
-                'no_margin' => '',
+                'no_margin' => 'true',
                 'icon' => 'fa fa-user',
                 'image_url' => '',
                 'background_image_url' => '',
