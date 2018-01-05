@@ -25,6 +25,20 @@ if (! defined('ABSPATH')) {
     return;
 }
 
+function is_care_companion() {
+    return apply_filters(
+        'is_care_companion',
+        ( is_post_type_archive( 'dsc-causes' ) || is_tax( 'dsc-causes-categories' ) || is_tax( 'dsc-causes-tags' ) || is_singular( 'dsc-causes' ) ) ? true : false
+    );
+}
+
+function is_care_companion_tax() {
+    return apply_filters(
+        'is_care_companion_tax',
+        ( is_tax( 'dsc-causes-categories' ) || is_tax( 'dsc-causes-tags' ) ) ? true : false
+    );
+}
+
 function care_companion_get_donation_forms( $orderby = '', $order = '' ) {
 
     $helper = '';
