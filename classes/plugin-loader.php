@@ -141,6 +141,14 @@ final class Loader
         include_once plugin_dir_path(dirname(__FILE__)) . 'classes/plugin-widgets.php';
 
         /**
+         * This class handles the registration of the Plugin Widgets.
+         */
+         // if visual composer is present integrate our modules to it
+         if ( ! defined( 'WPB_VC_VERSION' ) ) {
+             include_once plugin_dir_path(dirname(__FILE__)) . 'classes/plugin-vc.php';
+        }
+
+        /**
          * This class handles the Plugin hooks.
          */
         // include_once plugin_dir_path(dirname(__FILE__)) . 'classes/plugin-action-hooks.php';

@@ -48,6 +48,17 @@ final class PluginShortcodes
      */
     public function __construct()
     {
+        // if visual composer is present integrate our modules to it
+        if ( ! defined( 'WPB_VC_VERSION' ) ) {
+            add_action(
+                'vc_before_init',
+                array(
+                    $this,
+                    'vc_integration'
+                )
+            );
+        }
+
         add_shortcode(
             'cc_donation_box',
             array(
@@ -419,5 +430,11 @@ final class PluginShortcodes
         include $template;
 
         return ob_get_clean();
+    }
+
+    public function vc_integration() {
+		$vc_modules = new \DSC\CareCompanion\Care_Companion_Visual_Composer();
+        // donation box
+        $vc_modules->load( 'cc_donation_box' );
     }
 }
