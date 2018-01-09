@@ -51,7 +51,7 @@
                 </div>
 
                 <div class="content-wrapper col-md-12 dark">
-                    <?php if ( 'true' === $content ) { ?>
+                    <?php if ( 'true' === $donation_content ) { ?>
                         <?php care_companion_give_the_content( $form_id ); ?>
                     <?php } ?>
                 </div>

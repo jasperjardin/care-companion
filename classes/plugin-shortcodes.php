@@ -139,7 +139,7 @@ final class PluginShortcodes
                 'container_fill' => 'rgba(0, 0, 0, 0.75)',
                 'container_primary_fill' => '#f8b864',
                 'published_date' => 'true',
-                'content' => 'true',
+                'donation_content' => 'true',
 
                 'button_color' => '#eb543a',
                 'button_text' => '',
@@ -189,7 +189,7 @@ final class PluginShortcodes
         $atts = shortcode_atts(
             array(
                 'layout_style' => 'style-2',
-                'content' => 'false',
+                'donation_content' => 'false',
 
                 'button_color' => '#eb543a',
                 'button_text' => '',
@@ -436,5 +436,7 @@ final class PluginShortcodes
 		$vc_modules = new \DSC\CareCompanion\Care_Companion_Visual_Composer();
         // donation box
         $vc_modules->load( 'cc_donation_box' );
+        // recent campaigns
+        $vc_modules->load( 'cc_recent_campaigns' );
     }
 }

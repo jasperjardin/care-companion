@@ -26,7 +26,7 @@
                 </span>
             </div>
 
-            <?php if ( 'true' === $content ) { ?>
+            <?php if ( 'true' === $donation_content ) { ?>
                 <?php care_companion_give_the_content( $form_id ); ?>
             <?php } ?>
 
