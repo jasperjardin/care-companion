@@ -11,7 +11,7 @@ vc_map(
 		"class" => "",
 		"admin_label" => true,
 		"category" => __( 'Care Companion' ),
-		"icon" => plugins_url('../assets/css/images/activity-stream.png', __FILE__),
+		"icon" => plugins_url( 'care-companion/assets/css/images/activity-stream.png' ),
 		'admin_enqueue_js' => array(),
 		'admin_enqueue_css' => array(),
 		"params" => array(
@@ -184,7 +184,7 @@ vc_map(
                 "heading" => __( "Progress Bar Progress Symbol ", "care_companion" ),
                 "param_name" => "progress_symbol",
                 "value" => __( '%' ),
-                "description" => __( "Customize the symbol for the progress bar symbol.", "care_companion" )
+                "description" => __( "Customize the symbol for the progress bar.", "care_companion" )
             ),
             // progress_text
             array(

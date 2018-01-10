@@ -36,7 +36,7 @@ if (! in_array( $layout_style, $allowed_styles, true ) ) {
 }
 
 /**
- * @todo Add default background image
+ * Add background image
  */
 $background_image = care_companion_get_featured_image_url( $form_id );
 

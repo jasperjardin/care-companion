@@ -266,7 +266,7 @@ final class PluginShortcodes
         $atts = shortcode_atts(
             array(
                 'title' => __( 'Search for Causes', 'care-companion' ),
-                'columns' => '1',
+                'size' => '1',
                 'sub_title' => 'These days are all share them with me oh baby said ins knew it was much more than a hunch.',
                 'color' => '',
                 'background_color' => '',
@@ -298,8 +298,8 @@ final class PluginShortcodes
         $atts = shortcode_atts(
             array(
                 'form_id' => '',
-                'text' => __( 'Donate', 'care-companion' ),
-                'title' => __( 'Donate', 'care-companion' ),
+                'button_text' => __( 'Donate Now', 'care-companion' ),
+                'button_title' => __( 'Donate Now', 'care-companion' ),
                 'background_color' => '',
                 'class_name' => '',
 
@@ -327,7 +327,7 @@ final class PluginShortcodes
 
         $atts = shortcode_atts(
             array(
-                'number_of_posts' => '5',
+                'number_of_posts' => '10',
                 'columns' => '3',
                 'overlay_color' => '#000',
             ),
@@ -357,6 +357,7 @@ final class PluginShortcodes
                 'columns' => '3',
                 'step_number' => '',
                 'title' => '',
+                'description' => '',
                 'text_color' => '',
                 'background_color' => '',
                 'no_margin' => 'true',
@@ -365,8 +366,10 @@ final class PluginShortcodes
                 'background_image_url' => '',
                 'link' => '#',
                 'link_text' => __( 'Learn More', 'care-companion' ),
+                'link_text_color' => '#fff',
                 'link_text_icon' => 'fa fa-angle-double-right',
-                'button_mode' => 'off'
+                'button_mode' => 'false',
+                'button_color' => '#f8b864'
             ),
             $atts,
             'cc_step_boxes'
@@ -438,5 +441,15 @@ final class PluginShortcodes
         $vc_modules->load( 'cc_donation_box' );
         // recent campaigns
         $vc_modules->load( 'cc_recent_campaigns' );
+        // successful campaigns
+        $vc_modules->load( 'cc_successful_campaigns' );
+        // search form
+        $vc_modules->load( 'cc_search_form' );
+        // donate button
+        $vc_modules->load( 'cc_donate_button' );
+        // recent blogs
+        $vc_modules->load( 'cc_recent_blogs' );
+        // step boxes
+        $vc_modules->load( 'cc_step_boxes' );
     }
 }

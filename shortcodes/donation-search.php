@@ -41,25 +41,35 @@ if ( ! class_exists( 'Give' ) ) { ?>
 <?php }
 
 /**
- * Donation Search Columns
+ * Donation Search Sizes
  */
-$allowed_columns = array( '1', '2', '3', '4' );
+$allowed_sizes = array( '1', '2' );
 
-if (! in_array( $columns, $allowed_columns, true ) ) {
-    $columns = '1';
+if (! in_array( $size, $allowed_sizes, true ) ) {
+    $size = '1';
 }
 
 $style_background = '';
+
+$vc_background_image_url = '';
+
+// Check the value if numeric and get the attached image.
+if ( is_numeric( $background_image_url ) ) {
+    $vc_background_image_url = wp_get_attachment_image_src($background_image_url, "large");
+
+    $background_image_url = $vc_background_image_url[0];
+}
 
 if ( ! empty ( $background_color ) ) {
     $style_background = 'style="background: ' . esc_attr( $background_color ) . '"';
 }
 
+
 if ( ! empty ( $background_image_url ) ) {
     $style_background = 'style="background-image: url(' . esc_attr( $background_image_url ) . ')"';
 } ?>
 
-<div class="care-companion-search-field care-companion-shortcode-grid column-<?php echo esc_attr( absint( $columns ) ); ?>" <?php echo $style_background; ?> >
+<div class="care-companion-search-field care-companion-shortcode-grid column-<?php echo esc_attr( absint( $size ) ); ?>" <?php echo $style_background; ?> >
     <h1 class="search-title primary">
         <?php esc_html_e( $title ); ?>
     </h1>

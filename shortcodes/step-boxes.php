@@ -51,6 +51,18 @@ if ( ! empty ( $background_color ) ) {
     $style_step_number_background = 'style="background-color: ' . esc_attr( $background_color ) . '"';
 }
 
+$vc_background_image_url = '';
+$vc_image_url = '';
+
+// Check the value if numeric and get the attached image.
+if ( is_numeric( $image_url ) || is_numeric( $background_image_url )) {
+    $vc_image_url = wp_get_attachment_image_src($image_url, "large");
+    $image_url = $vc_image_url[0];
+
+    $vc_background_image_url = wp_get_attachment_image_src($background_image_url, "large");
+    $background_image_url = $vc_background_image_url[0];
+}
+
 if ( ! empty ( $background_image_url ) ) {
     $style_background = 'style="background-image: url(' . esc_attr( $background_image_url ) . ')"';
 } ?>
@@ -77,14 +89,14 @@ if ( ! empty ( $background_image_url ) ) {
                 <h4 class="step-title" <?php echo $style_text_color; ?>><?php echo esc_html( $title ); ?></h4>
             </div>
             <div class="content-wrapper">
-                <p class="step-content" <?php echo $style_text_color; ?>><?php echo esc_html( $content ); ?></p>
+                <p class="step-content" <?php echo $style_text_color; ?>><?php echo esc_html( $description ); ?></p>
             </div>
 
-            <?php if ( 'on' === $button_mode ) { ?>
-                <a href="<?php echo esc_url( $link ); ?>" class="care-button care-companion-button"><?php echo esc_html( $link_text ); ?></a>
+            <?php if ( 'true' === $button_mode ) { ?>
+                <a href="<?php echo esc_url( $link ); ?>" class="care-button care-companion-button" style="background-color: <?php echo esc_attr( $button_color ); ?>; color: <?php echo esc_attr( $link_text_color ); ?>"><?php echo esc_html( $link_text ); ?></a>
             <?php } else { ?>
                 <div class="more-wrapper">
-                    <a href="<?php echo esc_url( $link ); ?>"><?php echo esc_html( $link_text ); ?><i class="step-link-text-icon <?php echo esc_attr( $link_text_icon ); ?>"></i></a>
+                    <a href="<?php echo esc_url( $link ); ?>" style="color: <?php echo esc_attr( $link_text_color ); ?>"><?php echo esc_html( $link_text ); ?><i class="step-link-text-icon <?php echo esc_attr( $link_text_icon ); ?>"></i></a>
                 </div>
             <?php } ?>
 

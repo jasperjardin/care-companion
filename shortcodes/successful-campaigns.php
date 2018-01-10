@@ -70,8 +70,8 @@ if ( ! class_exists( 'Give' ) ) { ?>
 <?php }
 
 $form = new WP_Query( $args );
+$successful_form_count = 0;
 ?>
-
 
 <?php if ( $form->have_posts() ) : ?>
 
@@ -156,17 +156,31 @@ $form = new WP_Query( $args );
 
             </div>
 
+        <?php $successful_form_count++; ?>
+
         <?php endif; ?>
 
     <?php endwhile; ?>
 
+    <?php if ( 0 === $successful_form_count ) : ?>
+        <div class="care-companion-message alert alert-info">
+            <p>
+                <?php esc_html_e(
+                    'There are no successful campaigns found.',
+                    'care-companion'
+                ); ?>
+            </p>
+        </div>
+    <?php endif; ?>
+
     <?php wp_reset_postdata(); ?>
 
 <?php else : ?>
+
     <div class="care-companion-message alert alert-info nothing-found">
         <p>
             <?php esc_html_e(
-                'There are no campaigns found.',
+                'There are no successful campaigns found.',
                 'care-companion'
             ); ?>
         </p>
