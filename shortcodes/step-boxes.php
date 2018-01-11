@@ -73,7 +73,7 @@ if ( ! empty ( $background_image_url ) ) {
 
             <?php if ( ! empty( $step_number ) ) { ?>
                 <div class="step-number-wrapper">
-                    <span class="step-number" <?php echo $style_background; ?> ><?php echo esc_html( $step_number ); ?></span>
+                    <span class="step-number" <?php echo $style_step_number_background; ?> ><?php echo esc_html( $step_number ); ?></span>
                 </div>
             <?php } ?>
 

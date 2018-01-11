@@ -28,14 +28,19 @@ vc_map(
             ),
             // columns
             array(
-                "type" => "textfield",
+                "type" => "dropdown",
                 "holder" => "",
                 "class" => "",
                 "admin_label" => true,
                 "heading" => __( "Column Layout", "care_companion" ),
                 "param_name" => "columns",
-                "value" => __( '3' ),
-                "description" => __( "Set the column layout to display the post.", "care_companion" ),
+                "value" => array(
+                    __( '1 Column Layout', 'care_companion' ) => '1',
+                    __( '2 Columns Layout', 'care_companion' ) => '2',
+                    __( '3 Columns Layout', 'care_companion' ) => '3',
+                    __( '4 Columns Layout', 'care_companion' ) => '4'
+                ),
+                "description" => __( "Set the column layout to display the post.", "care_companion" )
             ),
             // overlay_color
             array(

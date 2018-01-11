@@ -451,5 +451,7 @@ final class PluginShortcodes
         $vc_modules->load( 'cc_recent_blogs' );
         // step boxes
         $vc_modules->load( 'cc_step_boxes' );
+        // upcoming events
+        $vc_modules->load( 'cc_upcoming_events' );
     }
 }
