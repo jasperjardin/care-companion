@@ -40,4 +40,4 @@ if ( ! class_exists( 'Give' ) ) { ?>
     <?php return; ?>
 <?php }
 
-care_companion_donate_button( $form_id, $button_text, $class_name, $button_title, $background_color );
+care_companion_donate_button( $form_id, $button_text, $class_name, $button_title, $background_color, $link );

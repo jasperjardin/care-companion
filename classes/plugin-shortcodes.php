@@ -188,7 +188,7 @@ final class PluginShortcodes
 
         $atts = shortcode_atts(
             array(
-                'layout_style' => 'style-2',
+                'layout_style' => 'style-1',
                 'donation_content' => 'false',
 
                 'button_color' => '#eb543a',
@@ -302,6 +302,7 @@ final class PluginShortcodes
                 'button_title' => __( 'Donate Now', 'care-companion' ),
                 'background_color' => '',
                 'class_name' => '',
+                'link' => '',
 
             ),
             $atts,

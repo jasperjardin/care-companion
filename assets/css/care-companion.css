@@ -461,6 +461,10 @@ body.single-dsc-causes #content.site-content .give-is-not-installed #primary.con
   margin-bottom: 25px;
 }
 
+.care-companion-recent-campaigns.style-1 .information-wrapper, .style-1.care-companion-successful-campaigns .information-wrapper, .style-1.care-companion-donation-box.style-4 .information-wrapper, .style-1.care-companion-donation-box.style-5 .information-wrapper {
+  padding-top: 35px;
+}
+
 .care-companion-recent-campaigns.column-3 .donation-featured-image, .column-3.care-companion-successful-campaigns .donation-featured-image, .column-3.care-companion-donation-box.style-4 .donation-featured-image, .column-3.care-companion-donation-box.style-5 .donation-featured-image {
   min-height: 250px;
 }
@@ -598,6 +602,10 @@ body.single-dsc-causes #content.site-content .give-is-not-installed #primary.con
 
 .care-companion-recent-campaigns-style.style-2 .donation-content {
   margin-bottom: 15px;
+}
+
+.care-companion-recent-campaigns-style.style-2 .donation-title {
+  margin-top: 25px;
 }
 
 .care-companion-recent-campaigns-style.style-2 .progressbar-section {

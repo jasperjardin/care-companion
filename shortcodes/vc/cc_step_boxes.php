@@ -83,7 +83,7 @@ vc_map(
                 "admin_label" => true,
                 "heading" => __( "Background Color", "care_companion" ),
                 "param_name" => "background_color",
-                "value" => __( '' ),
+                "value" => '',
                 "description" => __( "Select the background color for the step box.", "care_companion" ),
             ),
             // no_margin
@@ -163,7 +163,7 @@ vc_map(
                 "admin_label" => true,
                 "heading" => __( "Link Text Color", "care_companion" ),
                 "param_name" => "link_text_color",
-                "value" => '#ffffff',
+                "value" => '',
                 "description" => __( "Select the text color for the step box link.", "care_companion" ),
             ),
             // link_text_icon

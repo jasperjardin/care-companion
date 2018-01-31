@@ -306,7 +306,7 @@ function care_companion_get_donation_progress( $form_id = '' ) {
     return;
 }
 
-function care_companion_donate_button( $form_id = '', $text = '', $class_name = '', $title = '', $background = '' ) {
+function care_companion_donate_button( $form_id = '', $text = '', $class_name = '', $title = '', $background = '', $link = '' ) {
 
     $style = '';
 
@@ -333,10 +333,14 @@ function care_companion_donate_button( $form_id = '', $text = '', $class_name = 
         $style = esc_attr( 'style=background-color:' . $background );
     }
 
-    if ( ! empty( $form_id ) ) {
+    if ( ! empty( $form_id ) || ! empty( $link ) ) {
         $the_permalink = get_permalink( $form_id );
-
-        echo '<a href="' . esc_url( $the_permalink ) . '#give-form-' . esc_attr( $form_id ) . '" class="care-companion-btn ' . esc_attr( $class_name ) . '"' . $style . ' title="' . esc_attr( $title ) . '" >' . esc_html( $text ) . '</a>';
+        if ( ! empty( $form_id ) && empty( $link ) ) {
+            echo '<a href="' . esc_url( $the_permalink ) . '#give-form-' . esc_attr( $form_id ) . '" class="care-companion-btn ' . esc_attr( $class_name ) . '"' . $style . ' title="' . esc_attr( $title ) . '" >' . esc_html( $text ) . '</a>';
+        }
+        if ( ! empty( $form_id ) && ! empty( $link ) || empty( $form_id ) && ! empty( $link ) ) {
+            echo '<a href="' . esc_url( $link ) . '" class="care-companion-btn ' . esc_attr( $class_name ) . '"' . $style . ' title="' . esc_attr( $title ) . '" >' . esc_html( $text ) . '</a>';
+        }
     } else { ?>
         <?php if ( ! is_singular( 'dsc-causes' ) ) { ?>
 

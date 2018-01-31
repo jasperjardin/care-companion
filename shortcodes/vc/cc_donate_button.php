@@ -70,6 +70,17 @@ vc_map(
                 "value" => __( '' ),
                 "description" => __( "Add a CSS classname to the donate button.", "care_companion" )
             ),
+            // class_name
+            array(
+                "type" => "textfield",
+                "holder" => "",
+                "class" => "",
+                "admin_label" => true,
+                "heading" => __( "Custom Link", "care_companion" ),
+                "param_name" => "link",
+                "value" => __( '' ),
+                "description" => __( "Add the custom link to the donate button.", "care_companion" )
+            ),
 		)
 	)
 );
