@@ -566,10 +566,7 @@
         max-width: none;
         display: inline-block;
         vertical-align: top;
-        padding-bottom: 45px;
-        @media(max-width: 768px) {
-            padding-bottom: 15px;
-        }
+        padding-bottom: 15px;
         .donation-left-section {
             .progressbar-section {
                 padding: 5px 10px 0;

@@ -355,7 +355,7 @@ final class PluginShortcodes
 
         $atts = shortcode_atts(
             array(
-                'columns' => '3',
+                'columns' => '1',
                 'step_number' => '',
                 'title' => '',
                 'description' => '',

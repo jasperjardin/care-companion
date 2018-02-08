@@ -86,7 +86,12 @@ if ( ! empty ( $background_image_url ) ) {
             </div>
 
             <div class="title-wrapper">
-                <h4 class="step-title" <?php echo $style_text_color; ?>><?php echo esc_html( $title ); ?></h4>
+                <?php if( '1' === $columns ) { ?>
+                    <h3 class="step-title" <?php echo $style_text_color; ?>><?php echo esc_html( $title ); ?></h3>
+                <?php } else { ?>
+                    <h4 class="step-title" <?php echo $style_text_color; ?>><?php echo esc_html( $title ); ?></h4>
+                <?php } ?>
+
             </div>
             <div class="content-wrapper">
                 <p class="step-content" <?php echo $style_text_color; ?>><?php echo esc_html( $description ); ?></p>

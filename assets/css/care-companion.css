@@ -169,9 +169,9 @@
 
 .care-companion-shortcode-grid.column-3 {
   width: 31.08%;
-  width: -webkit-calc( 33.33% - 18px);
-  width: -moz-calc( 33.33% - 18px);
-  width: calc( 33.33% - 18px);
+  width: -webkit-calc( 33.33% - 12px);
+  width: -moz-calc( 33.33% - 12px);
+  width: calc( 33.33% - 12px);
   margin-right: 14px;
 }
 
@@ -1474,13 +1474,7 @@ body.single-dsc-causes #content.site-content .give-is-not-installed #primary.con
   max-width: none;
   display: inline-block;
   vertical-align: top;
-  padding-bottom: 45px;
-}
-
-@media (max-width: 768px) {
-  .care-companion-donation-box.style-5 {
-    padding-bottom: 15px;
-  }
+  padding-bottom: 15px;
 }
 
 .care-companion-donation-box.style-5 .donation-left-section .progressbar-section {
@@ -1874,7 +1868,7 @@ body.single-dsc-causes #content.site-content .give-is-not-installed #primary.con
 .care-companion-search-field {
   background-image: url("images/search-form-background.png");
   background-size: cover;
-  padding: 50px;
+  padding: 68px 50px;
 }
 
 @media (max-width: 768px) {
@@ -1884,7 +1878,7 @@ body.single-dsc-causes #content.site-content .give-is-not-installed #primary.con
 }
 
 .care-companion-search-field .search-title {
-  font-size: 24px;
+  font-size: 18px;
 }
 
 .care-companion-search-field .search-subtitle {

@@ -99,7 +99,7 @@
         }
     }
     &.column-3 {
-        @include column( width, 31.08%, '33.33% - 18px', 14px );
+        @include column( width, 31.08%, '33.33% - 12px', 14px );
 
         &:nth-child(3n) {
             margin-right: 0;

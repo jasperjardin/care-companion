@@ -104,6 +104,7 @@ final class PublicPages
     public function setEnqueueStyles()
     {
         $shortcodes = self::getShortcodes();
+        $care_theme_mod = get_theme_mod( 'care_footer_headline_textarea' );
 
         foreach ( $shortcodes as $shortcode ) {
             if (self::isPluginComponentActive(
@@ -115,6 +116,7 @@ final class PublicPages
                 ),
                 $shortcode
             ) ||
+            has_shortcode( $care_theme_mod, $shortcode ) ||
             is_active_widget( false, false, 'care_companion_upcoming_events_widget', true ) ) {
                 wp_enqueue_style(
                     $this->name,
