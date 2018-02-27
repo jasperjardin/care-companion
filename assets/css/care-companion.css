@@ -1918,6 +1918,7 @@ body.single-dsc-causes #content.site-content .give-is-not-installed #primary.con
 .care-companion-upcoming-events {
   padding: 0;
   margin-bottom: 0;
+  list-style: none;
 }
 
 .care-companion-upcoming-events .care-companion-upcoming-event {

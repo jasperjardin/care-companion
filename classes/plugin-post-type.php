@@ -177,7 +177,7 @@ final class PostType
         $post_type_args = array(
             'labels'             => $post_type_labels,
             'description'        => esc_html__(
-                'Description.',
+                'Causes Archive.',
                 'care-companion'
             ),
             'public'             => true,
