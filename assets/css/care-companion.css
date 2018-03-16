@@ -923,6 +923,7 @@ body.single-dsc-causes #content.site-content .give-is-not-installed #primary.con
 
 .care-companion-donation-box.style-1 {
   background: rgba(0, 0, 0, 0.87);
+  padding: 40px 30px;
 }
 
 .care-companion-donation-box.style-1 .care-companion-entry-share {
@@ -962,7 +963,7 @@ body.single-dsc-causes #content.site-content .give-is-not-installed #primary.con
 .care-companion-donation-box.style-1 .donation-caption,
 .care-companion-donation-box.style-1 .donation-value {
   width: 100%;
-  display: inline-block;
+  display: block;
   line-height: normal;
 }
 
@@ -1006,6 +1007,10 @@ body.single-dsc-causes #content.site-content .give-is-not-installed #primary.con
   .care-companion-donation-box.style-1.Circle .progressbar-text {
     top: 25%;
   }
+}
+
+.care-companion-donation-box.style-1.Circle .progressbar-text .percentage-text {
+  font-size: 45px;
 }
 
 @media (max-width: 992px) {
@@ -1220,6 +1225,10 @@ body.single-dsc-causes #content.site-content .give-is-not-installed #primary.con
 
 .care-companion-donation-box.style-3 .action-section {
   margin-bottom: 20px;
+}
+
+.care-companion-donation-box.style-3 .care-companion-percent-line-bar {
+  margin-bottom: 25px;
 }
 
 .care-companion-donation-box.style-3 .main-container {

@@ -37,10 +37,10 @@
         <div class="col-md-6 donation-right-section">
 
             <div class="row">
-                <div class="col-md-6 progressbar-section">
+                <div class="col-md-4 progressbar-section">
                     <?php require( dirname( __FILE__ ) . '/loader.php' ); ?>
                 </div>
-                <div class="col-md-6 donation-information-section">
+                <div class="col-md-8 donation-information-section">
 
                     <div class="donation-information">
 

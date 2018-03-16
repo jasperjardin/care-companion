@@ -66,6 +66,7 @@
 
     &.style-1 {
         background: rgba(0, 0, 0, 0.87);
+        padding: 40px 30px;
         .care-companion-entry-share {
             position: relative;
             top: -2.5px;
@@ -97,7 +98,7 @@
         .donation-caption,
         .donation-value {
             width: 100%;
-            display: inline-block;
+            display: block;
             line-height: normal;
         }
 
@@ -136,6 +137,7 @@
                     top: 25%;
                 }
                 .percentage-text {
+                    font-size: 45px;
                     @media(max-width: 992px) {
                         font-size: 1.5em;
                     }
@@ -341,6 +343,9 @@
         }
         .action-section {
             margin-bottom: 20px;
+        }
+        .care-companion-percent-line-bar {
+            margin-bottom: 25px;
         }
         .main-container {
             margin-right: 0;
