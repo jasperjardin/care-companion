@@ -184,7 +184,9 @@ final class PublicPages
 
             }
 
-            if ( is_singular( 'dsc-causes' ) || has_shortcode( $post->post_content, 'cc_donation_box' ) ) {
+            if ( is_singular( 'dsc-causes' ) || has_shortcode( $post->post_content, 'cc_donation_box' )
+            || has_shortcode( $post->post_content, 'rev_slider' )
+            || has_shortcode( $post->post_content, 'rev_slider_vc' ) ) {
                 wp_enqueue_script(
                     'care-conpanion-progress',
                     plugin_dir_url(dirname(__FILE__)) . 'assets/js/progressbar.min.js',

@@ -57,7 +57,7 @@ jQuery(document).ready( function($) {
 
     var $progress_bar_selector = $( '.care-companion-progress-bar' );
 
-    if ( $progress_bar_selector.length >= 1 ) {
+    if ( typeof ProgressBar != 'undefined' && $progress_bar_selector.length >= 1 ) {
         $.each( $progress_bar_selector, function() {
 
             var __this = $(this);
